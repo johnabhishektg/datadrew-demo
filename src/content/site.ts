@@ -484,6 +484,8 @@ export const customerStories = {
       category: "Shopify brands",
       brand: "CAVA Athleisure",
       descriptor: "₹5 Cr/month athleisure brand · India",
+      // Logo pulled from cavaathleisure.com (Sep 3) — permission still pending
+      logo: { light: "/customers/cava-logo.png", dark: "/customers/cava-logo-white.png", width: 455, height: 113 },
       // [lead, highlight, trail] — the highlight is set in bold
       headline: [
         "How CAVA found ",
@@ -499,6 +501,8 @@ export const customerStories = {
       category: "Agencies",
       brand: "Devavi Media",
       descriptor: "Performance marketing agency · India",
+      // Square mark from their LinkedIn page (Sep 3) — permission still pending
+      logo: { light: "/customers/devavi-logo.png", width: 394, height: 155 },
       headline: [
         "",
         "30 ads sorted into Scale, Monitor and Stop",

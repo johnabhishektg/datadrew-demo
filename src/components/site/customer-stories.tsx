@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -5,12 +6,57 @@ import { customerStories } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { Container } from "./section-header";
 
-function Wordmark({ brand }: { brand: string }) {
-  // Text wordmarks until licensed logos are supplied.
+type Story = (typeof customerStories.stories)[number];
+type Logo = { light: string; dark?: string; width: number; height: number };
+
+function BrandMark({ story }: { story: Story }) {
+  const logo = (story as { logo?: Logo }).logo;
+  if (!logo) {
+    // Text wordmark until a licensed logo is supplied.
+    return (
+      <p className="text-lg font-bold uppercase tracking-[0.18em] text-foreground">{story.brand}</p>
+    );
+  }
+  const square = logo.width / logo.height < 1.5;
+  if (square) {
+    // Icon-style mark: show it beside the brand name.
+    return (
+      <span className="flex items-center gap-3">
+        <Image
+          src={logo.light}
+          alt={`${story.brand} logo`}
+          width={logo.width}
+          height={logo.height}
+          loading="eager"
+          className="size-11 rounded-xl border border-border object-cover md:size-12"
+        />
+        <span className="text-lg font-bold uppercase tracking-[0.18em] text-foreground">{story.brand}</span>
+      </span>
+    );
+  }
+  // Wordmark-style logo: render on its own, with a dark-mode variant if supplied.
   return (
-    <p className="text-lg font-bold uppercase tracking-[0.18em] text-foreground">
-      {brand}
-    </p>
+    <span className="block h-10 md:h-11">
+      <Image
+        src={logo.light}
+        alt={`${story.brand} logo`}
+        width={logo.width}
+        height={logo.height}
+        loading="eager"
+        className={cn("h-full w-auto object-contain object-left", logo.dark ? "dark:hidden" : "dark:invert")}
+      />
+      {logo.dark && (
+        <Image
+          src={logo.dark}
+          alt=""
+          aria-hidden
+          width={logo.width}
+          height={logo.height}
+          loading="eager"
+          className="hidden h-full w-auto object-contain object-left dark:block"
+        />
+      )}
+    </span>
   );
 }
 
@@ -58,7 +104,7 @@ export function CustomerStories() {
             className="group flex flex-col justify-between rounded-3xl border border-border bg-muted/30 p-7 transition-colors hover:bg-muted/60 md:p-9"
           >
             <div>
-              <Wordmark brand={s.brand} />
+              <BrandMark story={s} />
               <p className="mt-1.5 text-xs text-muted-foreground">{s.descriptor}</p>
             </div>
             <p className="mt-16 text-balance text-2xl leading-snug tracking-tight text-muted-foreground md:mt-24 md:text-[1.7rem]">
