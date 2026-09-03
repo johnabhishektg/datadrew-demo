@@ -16,7 +16,7 @@ function FloatingTile({ Mark, className, delay }: (typeof floating)[number]) {
   return (
     <span aria-hidden className={cn("animate-float absolute hidden sm:block", className)} style={{ animationDelay: delay }}>
       <span className="flex size-14 items-center justify-center rounded-2xl border border-border bg-card shadow-[0_8px_24px_-8px_rgba(0,0,0,0.18)] md:size-16">
-        <Mark className="size-9 border-0 shadow-none md:size-10" />
+        <Mark className="size-12 border-0 bg-transparent text-xl font-bold shadow-none md:size-14 md:text-2xl" />
       </span>
     </span>
   );
