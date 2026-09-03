@@ -574,8 +574,11 @@ export const creativeIntelligence = {
 export const mcpAgents = {
   eyebrow: "Drew for AI agents",
   headline: "Drew for AI agents",
-  subhead:
-    "Connect Drew to Claude, ChatGPT, Cursor or Claude Code with MCP. Ask in plain English about your ads, your store and your customers — and get real numbers back, not guesses.",
+  // Logo tiles (Codex, Claude, Cursor) render between lead and trail.
+  subhead: {
+    lead: "Connect Drew to",
+    trail: "with MCP.",
+  },
   primaryCta: { label: "Connect with MCP", href: "https://app.datadrew.io/datadrew-mcp" },
   secondaryCta: { label: "Read the setup guide", href: "https://datadrew.io/mcp/" },
   mcpUrl: "https://mcp.datadrew.io/mcp",

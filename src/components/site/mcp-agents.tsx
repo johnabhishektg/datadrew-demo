@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { mcpAgents } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { GA4Mark, KlaviyoMark, MetaMark, ShopifyMark, UnicommerceMark } from "./icons";
+import { InlineAgentLogos } from "./agent-logos";
 
 const floating = [
   { Mark: MetaMark, className: "left-[16%] top-0 lg:left-[22%]", delay: "0s" },
@@ -51,7 +52,9 @@ export function McpAgents() {
         ))}
         <div className="relative mx-auto flex max-w-2xl flex-col items-center px-4 text-center sm:pt-20 md:px-8">
           <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">{m.headline}</h2>
-          <p className="mt-5 text-balance text-base text-muted-foreground md:text-lg">{m.subhead}</p>
+          <p className="mt-5 text-balance text-base leading-[2.1] text-muted-foreground md:text-lg md:leading-[2.2]">
+            {m.subhead.lead} <InlineAgentLogos className="mx-1" /> {m.subhead.trail}
+          </p>
           <div className="mt-8 flex flex-col items-center gap-3">
             <Button asChild size="lg" className="h-12 rounded-xl bg-brand px-8 text-base text-brand-foreground hover:bg-brand/90">
               <a href={m.primaryCta.href}>

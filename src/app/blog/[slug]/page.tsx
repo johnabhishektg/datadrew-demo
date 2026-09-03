@@ -77,11 +77,11 @@ export default async function PostPage({
               {post.standfirst}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-border py-4">
-              <div className="flex items-center gap-3">
+              <div className="flex min-w-0 items-center gap-3">
                 <Avatar name={post.author.name} className="size-10 text-xs" />
-                <div className="leading-tight">
-                  <p className="text-sm font-medium">{post.author.name}</p>
-                  <p className="max-w-xs truncate text-xs text-muted-foreground">{post.author.role}</p>
+                <div className="min-w-0 leading-tight">
+                  <p className="truncate text-sm font-medium">{post.author.name}</p>
+                  <p className="truncate text-xs text-muted-foreground">{post.author.role}</p>
                 </div>
               </div>
               <dl className="ml-auto flex gap-6 text-xs text-muted-foreground">
