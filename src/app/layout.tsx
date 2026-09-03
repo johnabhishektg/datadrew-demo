@@ -41,6 +41,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geist.variable} ${geistMono.variable} bg-background font-sans text-foreground antialiased`}
+        // Browser extensions (e.g. ColorZilla's cz-shortcut-listen) add attributes
+        // to <body> before React hydrates; ignore attribute-only mismatches here.
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
