@@ -1,0 +1,74 @@
+import Link from "next/link";
+import { ArrowRight, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
+import { BlurFade } from "@/components/ui/blur-fade";
+import { hero, heroBadge, site } from "@/content/site";
+import { HeroVisual } from "./hero-visual";
+
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden pt-36 pb-12 md:pt-44 md:pb-20">
+      {/* Backdrop: faint grid + brand glow, in the template's idiom */}
+      <div aria-hidden className="bg-grid-fade pointer-events-none absolute inset-0" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 h-[40rem] w-[60rem] -translate-x-1/2 rounded-full opacity-40 blur-3xl dark:opacity-25"
+        style={{
+          background:
+            "radial-gradient(closest-side, color-mix(in oklch, var(--brand) 40%, transparent), transparent 70%)",
+        }}
+      />
+
+      <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-5 text-center md:px-8">
+        <BlurFade delay={0.05}>
+          <Link
+            href="/#product"
+            className="group inline-flex items-center gap-1 rounded-full border border-border bg-background/70 px-1 py-1 pr-3 text-sm shadow-sm backdrop-blur transition-colors hover:bg-muted"
+          >
+            <span className="rounded-full bg-brand px-2 py-0.5 text-xs font-medium text-brand-foreground">
+              New
+            </span>
+            <AnimatedShinyText className="inline-flex items-center gap-1 text-muted-foreground">
+              {heroBadge.replace(/^New · /, "")}
+              <ChevronRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+            </AnimatedShinyText>
+          </Link>
+        </BlurFade>
+
+        <BlurFade delay={0.15}>
+          <p className="mt-8 text-sm font-medium text-brand">{hero.eyebrow}</p>
+          <h1 className="mx-auto mt-3 max-w-4xl text-balance text-5xl font-semibold tracking-tighter md:text-6xl lg:text-7xl">
+            {hero.headline[0]}{" "}
+            <span className="text-gradient-brand">{hero.headline[1]}</span>
+          </h1>
+        </BlurFade>
+
+        <BlurFade delay={0.25}>
+          <p className="mx-auto mt-6 max-w-2xl text-balance text-base text-muted-foreground md:text-lg">
+            {hero.subhead}
+          </p>
+        </BlurFade>
+
+        <BlurFade delay={0.35}>
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
+            <Button asChild size="lg" className="h-11 rounded-lg px-6 text-base">
+              <a href={site.appUrl}>
+                {hero.primaryCta.label}
+                <ArrowRight className="size-4" />
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="h-11 rounded-lg px-6 text-base">
+              <Link href="/#product">{hero.secondaryCta.label}</Link>
+            </Button>
+          </div>
+          <p className="mt-4 text-xs text-muted-foreground">{hero.finePrint}</p>
+        </BlurFade>
+
+        <div className="mt-14 w-full animate-in fade-in slide-in-from-bottom-8 fill-mode-both duration-1000 delay-500 md:mt-20">
+          <HeroVisual />
+        </div>
+      </div>
+    </section>
+  );
+}

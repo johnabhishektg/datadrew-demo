@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# datadrew.io — website redesign
 
-## Getting Started
+Ground-up redesign of the datadrew.io marketing site. Next.js 16 · Tailwind v4 · Motion.
 
-First, run the development server:
+- Design rationale: [`docs/design-decisions.md`](docs/design-decisions.md)
+- Creative direction: [`docs/creative-direction.md`](docs/creative-direction.md)
+- Competitive/design research: [`docs/research-synthesis.md`](docs/research-synthesis.md)
+- Page narrative: [`docs/content-architecture.md`](docs/content-architecture.md)
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev        # http://localhost:3000
+pnpm build      # production build (all routes static)
+pnpm lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Edit content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All marketing copy lives in [`src/content/site.ts`](src/content/site.ts) — no copy in
+components. Placeholder items are flagged there (testimonial attributions, example
+data); see the "Flagged placeholders" list in `docs/design-decisions.md` before launch.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Add a blog post
 
-## Learn More
+1. Create `src/content/posts/<slug>.tsx` exporting `meta` and a default component
+   composed from the primitives in `src/components/blog/prose.tsx`
+   (`Lead`, `P`, `H2`, `PullQuote`, `Callout`, `BarChart`, `DataTable`, `CodeBlock`, …).
+2. Register it in `src/content/posts/index.ts`.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The route, index page, metadata, and Article JSON-LD are generated from the registry.
