@@ -39,7 +39,7 @@ export const partnersDirectory = {
   meta: {
     title: "Agency Partners — Certified E-commerce Growth Partners",
     description:
-      "Find a Datadrew certified agency partner to help grow your Shopify brand. 70+ agencies across 25+ countries specializing in performance marketing, Shopify development, retention, and more.",
+      "Find a Datadrew certified agency partner to help grow your Shopify brand. 70+ agencies across 25+ countries specializing in performance marketing.",
   },
   eyebrow: "Partner directory",
   headline: "Find an agency partner to grow your brand",
@@ -66,7 +66,7 @@ export const becomePartner = {
   meta: {
     title: "Become a Partner — Grow Together with the AI Ads Agent",
     description:
-      "Join Datadrew's partner ecosystem. Whether you're an agency, tech company, or integration partner — unlock growth opportunities with the AI ads agent for Shopify brands.",
+      "Join Datadrew's partner ecosystem as an agency, tech or integration partner: land free, operate on Drew, and grow with revenue share.",
   },
   eyebrow: "Partner program",
   headline: "Grow together with Datadrew",
@@ -171,7 +171,7 @@ export const techPartners = {
   meta: {
     title: "Tech Partners — Technology & Integration Partners",
     description:
-      "Datadrew's technology and integration partners. From subscription management to ad platforms — explore the tools that power growth alongside Datadrew.",
+      "Datadrew's technology and integration partners: from subscription management to ad platforms, the tools that power growth alongside Datadrew.",
   },
   eyebrow: "Tech partners",
   headline: "Technology partners powering e-commerce growth",
@@ -192,7 +192,7 @@ export const techPartners = {
     { name: "Google Ads", logo: "/partners/tech/google-ads-logo.png", body: "Connect your Google Ads account to analyze campaign performance, ROAS, and customer acquisition costs in real time.", tag: "Advertising", href: "/integrations/google-ads", external: false },
     { name: "Meta Ads", logo: "/partners/tech/meta-ads-logo.png", body: "Sync Facebook and Instagram ad data to measure true ROAS, attribution, and creative performance across your campaigns.", tag: "Advertising", href: "/integrations/meta-ads", external: false },
     { name: "Klaviyo", logo: "/partners/tech/klaviyo-logo.png", body: "Integrate Klaviyo email and SMS data to analyze retention flows, RFM segments, and customer lifecycle performance.", tag: "Email & SMS", href: "/integrations/klaviyo", external: false },
-    { name: "Amazon", logo: "/partners/tech/amazon-logo.png", body: "Connect Amazon Seller Central data to unify your multi-channel view. Track sales, advertising, and product performance.", tag: "Marketplace", href: "/integrations/amazon-seller", external: false },
+    { name: "Amazon", logo: "/partners/tech/amazon-logo.png", body: "Connect Amazon Seller Central data to unify your multi-channel view. Track sales, advertising, and product performance.", tag: "Marketplace", href: "/integrations/amazon", external: false },
     { name: "Catalogus", logo: "/partners/tech/catalogus-logo.png", body: "AI-powered product information operating system. Automate catalog management, enrich product data, and streamline listings at scale.", tag: "Product Data & Catalogs", href: "https://www.catalogus.ai/", external: true },
     { name: "Phot AI", logo: "/partners/tech/phot-ai-logo.png", body: "AI-powered photo editing and visual content platform. Create high-converting product images, ads, and catalogs with 40+ generative AI tools.", tag: "Creative & Visual AI", href: "https://www.phot.ai/", external: true },
     { name: "Ingest Labs", logo: "/partners/tech/ingestlabs-logo.png", body: "Server-side customer data infrastructure for Shopify. Capture first-party data, recover lost conversions, and route clean events to your marketing stack for accurate attribution.", tag: "Data Infrastructure", href: "https://ingestlabs.com/", external: true },

@@ -4,7 +4,7 @@
 export const roasDrop = {
   title: "Why Did My ROAS Drop? The Diagnostic Order That Finds It",
   metaDescription:
-    "ROAS fell and nobody can say why. The eight checks an experienced media buyer runs, in order — measurement, variance, account changes, creative, auction, conversion path, product mix and learning state. Drew runs them every morning.",
+    "ROAS fell and nobody can say why. The eight checks an experienced media buyer runs, in order.",
   hero: {
     eyebrow: "When ROAS drops",
     headline: "Your ROAS dropped. Nobody can say why.",

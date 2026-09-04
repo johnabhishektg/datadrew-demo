@@ -4,14 +4,14 @@
 import { writeFileSync } from "node:fs";
 
 const BASE = process.env.STRAPI_URL ?? "https://cms-production-0fcb.up.railway.app";
-const count = Number(process.argv[2] ?? 5);
+const count = Number(process.argv[2] ?? 100);
 const fields = [
   "headline","slug","seoTitle","metaDescription","longDescription","category",
   "listCategory","authorName","authorRole","publishDate","updatedDate","readingTime",
   "ogImageUrl","coverGradientClass","cardTitle","cardDescription","featured","body",
   "toc","relatedArticles","searchableKeywords",
 ];
-const qs = new URLSearchParams({ sort: "publishDate:desc", "pagination[pageSize]": String(count) });
+const qs = new URLSearchParams({ status: "published", sort: "publishDate:desc", "pagination[pageSize]": String(count) });
 fields.forEach((f, i) => qs.set(`fields[${i}]`, f));
 const res = await fetch(`${BASE}/api/articles?${qs}`);
 if (!res.ok) throw new Error(`Strapi ${res.status}`);
@@ -27,6 +27,11 @@ function sanitize(html) {
     .replace(/href="\/blog\/([^"#]+)\/(#[^"]*)?"/g, (_, slug, hash) => `href="/blog/${slug}${hash ?? ""}"`);
 }
 const firstImage = (html) => html.match(/<img[^>]+src="([^"]+)"/)?.[1] ?? null;
+// The live (Framer) site's generic share image is stored as ogImageUrl on older
+// posts. It is not a cover and disappears at cutover, so treat it as "no cover"
+// (the site renders its own gradient cover + default og:image instead).
+const isPlaceholderCover = (url) => !url || /datadrew\.io\/assets\//.test(url);
+const coverOf = (a) => (isPlaceholderCover(a.ogImageUrl) ? firstImage(a.body ?? "") : a.ogImageUrl);
 
 const posts = data.map((a) => ({
   id: a.documentId,
@@ -42,7 +47,7 @@ const posts = data.map((a) => ({
   date: a.publishDate,
   updated: a.updatedDate ?? a.publishDate,
   readingMinutes: Number.parseInt(a.readingTime ?? "8", 10) || 8,
-  cover: a.ogImageUrl ?? firstImage(a.body ?? ""),
+  cover: coverOf(a),
   gradient: a.coverGradientClass ?? "card-grad-1",
   featured: Boolean(a.featured),
   body: sanitize(a.body ?? ""),

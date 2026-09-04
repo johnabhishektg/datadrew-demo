@@ -6,7 +6,7 @@ import { dateFormat, getPost, posts, relatedPosts } from "@/content/blog";
 import { site } from "@/content/site";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
-import { ArticleStructuredData } from "@/components/site/structured-data";
+import { ArticleStructuredData, DEFAULT_OG_IMAGE } from "@/components/site/structured-data";
 import { ReadingProgress } from "@/components/blog/reading-progress";
 import { ArticleBody } from "@/components/blog/article-body";
 import { Avatar, PostCard } from "@/components/blog/post-card";
@@ -28,14 +28,16 @@ export async function generateMetadata({
   return {
     title: { absolute: post.seoTitle },
     description: post.metaDescription,
+    alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       title: post.title,
       description: post.metaDescription,
       type: "article",
+      url: `/blog/${post.slug}`,
       publishedTime: post.date,
       modifiedTime: post.updated,
       authors: [post.author.name],
-      ...(post.cover ? { images: [{ url: post.cover }] } : {}),
+      images: [{ url: post.cover ?? DEFAULT_OG_IMAGE, alt: post.title }],
     },
   };
 }

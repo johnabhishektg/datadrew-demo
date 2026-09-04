@@ -11,7 +11,7 @@ import {
   KeepComparing,
   ReviewCards,
 } from "@/components/site/compare-blocks";
-import { JsonLd, breadcrumbLd, faqLd } from "@/components/site/structured-data";
+import { JsonLd, OG_IMAGE_PATH, ORG_ID, SITE_ID, breadcrumbLd, faqLd, softwareApplicationLd } from "@/components/site/structured-data";
 import { appStoreUrl, comparisons, getComparison, trustLine } from "@/content/comparisons";
 import { site } from "@/content/site";
 
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: { absolute: c.title },
     description: c.metaDescription,
     alternates: { canonical: `/vs/${c.slug}` },
-    openGraph: { title: c.title, description: c.metaDescription, url: `https://${site.domain}/vs/${c.slug}` },
+    openGraph: { title: c.title, description: c.metaDescription, url: `/vs/${c.slug}`, images: [{ url: OG_IMAGE_PATH, alt: c.title }] },
   };
 }
 
@@ -41,10 +41,16 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
+      "@id": `https://${site.domain}/vs/${c.slug}/#webpage`,
       name: `${name} Comparison`,
+      headline: c.title,
       description: c.metaDescription,
-      url: `https://${site.domain}/vs/${c.slug}`,
+      url: `https://${site.domain}/vs/${c.slug}/`,
+      isPartOf: { "@id": SITE_ID },
+      about: { "@id": ORG_ID },
+      inLanguage: "en",
     },
+    softwareApplicationLd(),
     breadcrumbLd([{ name, path: `/vs/${c.slug}` }]),
     faqLd(c.faq),
   ];

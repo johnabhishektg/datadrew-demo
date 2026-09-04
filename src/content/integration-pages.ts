@@ -10,7 +10,10 @@ import { allIntegrations, type Integration } from "./integrations";
 export type IntegrationMetric = { label: string; value: string; delta?: string; down?: boolean };
 
 export type IntegrationPage = {
+  /** Catalog slug (matches ./integrations.ts). */
   slug: string;
+  /** URL segment when it differs from the catalog slug (live site: /integrations/amazon/). */
+  path?: string;
   /** Overrides for integrations that aren't in the app catalog. */
   catalog?: Integration;
   category: string;
@@ -54,7 +57,7 @@ export const integrationPages: IntegrationPage[] = [
       "Connect effortlessly to all your Shopify stores and unlock a world of data-driven decision-making. Automatic setup on app install with full data sync.",
     seoTitle: "Shopify Integration — Connect Your Shopify Store",
     metaDescription:
-      "Connect your Shopify store to Datadrew and give your AI ads agent the business behind the ads. Automatically sync orders, products, customers, and inventory data to uncover actionable insights.",
+      "Connect your Shopify store to Datadrew and give your AI ads agent the business behind the ads: products, margins, inventory, customers and orders.",
     primaryCta: { label: "Install on Shopify", href: SHOPIFY_LISTING },
     intro: {
       headline: "Your Shopify data, supercharged with AI",
@@ -137,7 +140,7 @@ export const integrationPages: IntegrationPage[] = [
       "Harness the power of Facebook and Instagram Ads with Datadrew. Track performance metrics, analyze audience engagement, and refine your strategy to maximize ROAS.",
     seoTitle: "Meta Ads Integration — Facebook & Instagram Ad Performance",
     metaDescription:
-      "Connect Meta Ads (Facebook & Instagram) to Datadrew. Track campaign performance, audience insights, creative performance, and ROAS across all your ad sets with AI-powered intelligence.",
+      "Connect Meta Ads (Facebook & Instagram) to Datadrew. Campaign, audience and creative performance next to Shopify revenue, graded on real profit.",
     intro: {
       headline: "Full-funnel Meta Ads performance in one place",
       body: "Datadrew connects to the Facebook Graph API to pull campaigns, ad sets, ads, creatives, audience insights, spend, ROAS, and conversions. Initial sync takes about 1 hour, then updates are incremental. See exactly how your Facebook and Instagram ad spend translates into Shopify revenue, customer acquisition, and lifetime value.",
@@ -218,7 +221,7 @@ export const integrationPages: IntegrationPage[] = [
       "Optimize with precision. Supercharge your ad decisions by syncing Google Ads campaigns — Search, Performance Max, Video, and Shopping — with your Shopify data.",
     seoTitle: "Google Ads Integration — Search, PMax & Shopping Performance",
     metaDescription:
-      "Connect Google Ads to Datadrew. Track Search, Performance Max, Video, and Shopping campaigns alongside Shopify revenue for true ROAS and AI-powered optimization.",
+      "Connect Google Ads to Datadrew. Track Search, Performance Max, Video and Shopping campaigns alongside Shopify revenue for true ROAS and AI insight.",
     intro: {
       headline: "Google Ads performance meets Shopify revenue data",
       body: "Datadrew connects to the Google Ads API to pull campaign data across Search, Performance Max, Video, and Shopping campaign types. Combined with your Shopify order data, you get true ROAS attribution, keyword-level performance insights, and AI-powered optimization recommendations. Drew includes 3 specialized Google Ads tools, including access to the Keyword Planner.",
@@ -279,7 +282,7 @@ export const integrationPages: IntegrationPage[] = [
       "Elevate your analytics game with Datadrew's seamless GA4 integration. Combine traffic sources, sessions, engagement, and conversions with your Shopify data.",
     seoTitle: "Google Analytics 4 Integration — GA4 Analytics for Shopify",
     metaDescription:
-      "Connect Google Analytics 4 (GA4) to Datadrew. Combine traffic sources, sessions, engagement, and conversions with Shopify data for complete e-commerce analytics.",
+      "Connect Google Analytics 4 (GA4) to Datadrew. Combine traffic sources, sessions and engagement with Shopify revenue and ad spend in one AI-powered view.",
     intro: {
       headline: "GA4 data enriched with Shopify intelligence",
       body: "Datadrew connects to the GA4 Data API to pull traffic sources, sessions, users, engagement metrics, conversions, device and browser breakdowns, and hourly metrics. Combined with Shopify order data, you get a complete picture of how website traffic converts into revenue and customer lifetime value. Drew includes 7 specialized GA4 tools for instant insights.",
@@ -340,7 +343,7 @@ export const integrationPages: IntegrationPage[] = [
       "Track search queries, impressions, clicks, and keyword positions. Understand how organic search drives traffic and revenue to your store.",
     seoTitle: "Google Search Console Integration — SEO Performance",
     metaDescription:
-      "Connect Google Search Console to Datadrew. Track search queries, impressions, clicks, and keyword positions to understand how organic search drives revenue to your store.",
+      "Connect Google Search Console to Datadrew. Track queries, impressions, clicks and keyword positions to see how organic search drives Shopify revenue.",
     intro: {
       headline: "SEO performance meets revenue data",
       body: "Datadrew connects to Google Search Console to pull search queries, impressions, clicks, CTR, keyword positions, and URL inspection data. This data is accessible via Drew with 4 specialized Search Console tools, so you can ask natural language questions about your organic search performance and understand how it connects to your store's revenue.",
@@ -401,7 +404,7 @@ export const integrationPages: IntegrationPage[] = [
       "Elevate your marketing game with Datadrew's Klaviyo integration. Track campaign performance, flow revenue, and push RFM segments directly to Klaviyo for targeted campaigns.",
     seoTitle: "Klaviyo Integration — Email & SMS Marketing Performance",
     metaDescription:
-      "Connect Klaviyo to Datadrew for AI-powered email and SMS insight. Track campaign performance, flow revenue, and sync RFM segments directly to Klaviyo for targeted marketing.",
+      "Connect Klaviyo to Datadrew for AI-powered email and SMS insight. Campaign and flow revenue, plus RFM segments synced straight back to Klaviyo.",
     intro: {
       headline: "Two-way Klaviyo integration for smarter email marketing",
       body: "Datadrew doesn't just pull data from Klaviyo — it pushes insights back. Sync your campaigns, flows, profiles, lists, metrics, and templates into Datadrew for comprehensive analytics. Then push RFM segments from Datadrew directly into Klaviyo lists for targeted email and SMS campaigns. Drew includes 18 specialized Klaviyo tools for deep marketing insights.",
@@ -458,13 +461,14 @@ export const integrationPages: IntegrationPage[] = [
   },
   {
     slug: "amazon-seller",
+    path: "amazon",
     category: "Marketplace",
     title: "Amazon Seller Integration",
     subhead:
       "Connect your Amazon Seller account via secure OAuth to track your orders, revenue, seller feedback, and financial events. Your data is accessed exclusively for your account — never shared with or visible to other sellers.",
     seoTitle: "Amazon Seller Integration — Your Amazon Data, Your Insights",
     metaDescription:
-      "Connect your Amazon Seller account to Datadrew via SP-API OAuth. Track your orders, revenue, seller feedback, and financial events with AI-powered insights — your data stays private to your account.",
+      "Connect your Amazon Seller account to Datadrew via SP-API OAuth. Track orders, revenue, seller feedback and financial events; data stays private to you.",
     intro: {
       headline: "Your Amazon seller data, unified in one dashboard",
       body: "Datadrew connects to the Amazon Seller Partner API (SP-API) via OAuth to securely access your orders, order items, seller feedback, and financial events. All data retrieved from Amazon is used exclusively to provide analytics and insights for your own seller account. Your Amazon data is never aggregated across sellers, shared with third parties, or used for any purpose other than powering your personal analytics dashboard.",
@@ -537,7 +541,7 @@ export const integrationPages: IntegrationPage[] = [
       "Connect your Amazon Advertising account via secure OAuth to track Sponsored Products, Sponsored Brands, and Sponsored Display campaign performance. Your data is accessed exclusively for your account — never shared with or visible to other advertisers.",
     seoTitle: "Amazon Ads Integration — Your Advertising Data, Your Insights",
     metaDescription:
-      "Connect your Amazon Advertising account to Datadrew via OAuth. Track Sponsored Products, Sponsored Brands, and Sponsored Display campaign performance with AI-powered insights — your data stays private to your account.",
+      "Connect Amazon Ads to Datadrew via OAuth. Track Sponsored Products, Brands and Display alongside Amazon sales and your other channels.",
     intro: {
       headline: "Your Amazon advertising data, unified in one dashboard",
       body: "Datadrew connects to the Amazon Ads API via OAuth to securely access your Sponsored Products, Sponsored Brands, and Sponsored Display campaign data. All data retrieved from Amazon Ads is used exclusively to provide analytics and insights for your own advertising account. Your Amazon Ads data is never aggregated across advertisers, shared with third parties, or used for any purpose other than powering your personal analytics dashboard.",
@@ -620,7 +624,7 @@ export const integrationPages: IntegrationPage[] = [
       "Connect your Unicommerce account to get AI-powered insight across Myntra, Flipkart, Amazon IN, and every Indian sales channel you sell on. Unify inventory, sales, and product data in one dashboard — no other AI ads agent offers this.",
     seoTitle: "Unicommerce Integration — Sales & Inventory Data for Indian Marketplaces",
     metaDescription:
-      "Datadrew is the only AI ads agent with a Unicommerce integration. Get AI-powered insights across Myntra, Flipkart, Amazon IN — inventory, sales, and product data in one dashboard.",
+      "Datadrew is the only AI ads agent with a Unicommerce integration. AI insights across Myntra, Flipkart, Amazon IN and quick commerce next to Shopify.",
     intro: {
       headline: "Inventory, sales, and product data across every Indian sales channel",
       body: "Datadrew is the only AI ads agent that integrates with Unicommerce — giving you unified visibility into sales, inventory, and product performance across Myntra, Flipkart, Amazon India, Shopify, and every channel managed through Unicommerce. Combine this with your ad spend data from Meta and Google to see the complete picture: from marketing investment to warehouse fulfillment to customer lifetime value.",
@@ -701,7 +705,7 @@ export const integrationPages: IntegrationPage[] = [
       "Receive the most up-to-date business KPIs where you already manage your business — in Slack. Automated reports, performance alerts, and team notifications.",
     seoTitle: "Slack Integration — KPI Alerts & Reports in Slack",
     metaDescription:
-      "Receive Datadrew KPI updates, performance alerts, and automated weekly reports directly in Slack. Stay on top of key metrics where you already manage your business.",
+      "Receive Datadrew KPI updates, performance alerts, and automated weekly reports directly in Slack.",
     features: [
       { title: "Automated weekly reports", description: "Get a weekly summary of your key KPIs delivered to any Slack channel — revenue, orders, AOV, ROAS, and more." },
       { title: "Performance alerts", description: "Receive instant notifications when metrics spike or drop beyond your set thresholds — never miss an important trend." },
@@ -790,10 +794,14 @@ export const integrationPages: IntegrationPage[] = [
   },
 ];
 
-export const integrationPageSlugs = integrationPages.map((p) => p.slug);
+/** URL segment for a detail page. */
+export const integrationRoute = (p: IntegrationPage) => p.path ?? p.slug;
 
+export const integrationPageSlugs = integrationPages.map(integrationRoute);
+
+/** Lookup by URL segment or catalog slug. */
 export function getIntegrationPage(slug: string) {
-  return integrationPages.find((p) => p.slug === slug);
+  return integrationPages.find((p) => p.path === slug) ?? integrationPages.find((p) => p.slug === slug);
 }
 
 /** Catalog entry (name / logo / stage) for a detail page. */

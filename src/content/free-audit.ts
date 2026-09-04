@@ -4,7 +4,7 @@
 export const freeAudit = {
   title: "Free Shopify Store Health Check — AI-Powered Growth Audit",
   metaDescription:
-    "Get a free AI-powered health check of your Shopify store. Drew AI analyzes your LTV, retention, product performance, and ad spend in minutes. No credit card required.",
+    "Get a free AI-powered health check of your Shopify store. Drew AI analyzes your LTV, retention, product performance, and ad spend in minutes.",
   hero: {
     eyebrow: "Free — No credit card required",
     headline: ["Free AI Store", "Health Check"],

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageHeader, PageShell } from "@/components/site/page-shell";
 import { CtaButton } from "@/components/site/blocks";
-import { JsonLd, breadcrumbLd, faqLd } from "@/components/site/structured-data";
+import { JsonLd, OG_IMAGE_PATH, breadcrumbLd, faqLd } from "@/components/site/structured-data";
 import {
   PlatformClosing,
   PlatformFaq,
@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   return {
     title: page.title,
     description: page.description,
-    alternates: { canonical: `https://${site.domain}/platform/${page.slug}` },
-    openGraph: { title: `${page.title} — ${site.name}`, description: page.description },
+    alternates: { canonical: `/platform/${page.slug}` },
+    openGraph: { title: `${page.title} — ${site.name}`, description: page.description, url: `/platform/${page.slug}`, images: [{ url: OG_IMAGE_PATH, alt: page.title }] },
   };
 }
 

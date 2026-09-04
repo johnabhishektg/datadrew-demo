@@ -15,7 +15,7 @@ export const about = {
   meta: {
     title: "About Datadrew — Building the AI Growth Team for Commerce Brands",
     description:
-      "We're building the AI growth team every commerce brand deserves. Datadrew connects the complete growth picture across Shopify, ads, analytics and retention, learns how each business works, and puts an AI agent on the daily job of managing paid ads. 1000+ brands, $1.5Bn+ GMV, 47+ countries.",
+      "Datadrew connects the growth picture across Shopify, ads, analytics and retention, and puts an AI agent on the daily job of managing paid ads. 1,000+ brands, 47+ countries.",
   },
   eyebrow: "About Datadrew",
   headline: "We're building the AI growth team every commerce brand deserves.",

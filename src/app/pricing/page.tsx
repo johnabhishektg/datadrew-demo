@@ -5,15 +5,14 @@ import { PageShell, PageHeader } from "@/components/site/page-shell";
 import { CtaButton, FaqBlock, Section } from "@/components/site/blocks";
 import { PricingGmv } from "@/components/site/pricing-gmv";
 import { LogoWall } from "@/components/site/logo-wall";
-import { JsonLd, breadcrumbLd, faqLd } from "@/components/site/structured-data";
+import { JsonLd, breadcrumbLd, faqLd, softwareApplicationLd } from "@/components/site/structured-data";
 import { compareTable, pricingFaq, pricingPage } from "@/content/pricing-page";
-import { pricing, site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: { absolute: "Datadrew Pricing — GMV-based plans for Shopify brands, from free" },
   description:
     "Simple, transparent pricing for Datadrew — the AI ads agent for Shopify brands, from free to Pro. No hidden fees, 7-day free trial on paid plans.",
-  alternates: { canonical: `https://${site.domain}/pricing` },
+  alternates: { canonical: "/pricing" },
 };
 
 function Cell({ v }: { v: string }) {
@@ -30,20 +29,7 @@ export default function PricingPage() {
         data={[
           breadcrumbLd([{ name: "Pricing", path: "/pricing" }]),
           faqLd(pricingFaq),
-          {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            name: site.name,
-            applicationCategory: "BusinessApplication",
-            operatingSystem: "Shopify",
-            description: site.description,
-            offers: pricing.tiers.map((t) => ({
-              "@type": "Offer",
-              name: t.name,
-              price: t.price.replace("$", ""),
-              priceCurrency: "USD",
-            })),
-          },
+          softwareApplicationLd(),
         ]}
       />
 

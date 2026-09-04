@@ -4,17 +4,26 @@ import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
 import { FinalCta } from "@/components/site/final-cta";
 import { FeaturedPostCard, PostCard } from "@/components/blog/post-card";
+import { JsonLd, breadcrumbLd, collectionPageLd } from "@/components/site/structured-data";
+
+const description =
+  "Playbooks, benchmarks and data essays on running paid ads and retention for Shopify brands — from the team behind Drew.";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Playbooks, benchmarks and data essays on running paid ads and retention for Shopify brands — from the team behind Drew.",
+  title: { absolute: "Datadrew Blog — Paid ads & retention playbooks for Shopify" },
+  description,
 };
 
 export default function BlogIndex() {
   const [latest, ...rest] = posts;
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbLd([{ name: "Blog", path: "/blog" }]),
+          collectionPageLd({ name: "Datadrew Blog", path: "/blog", description }),
+        ]}
+      />
       <Navbar />
       <main className="mx-auto w-full max-w-6xl px-5 pt-32 md:px-8 md:pt-40">
         <header className="flex flex-col gap-4 md:max-w-2xl">

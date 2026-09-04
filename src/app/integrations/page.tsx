@@ -13,11 +13,12 @@ import {
   stageLabel,
   type Integration,
 } from "@/content/integrations";
-import { getIntegrationPage } from "@/content/integration-pages";
+import { getIntegrationPage, integrationRoute } from "@/content/integration-pages";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Integrations",
+  title: { absolute: "Datadrew Integrations — Shopify, Meta, Google Ads, GA4, Klaviyo & more" },
+  alternates: { canonical: "/integrations" },
   description:
     "Datadrew connects to Shopify, Meta Ads, Google Ads, GA4, Klaviyo, Amazon and 25+ more tools, so Drew's ad decisions reason from your whole business.",
 };
@@ -42,7 +43,7 @@ function StageBadge({ stage }: { stage: Integration["stage"] }) {
 function IntegrationCard({ item }: { item: Integration }) {
   const isSurface = item.slug === "slack" || item.slug === "datadrew-mcp";
   const detail = getIntegrationPage(item.slug);
-  const href = detail ? `/integrations/${item.slug}` : isSurface ? "/#mcp" : integrationsPage.connectCta.href;
+  const href = detail ? `/integrations/${integrationRoute(detail)}` : isSurface ? "/#mcp" : integrationsPage.connectCta.href;
   return (
     <li
       id={item.slug}

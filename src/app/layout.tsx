@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { site } from "@/content/site";
+import { SiteStructuredData } from "@/components/site/structured-data";
 import "./globals.css";
 
 const geist = Geist({
@@ -20,15 +21,19 @@ export const metadata: Metadata = {
     default: `${site.name} — The AI ads agent for Shopify brands`,
     template: `%s — ${site.name}`,
   },
-  description: site.description,
+  description: site.metaDescription,
+  // Resolves to the current route against metadataBase (with the trailing
+  // slash from next.config) — every page gets a canonical without opting in.
+  alternates: { canonical: "./" },
   openGraph: {
     title: `${site.name} — The AI ads agent for Shopify brands`,
-    description: site.description,
-    url: `https://${site.domain}`,
+    description: site.metaDescription,
+    url: "./",
     siteName: site.name,
     type: "website",
     images: [{ url: "/brand/datadrew-square.png", width: 1200, height: 1200, alt: "Datadrew" }],
   },
+  twitter: { card: "summary_large_image", site: "@DatadrewAI" },
   icons: { icon: "/icon.svg" },
 };
 
@@ -51,6 +56,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <SiteStructuredData />
           {children}
         </ThemeProvider>
       </body>

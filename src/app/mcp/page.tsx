@@ -9,14 +9,13 @@ import { InlineAgentLogos } from "@/components/site/agent-logos";
 import { DatadrewTile } from "@/components/site/icons";
 import { JsonLd, breadcrumbLd, faqLd } from "@/components/site/structured-data";
 import { MCP_URL, mcpPage } from "@/content/mcp";
-import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Connect Claude & ChatGPT to your Shopify data — Datadrew MCP",
+  title: { absolute: "Connect Claude & ChatGPT to your Shopify data — Datadrew MCP" },
   description:
-    "Datadrew's MCP server connects Claude, ChatGPT, Cursor & any AI tool to your real store data. Ask in plain English and get blended ROAS, LTV and cohorts back in seconds — read-only, OAuth-secured, set up in 2 minutes. Across Shopify, Meta, Google, GA4, Klaviyo, Amazon & 15+ sources.",
-  alternates: { canonical: `https://${site.domain}/mcp` },
+    "Connect Claude, ChatGPT, Cursor or any AI tool to your real Shopify store data. Blended ROAS, LTV and cohorts in seconds; read-only, OAuth, 2-minute setup.",
+  alternates: { canonical: "/mcp" },
 };
 
 function HeroChat() {

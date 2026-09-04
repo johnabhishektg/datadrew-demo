@@ -16,13 +16,14 @@ import {
   Steps,
 } from "@/components/site/blocks";
 import { IntegrationLogo } from "@/components/site/integrations";
-import { JsonLd, breadcrumbLd, faqLd } from "@/components/site/structured-data";
+import { JsonLd, ORG_ID, SITE_ID, breadcrumbLd, faqLd, serviceLd } from "@/components/site/structured-data";
 import {
   getIntegrationCatalog,
   getIntegrationPage,
   integrationCtas,
   integrationPageSlugs,
   integrationPages,
+  integrationRoute,
   type IntegrationMetric,
 } from "@/content/integration-pages";
 import { stageLabel } from "@/content/integrations";
@@ -37,9 +38,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const page = getIntegrationPage((await params).slug);
   if (!page) return {};
   return {
-    title: page.seoTitle,
+    title: { absolute: page.seoTitle },
     description: page.metaDescription,
-    alternates: { canonical: `https://${site.domain}/integrations/${page.slug}` },
+    alternates: { canonical: `/integrations/${integrationRoute(page)}` },
   };
 }
 
@@ -72,6 +73,7 @@ export default async function IntegrationDetail({ params }: { params: Promise<{ 
   const stage = stageLabel[item.stage];
   const primary = page.primaryCta ?? integrationCtas.connect;
   const others = integrationPages.filter((p) => p.slug !== page.slug).slice(0, 4);
+  const path = `/integrations/${integrationRoute(page)}`;
 
   return (
     <PageShell>
@@ -79,15 +81,19 @@ export default async function IntegrationDetail({ params }: { params: Promise<{ 
         data={[
           breadcrumbLd([
             { name: "Integrations", path: "/integrations" },
-            { name: item.name, path: `/integrations/${page.slug}` },
+            { name: item.name, path },
           ]),
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
+            "@id": `https://${site.domain}${path}/#webpage`,
             name: `${page.title} - Datadrew`,
             description: page.metaDescription,
-            url: `https://${site.domain}/integrations/${page.slug}`,
+            url: `https://${site.domain}${path}/`,
+            isPartOf: { "@id": SITE_ID },
+            about: { "@id": ORG_ID },
           },
+          serviceLd({ name: item.name, path, description: page.metaDescription }),
           ...(page.faq ? [faqLd(page.faq)] : []),
         ]}
       />
@@ -204,7 +210,7 @@ export default async function IntegrationDetail({ params }: { params: Promise<{ 
               return (
                 <li key={o.slug}>
                   <Link
-                    href={`/integrations/${o.slug}`}
+                    href={`/integrations/${integrationRoute(o)}`}
                     className="flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:bg-muted/40"
                   >
                     <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-border bg-white">

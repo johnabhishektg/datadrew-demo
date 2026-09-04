@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGE_PATH } from "@/components/site/structured-data";
 import { PageHeader, PageShell } from "@/components/site/page-shell";
 import { CtaButton, FaqBlock, FeatureGrid, Section } from "@/components/site/blocks";
 import { DiagnosticLadder, ManualTabs, SampleBrief } from "@/components/site/roas-blocks";
@@ -13,7 +14,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: r.title,
     description: r.metaDescription,
-    url: `https://${site.domain}/why-did-my-roas-drop`,
+    url: "/why-did-my-roas-drop",
+    images: [{ url: OG_IMAGE_PATH, alt: r.title }],
   },
 };
 

@@ -12,6 +12,9 @@ export const site = {
   tagline: "The AI ads agent for Shopify brands",
   description:
     "Datadrew is the AI ads agent for Shopify brands. Drew knows your products, margins, inventory and customers — not just your ad account — and combines that context with expert paid-ads judgment to make and execute better ad-spend decisions every day.",
+  /** ≤158 chars for <meta name="description">; `description` above is the long form for schema. */
+  metaDescription:
+    "Datadrew is the AI ads agent for Shopify brands. Drew knows your products, margins and customers, and makes and executes better ad-spend decisions every day.",
 };
 
 export const hero = {

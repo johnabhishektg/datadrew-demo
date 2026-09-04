@@ -120,7 +120,7 @@ export const comparisons: Comparison[] = [
     shortName: "TW",
     title: "Datadrew vs Triple Whale — Pricing & Feature Comparison 2026",
     metaDescription:
-      "Datadrew vs Triple Whale on the same GMV bands: Essentials from $99/mo vs Foundation from $219/mo. Triple Whale is the broad attribution and BI platform; Datadrew is the AI ads agent for Shopify brands that makes and executes the daily ad-spend decisions.",
+      "Datadrew vs Triple Whale on the same GMV bands: Essentials from $99/mo vs Foundation from $219/mo. Broad BI platform vs the AI ads agent for Shopify brands.",
     intro:
       "Triple Whale is the broad measurement platform, built for teams with an analyst to run it. Drew is the AI ads agent that makes and executes the daily ad-spend decisions for a lean team — grounded in real profit, reconciled to your Shopify orders overnight.",
     tiles: [
@@ -333,7 +333,7 @@ export const comparisons: Comparison[] = [
     shortName: "NB",
     title: "Datadrew vs Northbeam — Pricing & Feature Comparison 2026",
     metaDescription:
-      "Datadrew vs Northbeam compared: Northbeam is enterprise multi-touch attribution priced on media spend from $1,500/mo. Datadrew is the AI ads agent for Shopify brands that makes and executes the daily ad-spend decisions on real profit, published from $99/mo.",
+      "Datadrew vs Northbeam: enterprise multi-touch attribution from $1,500/mo vs the AI ads agent for Shopify brands that runs daily ad decisions on profit, from $99/mo.",
     intro:
       "Northbeam is the enterprise attribution stack — ML-based multi-touch, incrementality testing and media mix modeling, priced on media spend from $1,500/mo. Drew is the AI ads agent that makes and executes the daily ad-spend decisions for a lean team: what you actually made, where spend is leaking, and what to scale, reduce or pause — reconciled to your Shopify orders overnight, on published pricing from $99/mo.",
     tiles: [
@@ -512,7 +512,7 @@ export const comparisons: Comparison[] = [
     shortName: "Polar",
     title: "Datadrew vs Polar Analytics — Pricing & Feature Comparison 2026",
     metaDescription:
-      "Datadrew vs Polar Analytics compared: Polar prices by quote behind a demo; Datadrew publishes all 13 GMV bands from $99/mo. Deeper LTV cohorts, product intelligence, and an agent that delivers the answer.",
+      "Datadrew vs Polar Analytics: Polar prices by quote behind a demo; Datadrew publishes all 13 GMV bands from $99/mo, with deeper LTV cohorts and an agent that answers.",
     intro:
       "Polar is a BI layer — a data stack you build dashboards on, priced by quote behind a demo. Drew is the AI ads agent that makes and executes the daily ad-spend decisions for a lean team: what you actually made, where spend is leaking, and what to scale, reduce or pause — reconciled to your Shopify orders overnight, on pricing you can read before you talk to anyone.",
     tiles: [
@@ -671,7 +671,7 @@ export const comparisons: Comparison[] = [
     competitor: "Lifetimely",
     title: "Datadrew vs Lifetimely — Pricing & Feature Comparison 2026",
     metaDescription:
-      "Datadrew vs Lifetimely (by AMP) compared: Lifetimely prices on monthly orders and does LTV and P&L well. Datadrew is the AI ads agent for Shopify brands, priced on annual GMV from $99/mo, making and executing the daily ad-spend decisions on real profit.",
+      "Datadrew vs Lifetimely (by AMP): Lifetimely prices on monthly orders and does LTV and P&L well. Datadrew is the AI ads agent for Shopify, priced on GMV from $99/mo.",
     intro:
       "Lifetimely (by AMP) does LTV projections and P&L reporting well, priced on your monthly order count. Drew is the AI ads agent that makes and executes the daily ad-spend decisions for a lean team — what you actually made, where spend is leaking, and what to scale, reduce or pause — with the same cohort depth underneath, priced on annual GMV from $99/mo.",
     tiles: [

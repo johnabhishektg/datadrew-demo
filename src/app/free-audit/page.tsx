@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGE_PATH } from "@/components/site/structured-data";
 import { Eyebrow, CtaButton, FeatureGrid, Section, Steps } from "@/components/site/blocks";
 import { HealthReportCard } from "@/components/site/audit-blocks";
 import { PageShell } from "@/components/site/page-shell";
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   title: { absolute: `${a.title} | ${site.name}` },
   description: a.metaDescription,
   alternates: { canonical: "/free-audit" },
-  openGraph: { title: a.title, description: a.metaDescription, url: `https://${site.domain}/free-audit` },
+  openGraph: { title: a.title, description: a.metaDescription, url: "/free-audit", images: [{ url: OG_IMAGE_PATH, alt: a.title }] },
 };
 
 export default function FreeAuditPage() {
