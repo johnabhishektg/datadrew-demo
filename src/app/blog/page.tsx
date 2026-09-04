@@ -4,6 +4,7 @@ import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
 import { FinalCta } from "@/components/site/final-cta";
 import { FeaturedPostCard, PostCard } from "@/components/blog/post-card";
+import { NewsletterPopup } from "@/components/blog/newsletter-popup";
 import { JsonLd, breadcrumbLd, collectionPageLd } from "@/components/site/structured-data";
 
 const description =
@@ -25,6 +26,7 @@ export default function BlogIndex() {
         ]}
       />
       <Navbar />
+      <NewsletterPopup source="blog-index-popup" />
       <main className="mx-auto w-full max-w-6xl px-5 pt-32 md:px-8 md:pt-40">
         <header className="flex flex-col gap-4 md:max-w-2xl">
           <span className="inline-flex w-fit items-center text-xs font-semibold uppercase tracking-[0.14em] text-brand">

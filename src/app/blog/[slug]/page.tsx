@@ -12,6 +12,7 @@ import { ArticleBody } from "@/components/blog/article-body";
 import { Avatar, PostCard } from "@/components/blog/post-card";
 import { PostCover } from "@/components/blog/post-cover";
 import { Toc } from "@/components/blog/toc";
+import { NewsletterPopup } from "@/components/blog/newsletter-popup";
 import { Button } from "@/components/ui/button";
 
 export function generateStaticParams() {
@@ -56,6 +57,7 @@ export default async function PostPage({
       <ArticleStructuredData post={post} />
       <Navbar />
       <ReadingProgress />
+      <NewsletterPopup source="blog-post-popup" />
       <main className="mx-auto w-full max-w-6xl px-5 pt-32 md:px-8 md:pt-36">
         <article>
           <header className="max-w-3xl">
