@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { customerStories } from "@/content/site";
 import { cn } from "@/lib/utils";
@@ -65,8 +65,7 @@ export function CustomerStories() {
   return (
     <Container id="stories" className="py-16 md:py-24">
       <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/60 px-3 py-1 text-xs font-medium text-muted-foreground">
-          <Sparkles className="size-3.5 text-brand" />
+        <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-brand">
           {customerStories.eyebrow}
         </span>
         <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
@@ -83,7 +82,7 @@ export function CustomerStories() {
             className={cn(
               "rounded-lg px-3.5 py-2 text-sm",
               i === 0
-                ? "border border-border bg-background font-medium shadow-sm"
+                ? "border border-border bg-card font-medium shadow-sm"
                 : "text-muted-foreground"
             )}
           >
@@ -115,7 +114,7 @@ export function CustomerStories() {
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.proof}</p>
             <div className="mt-10 flex items-center justify-between">
               <span className="text-sm font-medium">Read the full story</span>
-              <span className="flex size-11 items-center justify-center rounded-full border border-border bg-background transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+              <span className="flex size-11 items-center justify-center rounded-full border border-border bg-card transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
                 <ArrowUpRight className="size-4" />
               </span>
             </div>

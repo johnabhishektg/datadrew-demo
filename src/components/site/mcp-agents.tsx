@@ -67,45 +67,45 @@ export function McpAgents() {
               <ChevronRight className="size-3.5" />
             </a>
           </div>
-          <p className="mt-6 text-xs text-muted-foreground">
+          <p className="mt-5 text-xs text-muted-foreground">
             Works with {m.clients.join(" · ")} · <code className="font-mono">{m.mcpUrl.replace("https://", "")}</code>
           </p>
         </div>
       </div>
 
       {/* The one window: agent-mode chat, framed like a Mac window */}
-      <div className="mx-auto mt-14 max-w-4xl md:mt-20">
-        <div className="rounded-[28px] border border-border bg-muted/70 p-2 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)]">
-          <div className="overflow-hidden rounded-[20px] bg-[#111111] text-[#E8E8E8]">
-            <div className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-white/10 bg-[#161616] px-5 py-3.5">
+      <div className="mx-auto mt-10 max-w-2xl md:mt-14">
+        <div className="rounded-2xl border border-border bg-muted/70 p-1.5 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.35)]">
+          <div className="overflow-hidden rounded-xl bg-[#111111] text-[#E8E8E8]">
+            <div className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-white/10 bg-[#161616] px-4 py-2.5">
               <div className="flex gap-2">
-                <span className="size-3 rounded-full bg-[#FF5F57]" />
-                <span className="size-3 rounded-full bg-[#FEBC2E]" />
-                <span className="size-3 rounded-full bg-[#28C840]" />
+                <span className="size-2.5 rounded-full bg-[#FF5F57]" />
+                <span className="size-2.5 rounded-full bg-[#FEBC2E]" />
+                <span className="size-2.5 rounded-full bg-[#28C840]" />
               </div>
-              <span className="font-mono text-sm text-white/45">{m.chat.title}</span>
-              <span className="text-right text-sm text-white/40">{m.chat.mode}</span>
+              <span className="font-mono text-xs text-white/45">{m.chat.title}</span>
+              <span className="text-right text-xs text-white/40">{m.chat.mode}</span>
             </div>
 
-            <div className="px-6 py-9 sm:px-12 md:px-24 md:py-12">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.06] px-6 py-5 text-[15px] leading-relaxed text-white md:text-[17px]">
+            <div className="px-5 py-5 md:px-8 md:py-6">
+              <div className="rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-[13px] leading-relaxed text-white">
                 {m.chat.question.map((q) => (
-                  <p key={q} className="py-1">{q}</p>
+                  <p key={q} className="py-0.5">{q}</p>
                 ))}
               </div>
 
-              <p className="mt-6 flex items-center gap-2 text-sm text-white/45">
+              <p className="mt-3 flex items-center gap-1.5 text-xs text-white/45">
                 <ChevronRight className="size-3.5" /> {m.chat.worked}
               </p>
 
-              <p className="mt-6 text-[15px] leading-relaxed text-white/90 md:text-[17px]">
+              <p className="mt-3 text-[13px] leading-relaxed text-white/90">
                 <Rich text={m.chat.answer} />
               </p>
 
               {m.chat.groups.map((g) => (
-                <div key={g.title} className="mt-7">
-                  <p className="text-[15px] font-semibold text-white md:text-[17px]">{g.title}</p>
-                  <ul className="mt-2 space-y-2 text-[15px] text-white/85 md:text-[17px]">
+                <div key={g.title} className="mt-3">
+                  <p className="text-[13px] font-semibold text-white">{g.title}</p>
+                  <ul className="mt-1 space-y-1 text-[13px] text-white/80">
                     {g.rows.map((r) => (
                       <li key={r}>{r}</li>
                     ))}
@@ -115,7 +115,6 @@ export function McpAgents() {
             </div>
           </div>
         </div>
-        <p className="mt-3 text-center font-mono text-[11px] text-muted-foreground">example data</p>
       </div>
     </section>
   );

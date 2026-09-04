@@ -22,7 +22,7 @@ export function SectionHeader({
       )}
     >
       {eyebrow && (
-        <span className="inline-flex items-center rounded-full border border-border bg-muted/60 px-3 py-1 text-xs font-medium text-muted-foreground">
+        <span className="inline-flex items-center text-xs font-semibold uppercase tracking-[0.14em] text-brand">
           {eyebrow}
         </span>
       )}

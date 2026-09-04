@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { hero, heroBadge, site } from "@/content/site";
+import { appStore, hero, site } from "@/content/site";
 import { HeroVisual } from "./hero-visual";
 
 export function Hero() {
@@ -22,23 +21,35 @@ export function Hero() {
 
       <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-5 text-center md:px-8">
         <BlurFade delay={0.05}>
-          <Link
-            href="/#product"
-            className="group inline-flex items-center gap-1 rounded-full border border-border bg-background/70 px-1 py-1 pr-3 text-sm shadow-sm backdrop-blur transition-colors hover:bg-muted"
+          <a
+            href={appStore.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Rated ${appStore.rating.toFixed(1)} out of 5 from ${appStore.reviews} reviews on the Shopify App Store`}
+            className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/70 py-1.5 px-3.5 text-sm shadow-sm backdrop-blur transition-colors hover:bg-muted"
           >
-            <span className="rounded-full bg-brand px-2 py-0.5 text-xs font-medium text-brand-foreground">
-              New
+            <span aria-hidden className="flex items-center gap-0.5 text-amber-500">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="size-3.5 fill-current" />
+              ))}
             </span>
-            <AnimatedShinyText className="inline-flex items-center gap-1 text-muted-foreground">
-              {heroBadge.replace(/^New · /, "")}
-              <ChevronRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-            </AnimatedShinyText>
-          </Link>
+            <span className="font-medium">{appStore.rating.toFixed(1)}</span>
+            <span className="inline-flex items-center gap-1.5 text-muted-foreground">
+              · {appStore.reviews} reviews on
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={appStore.logo}
+                alt="Shopify App Store"
+                width={96}
+                height={28}
+                className="h-7 w-auto shrink-0 object-contain"
+              />
+            </span>
+          </a>
         </BlurFade>
 
         <BlurFade delay={0.15}>
-          <p className="mt-8 text-sm font-medium text-brand">{hero.eyebrow}</p>
-          <h1 className="mx-auto mt-3 max-w-4xl text-balance text-5xl font-semibold tracking-tighter md:text-6xl lg:text-7xl">
+          <h1 className="mx-auto mt-8 max-w-4xl text-balance text-5xl font-semibold tracking-tighter md:text-6xl lg:text-7xl">
             {hero.headline[0]}{" "}
             <span className="text-gradient-brand">{hero.headline[1]}</span>
           </h1>

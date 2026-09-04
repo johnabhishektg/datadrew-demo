@@ -2,35 +2,78 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { Logo } from "./icons";
 import { ThemeToggle } from "./theme-toggle";
 
+const platform = [
+  { label: "Drew AI", href: "/platform/drewai", note: "The ads agent" },
+  { label: "Automations", href: "/platform/automations", note: "Scheduled reports" },
+  { label: "Acquisition", href: "/platform/acquisition", note: "CAC, LTV, wasted spend" },
+  { label: "Creative Strategy", href: "/platform/creative-strategy", note: "Which ads are winning" },
+  { label: "Retention", href: "/platform/retention", note: "Cohorts, RFM, LTV" },
+  { label: "Product Intelligence", href: "/platform/product-intelligence", note: "Repurchase, baskets" },
+];
+
 const links = [
-  { label: "Product", href: "/#product" },
-  { label: "How it works", href: "/#how-it-works" },
-  { label: "AI agents", href: "/#mcp" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "Customers", href: "/customers" },
+  { label: "Integrations", href: "/integrations" },
+  { label: "MCP", href: "/mcp" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Blog", href: "/blog" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
+  const [menu, setMenu] = useState(false);
 
+  // Hide the navbar once the user has scrolled down a bit; bring it back on
+  // any upward scroll. Small deltas are ignored so it doesn't flicker.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
+    let lastY = window.scrollY;
+    let ticking = false;
+    const HIDE_AFTER = 120; // px from top before hiding is allowed
+    const THRESHOLD = 6; // px of movement before we react
+
+    const update = () => {
+      const y = window.scrollY;
+      const delta = y - lastY;
+      setScrolled(y > 12);
+      if (y <= HIDE_AFTER) {
+        setHidden(false);
+      } else if (delta > THRESHOLD) {
+        setHidden(true);
+      } else if (delta < -THRESHOLD) {
+        setHidden(false);
+      }
+      if (Math.abs(delta) > THRESHOLD) lastY = y;
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Never hide while the mobile menu is open.
+  const isHidden = hidden && !open;
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 transition-transform duration-300 ease-out",
+        isHidden ? "-translate-y-[calc(100%+1rem)]" : "translate-y-0"
+      )}
+    >
       {/* Fades page content out above the floating pill once scrolled */}
       <div
         aria-hidden
@@ -53,6 +96,42 @@ export function Navbar() {
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
+          <li
+            className="relative"
+            onMouseEnter={() => setMenu(true)}
+            onMouseLeave={() => setMenu(false)}
+          >
+            <button
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded={menu}
+              onClick={() => setMenu((v) => !v)}
+              className={cn(
+                "inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
+                menu && "bg-muted text-foreground"
+              )}
+            >
+              Platform
+              <ChevronDown className={cn("size-3.5 transition-transform", menu && "rotate-180")} />
+            </button>
+            {menu && (
+              <div className="absolute left-0 top-full pt-2">
+                <div className="grid w-[30rem] grid-cols-2 gap-1 rounded-2xl border border-border bg-background p-2 shadow-lg">
+                  {platform.map((p) => (
+                    <Link
+                      key={p.href}
+                      href={p.href}
+                      onClick={() => setMenu(false)}
+                      className="flex flex-col gap-0.5 rounded-lg px-3 py-2 hover:bg-muted"
+                    >
+                      <span className="text-sm font-medium">{p.label}</span>
+                      <span className="text-xs text-muted-foreground">{p.note}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </li>
           {links.map((l) => (
             <li key={l.href}>
               <Link
@@ -91,6 +170,21 @@ export function Navbar() {
         {open && (
           <div className="absolute inset-x-0 top-full mt-2 rounded-2xl border border-border bg-background p-3 shadow-lg md:hidden">
             <ul className="flex flex-col">
+              <li className="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                Platform
+              </li>
+              {platform.map((p) => (
+                <li key={p.href}>
+                  <Link
+                    href={p.href}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-lg px-3 py-2 text-sm hover:bg-muted"
+                  >
+                    {p.label}
+                  </Link>
+                </li>
+              ))}
+              <li className="my-2 border-t border-border" aria-hidden />
               {links.map((l) => (
                 <li key={l.href}>
                   <Link

@@ -1,0 +1,638 @@
+[
+  {
+    "id": "north-america",
+    "title": "North America",
+    "items": [
+      {
+        "name": "CB/I Digital",
+        "url": "https://cbidigital.com",
+        "logo": "/partners/agencies/cb-i-digital.png",
+        "description": "Performance marketing and platform development for DTC and enterprise e-commerce brands.",
+        "location": "New York, USA",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "The Coronation Group",
+        "url": "https://coronationproject.com",
+        "logo": "/partners/agencies/the-coronation-group.png",
+        "description": "DTC-focused agency specializing in paid social, copywriting, and email marketing for Shopify brands.",
+        "location": "Brooklyn, USA",
+        "tag": "Paid Social"
+      },
+      {
+        "name": "Custom Brand Service",
+        "url": "https://custombrandservice.com",
+        "logo": "/partners/agencies/custom-brand-service.png",
+        "description": "Shopify Preferred Partner offering store builds, branding, and email marketing services.",
+        "location": "Connecticut, USA",
+        "tag": "Shopify Development"
+      },
+      {
+        "name": "Dia Creative",
+        "url": "https://diacreative.com",
+        "logo": "/partners/agencies/dia-creative.png",
+        "description": "Retention marketing specialists — email, SMS, SEO, and Fractional CMO services for growing brands.",
+        "location": "San Diego, USA",
+        "tag": "Retention"
+      },
+      {
+        "name": "Digital Hopper",
+        "url": "https://digitalhopper.com",
+        "logo": "/partners/agencies/digital-hopper.png",
+        "description": "Facebook/Google ads, Shopify CRO, and Klaviyo email marketing for e-commerce brands.",
+        "location": "Irvine, USA",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Eqom Labs",
+        "url": "https://eqomlabs.com",
+        "logo": "/partners/agencies/eqom-labs.png",
+        "description": "Full-funnel media buying, CRO, and email/SMS marketing for DTC e-commerce brands.",
+        "location": "New York, USA",
+        "tag": "Full-Funnel"
+      },
+      {
+        "name": "Ezzey",
+        "url": "https://ezzey.com",
+        "logo": "/partners/agencies/ezzey.png",
+        "description": "Full-service digital marketing agency offering SEO, SEM, and PPC management.",
+        "location": "Scottsdale, USA",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "Gravity Digital",
+        "url": "https://gravitydigital.com",
+        "logo": "/partners/agencies/gravity-digital.png",
+        "description": "Performance e-commerce marketing with a focus on video ads and paid media strategies.",
+        "location": "Texas, USA",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Hidden Gears",
+        "url": "https://hiddengears.com",
+        "logo": "/partners/agencies/hidden-gears.png",
+        "description": "Shopify PPC, SEO, and web development agency helping brands drive qualified traffic and conversions.",
+        "location": "New York, USA",
+        "tag": "Shopify Development"
+      },
+      {
+        "name": "Ignite Web Design",
+        "url": "https://ignitewebdesign.ca",
+        "initials": "IW",
+        "description": "Web design, SEO, and Google Ads management for e-commerce businesses.",
+        "location": "Edmonton, Canada",
+        "tag": "Web Design"
+      },
+      {
+        "name": "MOZAY",
+        "url": "https://mozay.com",
+        "logo": "/partners/agencies/mozay.png",
+        "description": "Full-service agency covering media buying, SEO, Amazon management, content, and web design.",
+        "location": "USA",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "No Limit Email",
+        "url": "https://nolimitemail.com",
+        "logo": "/partners/agencies/no-limit-email.png",
+        "description": "Email and SMS retention marketing specialists for DTC e-commerce brands.",
+        "location": "USA",
+        "tag": "Retention"
+      },
+      {
+        "name": "Pope Marketfacturing",
+        "url": "https://popemarketfacturing.com",
+        "logo": "/partners/agencies/pope-marketfacturing.png",
+        "description": "Outsourced CMO services — paid ads, email, landing pages, and web development for growing brands.",
+        "location": "Chicago, USA",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "SHERPA Global",
+        "url": "https://sherpaglobal.com",
+        "logo": "/partners/agencies/sherpa-global.svg",
+        "description": "Digital marketing agency delivering web, SEO, paid media, and strategic consulting.",
+        "location": "Atlanta, USA",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "Solutions 8",
+        "url": "https://sol8.com",
+        "logo": "/partners/agencies/solutions-8.png",
+        "description": "Google Ads and performance marketing experts managing campaigns across Meta and Amazon.",
+        "location": "Scottsdale, USA",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Upmkt Digital",
+        "url": "https://upmktdigital.com",
+        "logo": "/partners/agencies/upmkt-digital.png",
+        "description": "E-commerce customer acquisition via Meta/Google ads, email marketing, and Shopify development for DTC brands.",
+        "location": "Chicago, USA",
+        "tag": "Acquisition"
+      },
+      {
+        "name": "DIVISA",
+        "url": "https://www.wearedivisa.com",
+        "initials": "D",
+        "description": "Award-winning growth marketing agency for DTC fashion, beauty, and luxury brands via paid media and Shopify.",
+        "location": "Los Angeles, USA",
+        "tag": "Growth Marketing"
+      },
+      {
+        "name": "Empower Advertising",
+        "url": "https://empoweradvertising.com",
+        "logo": "/partners/agencies/empower-advertising.png",
+        "description": "Full-funnel DTC agency running Meta, Google, and TikTok ads with creative strategy.",
+        "location": "Montreal, Canada",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Above & Beyond Digital",
+        "url": "https://aboveandbeyond.digital",
+        "logo": "/partners/agencies/above-and-beyond-digital.png",
+        "description": "Performance-driven digital advertising agency specializing in e-commerce growth.",
+        "location": "USA",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Ads Uncorked",
+        "url": "https://adsuncorked.com",
+        "logo": "/partners/agencies/ads-uncorked.png",
+        "description": "Facebook and Instagram ad management agency focused on e-commerce brands.",
+        "location": "USA",
+        "tag": "Paid Social"
+      },
+      {
+        "name": "Brand Hackers",
+        "url": "https://www.brand-hackers.co",
+        "logo": "/partners/agencies/brand-hackers.png",
+        "description": "Fractional marketing teams for DTC and CPG brands seeking scalable growth strategies.",
+        "location": "USA",
+        "tag": "Growth Marketing"
+      }
+    ]
+  },
+  {
+    "id": "europe",
+    "title": "Europe",
+    "items": [
+      {
+        "name": "7EVEN Online",
+        "url": "https://7even.at",
+        "logo": "/partners/agencies/7even-online.png",
+        "description": "Digital marketing and e-commerce agency helping brands grow in the DACH region.",
+        "location": "Austria",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "AFMEDIA",
+        "url": "https://afmedia.es",
+        "logo": "/partners/agencies/afmedia.png",
+        "description": "Google Ads and Facebook/Instagram Ads management for SMEs in the Spanish market.",
+        "location": "Barcelona, Spain",
+        "tag": "Paid Ads"
+      },
+      {
+        "name": "CATCHEr Marketing",
+        "url": "https://catcher-marketing.de",
+        "logo": "/partners/agencies/catcher-marketing.png",
+        "description": "Performance marketing agency focused on scaling e-commerce brands in the German market.",
+        "location": "Munster, Germany",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Clique",
+        "url": "https://clique.wien",
+        "initials": "C",
+        "description": "Full-service digital branding and Shopify development agency based in Vienna.",
+        "location": "Vienna, Austria",
+        "tag": "Shopify Development"
+      },
+      {
+        "name": "Connexion",
+        "url": "https://connexion.agency",
+        "logo": "/partners/agencies/connexion.png",
+        "description": "Social ads, tracking, CRO, and email marketing agency serving the European market.",
+        "location": "Belgium",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Coudac",
+        "url": "https://coudac.com",
+        "logo": "/partners/agencies/coudac.png",
+        "description": "Social ads specialists running Meta, TikTok, and Pinterest campaigns for 300+ French brands.",
+        "location": "France",
+        "tag": "Paid Social"
+      },
+      {
+        "name": "Creatit",
+        "url": "https://creatit.es",
+        "logo": "/partners/agencies/creatit.png",
+        "description": "Social ads, Google Ads, and full-funnel digital strategy for the Spanish market.",
+        "location": "Madrid, Spain",
+        "tag": "Full-Funnel"
+      },
+      {
+        "name": "Digital Rocket",
+        "url": "https://digitalrocket.it",
+        "logo": "/partners/agencies/digital-rocket.png",
+        "description": "Data-driven digital advertising, web design, and CRO for Italian e-commerce brands.",
+        "location": "Florence, Italy",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "ED Digital",
+        "url": "https://ed-digital.com",
+        "logo": "/partners/agencies/ed-digital.png",
+        "description": "Email and SMS marketing agency and Klaviyo Gold Partner for e-commerce brands.",
+        "location": "Europe",
+        "tag": "Retention"
+      },
+      {
+        "name": "Noise Creative",
+        "url": "https://createsomenoise.co.uk",
+        "logo": "/partners/agencies/noise-creative.png",
+        "description": "Digital marketing and web design for creative brands, from strategy to execution.",
+        "location": "Newcastle, UK",
+        "tag": "Web Design"
+      },
+      {
+        "name": "Hello Earth Agency",
+        "url": "https://helloearthagency.com",
+        "logo": "/partners/agencies/hello-earth-agency.png",
+        "description": "B Corp certified performance marketing agency helping DTC brands grow sustainably.",
+        "location": "Liverpool, UK",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Intothecom",
+        "url": "https://intothecom.com",
+        "logo": "/partners/agencies/intothecom.png",
+        "description": "SEO, paid ads, and e-commerce strategy specialists for the Spanish market.",
+        "location": "Spain",
+        "tag": "SEO"
+      },
+      {
+        "name": "Kubix",
+        "url": "https://kubixmedia.co.uk",
+        "logo": "/partners/agencies/kubix.png",
+        "description": "Shopify Platinum Partner offering design, development, paid media, and email marketing.",
+        "location": "Birmingham, UK",
+        "tag": "Shopify Development"
+      },
+      {
+        "name": "Leviathan",
+        "url": "https://levthn.com",
+        "logo": "/partners/agencies/leviathan.png",
+        "description": "Marketing agency covering brand strategy, SEO, performance marketing, and web development.",
+        "location": "Como, Italy",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "Orchard Social",
+        "url": "https://orchardsocial.co.uk",
+        "logo": "/partners/agencies/orchard-social.png",
+        "description": "Paid social and search advertising across Meta, Google, and LinkedIn platforms.",
+        "location": "UK",
+        "tag": "Paid Social"
+      },
+      {
+        "name": "Patrick Hinlopen",
+        "url": "https://patrickhinlopen.nl",
+        "logo": "/partners/agencies/patrick-hinlopen.png",
+        "description": "Shopify and e-commerce strategy and development specialist for Dutch brands.",
+        "location": "Netherlands",
+        "tag": "Shopify Development"
+      },
+      {
+        "name": "Platzhirschen",
+        "url": "https://platzhirschen.de",
+        "logo": "/partners/agencies/platzhirschen.svg",
+        "description": "Google Ads specialists for e-commerce and lead generation in the German market.",
+        "location": "Germany",
+        "tag": "Paid Ads"
+      },
+      {
+        "name": "PROFIDA",
+        "url": "https://profida.dk",
+        "logo": "/partners/agencies/profida.png",
+        "description": "Performance marketing agency scaling European DTC brands through data-driven strategies.",
+        "location": "Denmark",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Rooftop Twenty Two",
+        "url": "https://rooftoptwentytwo.ie",
+        "logo": "/partners/agencies/rooftop-twenty-two.svg",
+        "description": "Creative and digital marketing — web, social, SEO, and email for Irish and European brands.",
+        "location": "Dublin, Ireland",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "SOLID",
+        "url": "https://solidhq.com",
+        "logo": "/partners/agencies/solid.png",
+        "description": "Cross-border performance marketing for e-commerce and SaaS brands expanding in Europe.",
+        "location": "Brussels, Belgium",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Teylu & Partners",
+        "url": "https://teyluandpartners.com",
+        "logo": "/partners/agencies/teylu-and-partners.png",
+        "description": "Full-service e-commerce agency — SEO, PPC, paid social, email, and CRO for scaling brands.",
+        "location": "London, UK",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "The Good Marketer",
+        "url": "https://thegoodmarketer.co.uk",
+        "logo": "/partners/agencies/the-good-marketer.png",
+        "description": "SEO, PPC, Facebook/Google Ads, email, and web design for SMEs and growing brands.",
+        "location": "London, UK",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "Weboost",
+        "url": "https://weboost.pt",
+        "logo": "/partners/agencies/weboost.png",
+        "description": "Performance agency offering Google Ads, Meta Ads, SEO, email automation, and web development.",
+        "location": "Porto, Portugal",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Excee Digital",
+        "url": "https://exceedigital.co.uk",
+        "logo": "/partners/agencies/excee-digital.png",
+        "description": "Shopify website development agency building and growing high-converting e-commerce stores.",
+        "location": "UK",
+        "tag": "Shopify Development"
+      },
+      {
+        "name": "Milktub",
+        "url": "https://www.milktubagency.com",
+        "logo": "/partners/agencies/milktub.png",
+        "description": "Website CRO agency helping Shopify brands turn more visitors into customers.",
+        "location": "London, UK",
+        "tag": "CRO"
+      }
+    ]
+  },
+  {
+    "id": "asia-pacific",
+    "title": "Asia-Pacific",
+    "items": [
+      {
+        "name": "6Months",
+        "url": "https://6months.in",
+        "logo": "/partners/agencies/6months.png",
+        "description": "DTC growth marketing agency combining performance marketing with consumer psychology.",
+        "location": "India",
+        "tag": "Growth Marketing"
+      },
+      {
+        "name": "Alpha Digital",
+        "url": "https://alphadigital.com.au",
+        "logo": "/partners/agencies/alpha-digital.png",
+        "description": "SEO, PPC, social ads, content, and lifecycle marketing for Australian e-commerce brands.",
+        "location": "Australia",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "Beyond Borders",
+        "url": "https://beyondborders.co.kr",
+        "logo": "/partners/agencies/beyond-borders.png",
+        "description": "Shopify design, digital marketing, and US market entry consulting for Korean brands expanding globally.",
+        "location": "South Korea",
+        "tag": "Shopify Development"
+      },
+      {
+        "name": "Conversion Perk",
+        "url": "https://conversionperk.com",
+        "logo": "/partners/agencies/conversion-perk.png",
+        "description": "CRO and PPC specialists running Google, Amazon, and Facebook Ads for e-commerce brands.",
+        "location": "India",
+        "tag": "CRO"
+      },
+      {
+        "name": "BeyondAds",
+        "url": "https://gobeyondads.com",
+        "logo": "/partners/agencies/beyondads.png",
+        "description": "Performance marketing and CRO agency helping D2C brands optimize ad spend and conversions.",
+        "location": "India",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Made Creative Co",
+        "url": "https://madecreativeco.com.au",
+        "logo": "/partners/agencies/made-creative-co.png",
+        "description": "Creative and marketing agency for fashion and e-commerce — content, campaigns, and retention.",
+        "location": "South Australia",
+        "tag": "Creative"
+      },
+      {
+        "name": "Marketing Pals",
+        "url": "https://marketingpals.com.au",
+        "logo": "/partners/agencies/marketing-pals.png",
+        "description": "Digital marketing and e-commerce strategy agency for Australian brands.",
+        "location": "Australia",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "Path Digital Solutions",
+        "url": "https://pathdigitalsolutions.com",
+        "logo": "/partners/agencies/path-digital-solutions.png",
+        "description": "E-commerce growth partner — email, Shopify development, CRO, and marketing automation.",
+        "location": "Singapore",
+        "tag": "Growth Marketing"
+      },
+      {
+        "name": "Per4mance Guru",
+        "url": "https://per4mance.guru",
+        "logo": "/partners/agencies/per4mance-guru.png",
+        "description": "Performance marketing, paid ads, SEO, and lead generation for e-commerce businesses.",
+        "location": "India",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Something New",
+        "url": "https://somethingnew.co.nz",
+        "logo": "/partners/agencies/something-new.png",
+        "description": "Performance marketing — Meta, Google, and TikTok ads with creative strategy and production.",
+        "location": "New Zealand",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "vyRAL24",
+        "url": "https://vyral24.com",
+        "logo": "/partners/agencies/vyral24.png",
+        "description": "Full-service digital marketing and technology agency — branding, social media, and lead generation.",
+        "location": "New Delhi, India",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "Zero Gravity Communications",
+        "url": "https://zerogravitycommunications.com",
+        "logo": "/partners/agencies/zero-gravity-communications.png",
+        "description": "Award-winning integrated advertising and branding agency — strategy, social, and performance marketing.",
+        "location": "India",
+        "tag": "Full-Service"
+      }
+    ]
+  },
+  {
+    "id": "latin-america",
+    "title": "Latin America",
+    "items": [
+      {
+        "name": "Centeniall",
+        "url": "https://centeniall.com",
+        "initials": "C",
+        "description": "Paid ads agency scaling Shopify brands through Meta, TikTok, and CRO strategies.",
+        "location": "Mexico",
+        "tag": "Paid Ads"
+      },
+      {
+        "name": "Magnia",
+        "url": "https://magnia.cl",
+        "initials": "M",
+        "description": "Performance marketing via Google Ads and Meta Ads for SMBs in the Chilean market.",
+        "location": "Chile",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Scale Lab",
+        "url": "https://scalelab.cl",
+        "logo": "/partners/agencies/scale-lab.png",
+        "description": "Performance digital marketing agency specializing in Meta and Google Ads campaigns.",
+        "location": "Chile",
+        "tag": "Performance Marketing"
+      }
+    ]
+  },
+  {
+    "id": "mea",
+    "title": "Middle East & Africa",
+    "items": [
+      {
+        "name": "Pure Commerce",
+        "url": "https://purecommerce.co.za",
+        "logo": "/partners/agencies/pure-commerce.png",
+        "description": "Shopify development, design, ERP integrations, and SEO for South African e-commerce brands.",
+        "location": "South Africa",
+        "tag": "Shopify Development"
+      },
+      {
+        "name": "VANHA Digital",
+        "url": "https://vanhadigital.com",
+        "logo": "/partners/agencies/vanha-digital.png",
+        "description": "Performance digital marketing — paid media, email marketing, and branding for e-commerce brands.",
+        "location": "Cape Town, South Africa",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Worth IT Solutions",
+        "url": "https://worthitsolutions.co",
+        "logo": "/partners/agencies/worth-it-solutions.png",
+        "description": "SEO, paid ads, Amazon management, web development, and email marketing services.",
+        "location": "Pakistan",
+        "tag": "Full-Service"
+      }
+    ]
+  },
+  {
+    "id": "global",
+    "title": "Global",
+    "items": [
+      {
+        "name": "Bushy Lab",
+        "url": "https://bushylab.com",
+        "logo": "/partners/agencies/bushy-lab.png",
+        "description": "Shopify CRO and e-commerce optimization for sustainable and purpose-driven brands.",
+        "location": "Global",
+        "tag": "CRO"
+      },
+      {
+        "name": "Fluency Firm",
+        "url": "https://fluencyfirm.com",
+        "logo": "/partners/agencies/fluency-firm.png",
+        "description": "DTC growth specialists — paid media, lifecycle marketing, CRO, and SEO for scaling brands.",
+        "location": "Global",
+        "tag": "Growth Marketing"
+      },
+      {
+        "name": "Guild Growth Media",
+        "url": "https://guild-growth.com",
+        "logo": "/partners/agencies/guild-growth-media.png",
+        "description": "DTC paid media and email revenue optimization for e-commerce brands.",
+        "location": "Global",
+        "tag": "Paid Media"
+      },
+      {
+        "name": "Influenceish",
+        "url": "https://influenceish.com",
+        "logo": "/partners/agencies/influenceish.png",
+        "description": "TikTok Shop, influencer/affiliate marketing, UGC, and paid ads for e-commerce growth.",
+        "location": "Global",
+        "tag": "Influencer Marketing"
+      },
+      {
+        "name": "MediaJenie",
+        "url": "https://mediajenie.com",
+        "logo": "/partners/agencies/mediajenie.png",
+        "description": "Customer experience and digital marketing — content, web, and brand strategy.",
+        "location": "Global",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "OOAK Group",
+        "url": "https://ooak.group",
+        "logo": "/partners/agencies/ooak-group.png",
+        "description": "Shopify design and development agency for e-commerce brands.",
+        "location": "Global",
+        "tag": "Shopify Development"
+      },
+      {
+        "name": "Pacific IQ",
+        "url": "https://pacificiq.com",
+        "logo": "/partners/agencies/pacific-iq.png",
+        "description": "Shopify Premier Partner — design, development, migration, and growth strategy.",
+        "location": "Global",
+        "tag": "Shopify Development"
+      },
+      {
+        "name": "Peris Consulting",
+        "url": "https://perisconsulting.net",
+        "logo": "/partners/agencies/peris-consulting.png",
+        "description": "E-commerce ROI and ROAS optimization consultancy for growth-focused brands.",
+        "location": "Global",
+        "tag": "Consulting"
+      },
+      {
+        "name": "SB8 Group",
+        "url": "https://sb8group.com",
+        "logo": "/partners/agencies/sb8-group.png",
+        "description": "Performance marketing, lead generation funnels, and web design for e-commerce brands.",
+        "location": "Global",
+        "tag": "Performance Marketing"
+      },
+      {
+        "name": "Viber Consulting",
+        "url": "https://viberconsulting.com",
+        "initials": "VC",
+        "description": "SEO, PPC, email, social media, and CRO for retail e-commerce businesses.",
+        "location": "Global",
+        "tag": "Full-Service"
+      },
+      {
+        "name": "Wayf(x)",
+        "url": "https://wayfx.com",
+        "logo": "/partners/agencies/wayf-x.png",
+        "description": "Boutique digital agency offering copywriting, design, development, and marketing services.",
+        "location": "Boulder, USA",
+        "tag": "Full-Service"
+      }
+    ]
+  }
+]

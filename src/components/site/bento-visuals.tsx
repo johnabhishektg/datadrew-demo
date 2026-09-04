@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion } from "motion/react";
-import { Check, Pause, TrendingUp } from "lucide-react";
+import { Brain, Check } from "lucide-react";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
 import { AnimatedList } from "@/components/ui/animated-list";
 import { OrbitingCircles } from "@/components/ui/orbiting-circles";
@@ -21,16 +21,16 @@ import {
 export function ContextOrbit() {
   return (
     <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
-      <DrewMark className="size-12" />
-      <OrbitingCircles radius={70} iconSize={36} duration={24}>
-        <ShopifyMark className="size-9" />
-        <MetaMark className="size-9" />
-        <GoogleMark className="size-9" />
+      <DrewMark className="size-14" />
+      <OrbitingCircles radius={78} iconSize={40} duration={24}>
+        <ShopifyMark className="size-10" />
+        <MetaMark className="size-10" />
+        <GoogleMark className="size-10" />
       </OrbitingCircles>
-      <OrbitingCircles radius={120} iconSize={34} duration={36} reverse>
-        <KlaviyoMark className="size-8" />
-        <GA4Mark className="size-8" />
-        <AmazonMark className="size-8" />
+      <OrbitingCircles radius={136} iconSize={38} duration={36} reverse>
+        <KlaviyoMark className="size-9" />
+        <GA4Mark className="size-9" />
+        <AmazonMark className="size-9" />
       </OrbitingCircles>
     </div>
   );
@@ -87,7 +87,7 @@ export function ExecutionBeam() {
       </div>
       <div
         ref={approveRef}
-        className="z-10 flex items-center gap-1.5 rounded-lg border border-border bg-background px-2.5 py-1.5 text-xs font-medium shadow-sm"
+        className="z-10 flex items-center gap-1.5 rounded-lg border border-border bg-card px-2.5 py-1.5 text-xs font-medium shadow-sm"
       >
         <Check className="size-3.5 text-brand" /> Approved
       </div>
@@ -106,36 +106,57 @@ export function ExecutionBeam() {
   );
 }
 
-/* 04 Memory — the brain compounding: bars that grow over "months with Drew" */
-const bars = [22, 30, 38, 45, 55, 62, 74, 86];
+/* 04 Memory — the brain filling up with brand context.
+   Chips sit in the four corners; the brain and rings stay in the clear
+   centre band so nothing overlaps at the bento's narrowest cell. */
+const memories = [
+  { text: "62% margin · Hero Bundle", className: "left-[4%] top-[8%]", delay: 0.1 },
+  { text: "Labor Day sale · Sep 5–8", className: "right-[4%] top-[8%]", delay: 0.35 },
+  { text: "Max +20%/day", className: "left-[4%] top-[56%]", delay: 0.6 },
+  { text: "Brand: protected", className: "right-[4%] top-[56%]", delay: 0.85 },
+];
 
-export function MemoryChart() {
+export function MemoryBrain() {
   return (
-    <div className="flex h-full w-full flex-col p-4">
-      <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
-        <span>Brand context Drew holds</span>
-        <span className="inline-flex items-center gap-1 font-medium text-brand">
-          <TrendingUp className="size-3.5" /> compounding
-        </span>
-      </div>
-      <div className="flex h-16 items-end gap-2">
-        {bars.map((h, i) => (
-          <motion.div
-            key={i}
-            className="flex-1 rounded-t-md bg-brand/80"
-            initial={{ height: 0 }}
-            whileInView={{ height: `${h}%` }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: i * 0.08, ease: "easeOut" }}
-          />
-        ))}
-      </div>
-      <div className="mt-2 flex justify-between font-mono text-[10px] text-muted-foreground">
-        <span>month 1</span>
-        <span>month 8</span>
-      </div>
+    <div className="relative h-full w-full overflow-hidden">
+      {/* soft rings */}
+      {[0, 1, 2].map((i) => (
+        <motion.span
+          key={i}
+          aria-hidden
+          className="absolute left-1/2 top-1/2 rounded-full border border-brand/30"
+          style={{ width: 44 + i * 26, height: 44 + i * 26, x: "-50%", y: "-50%" }}
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: [0, 0.45, 0], scale: [0.7, 1.1, 1.25] }}
+          transition={{ duration: 3.6, delay: i * 1.2, repeat: Infinity, ease: "easeOut" }}
+        />
+      ))}
+      {/* the brain */}
+      <motion.div
+        className="absolute left-1/2 top-1/2 flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl bg-brand-soft text-brand shadow-[0_10px_30px_-12px_var(--brand)]"
+        initial={{ scale: 0.9, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <Brain className="size-6" strokeWidth={1.6} />
+      </motion.div>
+      {/* memories flying in */}
+      {memories.map((m) => (
+        <motion.span
+          key={m.text}
+          className={cn(
+            "absolute z-10 whitespace-nowrap rounded-md bg-card px-2 py-0.5 text-[10px] font-medium leading-5 text-foreground/85 shadow-sm ring-1 ring-border",
+            m.className
+          )}
+          initial={{ opacity: 0, y: 6, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: m.delay }}
+        >
+          {m.text}
+        </motion.span>
+      ))}
     </div>
   );
 }
-
-export { Pause };

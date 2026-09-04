@@ -1,7 +1,8 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 /* Brand marks used in orbits, beams and integration rows.
- * Monogram tiles (not licensed logos) — swap for official SVGs before launch. */
+ * Shopify/Meta/Google/Slack are inline SVG approximations; the rest use the app's logo files. */
 
 type MarkProps = { className?: string };
 
@@ -53,20 +54,33 @@ export function SlackMark({ className }: MarkProps) {
   );
 }
 
-function Monogram({ letter, color, label, className }: MarkProps & { letter: string; color: string; label: string }) {
+/* Image-based marks — the same logo files the app ships (public/integrations). */
+function ImgMark({
+  src,
+  label,
+  className,
+  inset = "size-[58%]",
+  rounded = "",
+}: MarkProps & { src: string; label: string; inset?: string; rounded?: string }) {
   return (
-    <span className={cn(tile, "text-sm", className)} style={{ color }} aria-label={label}>
-      {letter}
+    <span className={cn(tile, className)} aria-label={label}>
+      <Image src={src} alt="" width={64} height={64} className={cn("object-contain", inset, rounded)} />
     </span>
   );
 }
 
-export const KlaviyoMark = (p: MarkProps) => <Monogram letter="K" color="#111" label="Klaviyo" {...p} />;
-export const GA4Mark = (p: MarkProps) => <Monogram letter="GA" color="#E37400" label="GA4" {...p} />;
-export const ClaudeMark = (p: MarkProps) => <Monogram letter="C" color="#D97757" label="Claude" {...p} />;
-export const ChatGPTMark = (p: MarkProps) => <Monogram letter="G" color="#10A37F" label="ChatGPT" {...p} />;
-export const AmazonMark = (p: MarkProps) => <Monogram letter="a" color="#FF9900" label="Amazon" {...p} />;
-export const UnicommerceMark = (p: MarkProps) => <Monogram letter="U" color="#E4572E" label="Unicommerce" {...p} />;
+export const KlaviyoMark = (p: MarkProps) => (
+  <ImgMark src="/integrations/klaviyo-logo.svg" label="Klaviyo" inset="size-[56%]" rounded="rounded-[18%]" {...p} />
+);
+export const GA4Mark = (p: MarkProps) => (
+  <ImgMark src="/integrations/google-analytics-logo.png" label="Google Analytics 4" inset="size-[56%]" {...p} />
+);
+export const AmazonMark = (p: MarkProps) => (
+  <ImgMark src="/integrations/amazon-seller-logo.svg" label="Amazon Seller" inset="size-[64%]" {...p} />
+);
+export const UnicommerceMark = (p: MarkProps) => (
+  <ImgMark src="/integrations/unicommerce-logo.png" label="Unicommerce" inset="size-[70%]" {...p} />
+);
 
 /* Datadrew brand mark — from /Users/johntg/Desktop/datadrew_logo.svg (Jul 2026).
  * Inlined so it can take currentColor and follow the theme. */

@@ -18,7 +18,7 @@ export default function BlogIndex() {
       <Navbar />
       <main className="mx-auto w-full max-w-6xl px-5 pt-32 md:px-8 md:pt-40">
         <header className="flex flex-col gap-4 md:max-w-2xl">
-          <span className="inline-flex w-fit items-center rounded-full border border-border bg-muted/60 px-3 py-1 text-xs font-medium text-muted-foreground">
+          <span className="inline-flex w-fit items-center text-xs font-semibold uppercase tracking-[0.14em] text-brand">
             Blog
           </span>
           <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">

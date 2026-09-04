@@ -15,11 +15,9 @@ export const site = {
 };
 
 export const hero = {
-  eyebrow: "The AI ads agent for Shopify brands",
-  // v8 messaging hierarchy: category (eyebrow) → promise (headline)
+  // v8 messaging hierarchy: promise (headline) → category (subhead)
   headline: ["Make and execute", "better ad decisions."],
-  subhead:
-    "Drew has the judgment of an experienced media buyer — because it knows your business, not just your ad account. It watches your ads and your Shopify data every day, tells you what to scale, cut, fix or leave alone, and executes approved changes with guardrails.",
+  subhead: "The AI ads agent for Shopify brands",
   primaryCta: { label: "Start free", sub: "Your first ads brief the same day" },
   secondaryCta: { label: "Read a sample ads brief" },
   finePrint: "7-day free trial · From $99/mo · Cancel anytime",
@@ -105,7 +103,7 @@ export const pillars = [
     id: "brain",
     kicker: "04 — Memory",
     title: "It compounds — your brand becomes its brain",
-    lead: "The longer Drew works with your brand, the more it knows: definitions, preferences, past decisions, promotions, what worked and what didn't.",
+    lead: "The longer Drew works with your brand, the more it knows: definitions, preferences, past decisions, what worked and what didn't.",
     body: "Most tools feel like \"AI that can analyze ads.\" Drew is built to feel like \"our ads agent knows how we run this business\" — scaling rules, acceptable risk, promo calendars, historical calls and their outcomes.",
     proof:
       "The longer Drew works with your brand, the more it understands how your business operates and how your team wants ads managed.",
@@ -237,30 +235,14 @@ export const audiences = [
   },
 ];
 
-// Real testimonial themes from app reviews & support threads; identities are
-// PLACEHOLDER (anonymized in source docs) — swap in permissioned attributions.
+// Testimonials as published on datadrew.io (4 Sep 2026) — real names and roles.
 export const testimonials = [
-  {
-    quote:
-      "Thanks to your AI, we identified that the customer tag was missing for about 7,000 customers.",
-    name: "Head of E-commerce",
-    company: "Shopify Plus retailer, France",
-    placeholder: true,
-  },
-  {
-    quote:
-      "The LTV and cohort numbers are the first ones that actually reconcile with our Shopify data. We use them in every investor update.",
-    name: "Founder",
-    company: "DTC apparel brand",
-    placeholder: true,
-  },
-  {
-    quote:
-      "Support feels like having the founders on our team. Questions about gross vs net revenue got answered with the actual math.",
-    name: "Growth lead",
-    company: "Home & living brand",
-    placeholder: true,
-  },
+  { quote: "Our business is 95% subscription. Recently switched to Loop. Needed a tool for historic cohort / LTV analysis. Datadrew hit the sweet spot. Quick 1:1 support and great pricing.", name: "Stephan Freh", company: "Partner, subscription brand", placeholder: false },
+  { quote: "WOW is all I can say. I have spent so much time trying to nail down an accurate LTV and I was amazed at how robust this app is.", name: "Eric Birkemeier", company: "Co-Founder and CMO, ShredLights", placeholder: false },
+  { quote: "Datadrew is a great app that provides insights, benchmarking against industry, RFM segments that can be connected to Klaviyo.", name: "Ricard Llop Noriega", company: "Director de Marketing, D2C brand", placeholder: false },
+  { quote: "One of the best apps in the Shopify App Store. Saves hours of manual reporting if you track customer lifetime value.", name: "Kyle Hill", company: "Director of Paid Media, KradleMyPet", placeholder: false },
+  { quote: "It is so easy to use. I'm not a tech person, just a business owner. This was an eye opener and I highly recommend it.", name: "Finola Fegan", company: "CEO, Finca Skin Organics", placeholder: false },
+  { quote: "The team is great at support. Faced an issue and they resolved it within a day. Good app that gives LTV data cuts.", name: "Pradeep Krishnakumar", company: "Co-Founder, Zouk", placeholder: false },
 ];
 
 export const integrations = [
@@ -364,11 +346,18 @@ export const faq = [
 ];
 
 export const finalCta = {
-  headline: "Where does your next ad dollar go?",
+  // Trust line above the headline, TinySEO-style. Rating/reviews come from
+  // `appStore` below; the brands count matches trustBar.
+  trust: {
+    lead: "The AI ads agent for Shopify",
+    reviewsLabel: "reviews",
+    trailing: "Trusted by 1,000+ Shopify brands",
+  },
+  headline: "Start making better ad decisions with Drew",
   subhead:
     "Connect your store and ad accounts — your first Daily Ads Brief lands the same day. Free to start, from $99/mo after.",
-  primaryCta: "Start free",
-  secondaryCta: "See a sample brief",
+  primaryCta: "Install Datadrew",
+  secondaryCta: "See how it works",
 };
 
 // The hero centerpiece: a rendered Daily Ads Brief. Content is a realistic
@@ -377,7 +366,7 @@ export const finalCta = {
 export const sampleBrief = {
   meta: {
     title: "Daily Ads Brief",
-    store: "example-store.myshopify.com",
+    store: "acme.myshopify.com",
     date: "Tuesday, Aug 18",
     deliveredVia: "Slack · 7:00 AM",
   },
@@ -418,6 +407,16 @@ export const sampleBrief = {
 // Sections added for the Sept 2026 "agent" layout (Magic UI / shadcn build).
 
 export const heroBadge = "New · Ads execution with guardrails is rolling out";
+
+// Social proof pill above the H1. Pulled from the live listing on 4 Sep 2026:
+// https://apps.shopify.com/customer-lifetime-value — 5.0 rating, 27 reviews.
+// Update `reviews` when the count moves.
+export const appStore = {
+  url: "https://apps.shopify.com/customer-lifetime-value",
+  logo: "https://tinyseo.com/images/landing/shopify.png",
+  rating: 5.0,
+  reviews: 27,
+};
 
 export const howItWorks = {
   eyebrow: "How it works",
@@ -580,7 +579,7 @@ export const mcpAgents = {
     trail: "with MCP.",
   },
   primaryCta: { label: "Connect with MCP", href: "https://app.datadrew.io/datadrew-mcp" },
-  secondaryCta: { label: "Read the setup guide", href: "https://datadrew.io/mcp/" },
+  secondaryCta: { label: "Read the setup guide", href: "/mcp" },
   mcpUrl: "https://mcp.datadrew.io/mcp",
   chat: {
     title: "datadrew.io",

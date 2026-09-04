@@ -1,13 +1,13 @@
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import { pillars, problem } from "@/content/site";
 import { Container, SectionHeader } from "./section-header";
-import { ContextOrbit, ExecutionBeam, FindingsFeed, MemoryChart } from "./bento-visuals";
+import { ContextOrbit, ExecutionBeam, FindingsFeed, MemoryBrain } from "./bento-visuals";
 
 const visuals = {
-  context: { background: <ContextOrbit />, className: "md:col-span-2 md:row-span-2", area: "inset-x-0 top-0 h-[48%] md:h-[72%]" },
-  judgment: { background: <FindingsFeed />, className: "md:col-span-1 md:row-span-2", area: "inset-x-0 top-0 h-[46%] md:h-[66%]" },
+  context: { background: <ContextOrbit />, className: "md:col-span-2 md:row-span-2", area: "inset-x-0 top-0 h-[52%] md:h-[70%]" },
+  judgment: { background: <FindingsFeed />, className: "md:col-span-1 md:row-span-2", area: "inset-x-0 top-0 h-[50%] md:h-[64%]" },
   execution: { background: <ExecutionBeam />, className: "md:col-span-2", area: "inset-x-0 top-0 h-[44%] md:h-[62%]" },
-  brain: { background: <MemoryChart />, className: "md:col-span-1", area: "inset-x-0 top-0 h-[38%] md:h-[46%]" },
+  brain: { background: <MemoryBrain />, className: "md:col-span-1", area: "inset-x-0 top-0 h-[44%] md:h-[46%]" },
 } as const;
 
 export function FeaturesBento() {
@@ -18,7 +18,7 @@ export function FeaturesBento() {
         headline="Running paid ads well is a daily decision job. Drew runs it."
         subhead={problem.punchline}
       />
-      <BentoGrid className="mt-12 auto-rows-[27rem] md:mt-16 md:auto-rows-[20rem] md:grid-cols-3">
+      <BentoGrid className="mt-12 auto-rows-[24rem] md:mt-16 md:auto-rows-[16.5rem] md:grid-cols-3">
         {pillars.map((p) => {
           const v = visuals[p.id as keyof typeof visuals];
           return (

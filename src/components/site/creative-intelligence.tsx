@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check, Sparkles, TrendingUp, RefreshCw } from "lucide-react";
+import { ArrowRight, Check, TrendingUp, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { creativeIntelligence } from "@/content/site";
 import { cn } from "@/lib/utils";
@@ -81,8 +81,7 @@ export function CreativeIntelligence() {
       <div className="grid items-center gap-12 md:grid-cols-2 md:gap-10">
         {/* Copy */}
         <div>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/60 px-3 py-1 text-xs font-medium text-muted-foreground">
-            <Sparkles className="size-3.5 text-brand" />
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-brand">
             {c.eyebrow}
             <span className="ml-1 rounded-full bg-brand px-1.5 py-px text-[10px] font-semibold text-brand-foreground">New</span>
           </span>
@@ -121,9 +120,6 @@ export function CreativeIntelligence() {
           <CreativeCard card={b} className="left-[25%] top-0 -rotate-3 opacity-95" />
           <CreativeCard card={a} className="left-0 top-[12%] -rotate-[5deg]" />
           <CreativeCard card={d} className="right-0 top-[24%] rotate-[4deg]" />
-          <span className="absolute bottom-2 left-0 rounded-full border border-border bg-background px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
-            example data
-          </span>
         </div>
       </div>
     </section>

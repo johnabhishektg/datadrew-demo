@@ -82,10 +82,10 @@ function Sidebar() {
         <SideItem icon={LayoutGrid} label="All integrations" />
       </div>
       <div className="mt-auto flex items-center gap-2 border-t border-white/10 px-4 py-3">
-        <span className="flex size-6 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-brand-foreground">S</span>
+        <span className="flex size-6 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-brand-foreground">A</span>
         <div className="min-w-0 leading-tight">
-          <p className="truncate text-[12px] font-medium">your-store</p>
-          <p className="truncate text-[10px] text-white/45">you@your-store.com</p>
+          <p className="truncate text-[12px] font-medium">Acme</p>
+          <p className="truncate text-[10px] text-white/45">you@acme.com</p>
         </div>
       </div>
     </aside>
@@ -101,15 +101,12 @@ export function HeroVisual() {
         <BorderBeam size={220} duration={9} colorFrom="var(--brand)" colorTo="transparent" />
 
         {/* Window chrome */}
-        <div className="flex items-center gap-2 border-b border-border/70 bg-background px-4 py-2.5">
+        <div className="flex items-center gap-2 border-b border-border/70 bg-card px-4 py-2.5">
           <span className="size-2.5 rounded-full bg-[#FF5F57]" />
           <span className="size-2.5 rounded-full bg-[#FEBC2E]" />
           <span className="size-2.5 rounded-full bg-[#28C840]" />
           <span className="ml-3 rounded-md border border-border/60 bg-muted/60 px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
             app.datadrew.io
-          </span>
-          <span className="ml-auto rounded-full border border-border bg-background px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
-            example data
           </span>
         </div>
 
@@ -134,7 +131,7 @@ export function HeroVisual() {
             <div className="flex-1 space-y-4 px-5 pb-3 md:px-8">
               {/* User turn */}
               <div className="flex justify-end">
-                <div className="max-w-[80%] rounded-2xl rounded-tr-md border border-border bg-background px-4 py-2.5 text-sm shadow-sm">
+                <div className="max-w-[80%] rounded-2xl rounded-tr-md border border-border bg-card px-4 py-2.5 text-sm shadow-sm">
                   <span className="font-mono text-brand">/daily-ads-brief</span> for {sampleBrief.meta.date}
                 </div>
               </div>
@@ -151,7 +148,7 @@ export function HeroVisual() {
                     {sampleBrief.findings.map((f, i) => {
                       const Mark = marks[f.platform as Platform];
                       return (
-                        <li key={f.title} className="rounded-xl border border-border bg-background p-3.5 shadow-sm">
+                        <li key={f.title} className="rounded-xl border border-border bg-card p-3.5 shadow-sm">
                           <div className="flex items-start gap-3">
                             <Mark className="mt-0.5 size-8 shrink-0" />
                             <div className="min-w-0 flex-1">
@@ -205,7 +202,7 @@ export function HeroVisual() {
                       <span className="inline-flex flex-1 items-center justify-center gap-1 rounded-md bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground sm:flex-none">
                         <Check className="size-3" /> Approve
                       </span>
-                      <span className="inline-flex flex-1 items-center justify-center rounded-md border border-border bg-background px-2.5 py-1.5 text-xs font-medium sm:flex-none">
+                      <span className="inline-flex flex-1 items-center justify-center rounded-md border border-border bg-card px-2.5 py-1.5 text-xs font-medium sm:flex-none">
                         Edit
                       </span>
                     </div>
@@ -216,7 +213,7 @@ export function HeroVisual() {
 
             {/* Composer */}
             <div className="px-5 pb-5 pt-2 md:px-8">
-              <div className="rounded-2xl border border-border bg-background p-3 shadow-sm">
+              <div className="rounded-2xl border border-border bg-card p-3 shadow-sm">
                 <div className="inline-flex items-center gap-1 rounded-full border border-border bg-muted/50 px-2 py-1">
                   <Database className="size-3.5 text-muted-foreground" />
                   <span className="flex -space-x-1">

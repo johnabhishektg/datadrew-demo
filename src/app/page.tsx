@@ -1,14 +1,13 @@
 import { Navbar } from "@/components/site/navbar";
 import { Hero } from "@/components/site/hero";
-import { Logos } from "@/components/site/logos";
 import { FeaturesBento } from "@/components/site/features-bento";
 import { CreativeIntelligence } from "@/components/site/creative-intelligence";
 import { HowItWorks } from "@/components/site/how-it-works";
-import { Guardrails } from "@/components/site/guardrails";
+import { Integrations } from "@/components/site/integrations";
 import { CustomerStories } from "@/components/site/customer-stories";
 import { McpAgents } from "@/components/site/mcp-agents";
 import { Pricing } from "@/components/site/pricing";
-import { Testimonials } from "@/components/site/testimonials";
+import { LogoWall } from "@/components/site/logo-wall";
 import { Faq } from "@/components/site/faq";
 import { FinalCta } from "@/components/site/final-cta";
 import { Footer } from "@/components/site/footer";
@@ -21,15 +20,14 @@ export default function Page() {
       <Navbar />
       <main>
         <Hero />
-        <Logos />
+        <LogoWall />
         <FeaturesBento />
         <CreativeIntelligence />
         <HowItWorks />
-        <Guardrails />
         <CustomerStories />
+        <Integrations />
         <McpAgents />
         <Pricing />
-        <Testimonials />
         <Faq />
         <FinalCta />
       </main>
