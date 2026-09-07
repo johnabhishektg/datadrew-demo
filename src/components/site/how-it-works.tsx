@@ -55,19 +55,18 @@ export function HowItWorks() {
                     </span>
                     <div>
                       <p className="font-semibold">{s.title}</p>
-                      <AnimatePresence initial={false}>
-                        {isActive && (
-                          <motion.p
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="overflow-hidden text-sm text-muted-foreground"
-                          >
-                            <span className="block pt-1.5">{s.body}</span>
-                          </motion.p>
+                      {/* Body stays in the DOM for every step (pre-rendered copy);
+                          the grid-rows trick animates it open without unmounting. */}
+                      <div
+                        className={cn(
+                          "grid transition-[grid-template-rows,opacity] duration-300 ease-out",
+                          isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                         )}
-                      </AnimatePresence>
+                      >
+                        <p className="overflow-hidden text-sm text-muted-foreground">
+                          <span className="block pt-1.5">{s.body}</span>
+                        </p>
+                      </div>
                     </div>
                   </div>
                   {isActive && (
