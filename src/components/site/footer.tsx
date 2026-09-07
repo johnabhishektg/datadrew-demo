@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 import { Logo } from "./icons";
+import { competitorLogo } from "@/content/comparisons";
+import { BrandMark } from "./brand-mark";
 
 const columns = [
   {
@@ -80,7 +82,10 @@ export function Footer() {
               {col.links.map((link) => (
                 <li key={link.label}>
                   {link.href.startsWith("/") ? (
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
+                    <Link href={link.href} className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
+                      {competitorLogo(link.href) && (
+                        <BrandMark logo={competitorLogo(link.href)!} name={link.label.replace(/^vs /, "")} size="sm" />
+                      )}
                       {link.label}
                     </Link>
                   ) : (

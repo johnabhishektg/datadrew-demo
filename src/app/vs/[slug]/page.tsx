@@ -14,6 +14,7 @@ import {
 import { JsonLd, OG_IMAGE_PATH, ORG_ID, SITE_ID, breadcrumbLd, faqLd, softwareApplicationLd } from "@/components/site/structured-data";
 import { appStoreUrl, comparisons, getComparison, trustLine } from "@/content/comparisons";
 import { site } from "@/content/site";
+import { BrandLabel, BrandMark, DATADREW_MARK } from "@/components/site/brand-mark";
 
 export function generateStaticParams() {
   return comparisons.map((c) => ({ slug: c.slug }));
@@ -58,7 +59,18 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
   return (
     <PageShell>
       <JsonLd data={ld} />
-      <PageHeader eyebrow="Comparison" headline={name} subhead={c.intro} crumbs={[{ label: name }]}>
+      <PageHeader
+        eyebrow="Comparison"
+        headline={
+          <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-2">
+            <BrandLabel logo={DATADREW_MARK} name="Datadrew" size="lg" />
+            <span className="text-muted-foreground">vs</span>
+            <BrandLabel logo={c.logo} name={c.competitor} size="lg" />
+          </span>
+        }
+        subhead={c.intro}
+        crumbs={[{ label: name }]}
+      >
         <CtaButton href={appStoreUrl}>Start free on Shopify</CtaButton>
         <CtaButton href="/book" variant="outline">
           Book a demo
@@ -71,13 +83,24 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
 
       {c.pricingLadder && (
         <Section eyebrow="Pricing" headline={c.pricingLadder.headline} subhead={c.pricingLadder.subhead} narrow>
-          <SimpleTable head={c.pricingLadder.head} rows={c.pricingLadder.rows} />
+          <SimpleTable
+            head={c.pricingLadder.head.map((h, i) =>
+              i === 1 ? (
+                <span key={h} className="inline-flex items-center gap-2"><BrandMark logo={DATADREW_MARK} name="Datadrew" size="sm" />{h}</span>
+              ) : i === 2 ? (
+                <span key={h} className="inline-flex items-center gap-2"><BrandMark logo={c.logo} name={c.competitor} size="sm" />{h}</span>
+              ) : (
+                h
+              )
+            )}
+            rows={c.pricingLadder.rows}
+          />
           <p className="mt-4 max-w-3xl text-xs leading-relaxed text-muted-foreground">{c.pricingLadder.note}</p>
         </Section>
       )}
 
       <Section eyebrow="Feature by feature" headline={c.features.headline} subhead={c.features.subhead} narrow>
-        <FeatureTable groups={c.features.groups} competitor={c.competitor} />
+        <FeatureTable groups={c.features.groups} competitor={c.competitor} logo={c.logo} />
       </Section>
 
       <Section eyebrow="Fit" headline={c.fit.headline} subhead={c.fit.subhead || undefined} narrow>

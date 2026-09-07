@@ -17,6 +17,8 @@ export type FeatureGroup = { title: string; rows: FeatureRow[] };
 export type Comparison = {
   slug: string;
   competitor: string;
+  /** Square competitor mark in /public/competitors (see CREDITS.md there). */
+  logo: string;
   /** Short label used in tiles / table headers ("TW", "NB"). */
   shortName?: string;
   title: string;
@@ -45,6 +47,12 @@ export type Comparison = {
   keepComparing: { kind: "Guide" | "Comparison"; title: string; body: string; href: string }[];
   finalCta: { headline: string; subhead: string };
 };
+
+/** Logo for a comparison by slug or by its /vs/ href (footer, cross-links). */
+export function competitorLogo(slugOrHref: string): string | undefined {
+  const slug = slugOrHref.replace(/^\/vs\//, "").replace(/\/$/, "");
+  return comparisons.find((c) => c.slug === slug)?.logo;
+}
 
 export const appStoreUrl = "https://apps.shopify.com/customer-lifetime-value";
 
@@ -116,6 +124,7 @@ const deliveredDefault = [
 export const comparisons: Comparison[] = [
   {
     slug: "triple-whale",
+    logo: "/competitors/triple-whale.png",
     competitor: "Triple Whale",
     shortName: "TW",
     title: "Datadrew vs Triple Whale — Pricing & Feature Comparison 2026",
@@ -329,6 +338,7 @@ export const comparisons: Comparison[] = [
 
   {
     slug: "northbeam",
+    logo: "/competitors/northbeam.png",
     competitor: "Northbeam",
     shortName: "NB",
     title: "Datadrew vs Northbeam — Pricing & Feature Comparison 2026",
@@ -508,6 +518,7 @@ export const comparisons: Comparison[] = [
 
   {
     slug: "polar-analytics",
+    logo: "/competitors/polar-analytics.png",
     competitor: "Polar Analytics",
     shortName: "Polar",
     title: "Datadrew vs Polar Analytics — Pricing & Feature Comparison 2026",
@@ -668,6 +679,7 @@ export const comparisons: Comparison[] = [
 
   {
     slug: "lifetimely",
+    logo: "/competitors/lifetimely.png",
     competitor: "Lifetimely",
     title: "Datadrew vs Lifetimely — Pricing & Feature Comparison 2026",
     metaDescription:

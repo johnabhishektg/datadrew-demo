@@ -2,7 +2,8 @@ import Link from "next/link";
 import { ArrowUpRight, Check, Minus, Star } from "lucide-react";
 import { CheckList, Eyebrow, Section } from "./blocks";
 import type { Cell, Comparison, FeatureGroup } from "@/content/comparisons";
-import { comparisonReviews, reviewsLine } from "@/content/comparisons";
+import { competitorLogo, comparisonReviews, reviewsLine } from "@/content/comparisons";
+import { BrandLabel, BrandMark, DATADREW_MARK } from "./brand-mark";
 import { cn } from "@/lib/utils";
 
 /* Building blocks specific to the /vs/<competitor> pages. */
@@ -16,12 +17,16 @@ export function ContrastTiles({ c }: { c: Comparison }) {
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{t.label}</p>
           <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
             <div className="min-w-0">
-              <p className="truncate text-[11px] font-medium text-brand">{t.datadrewLabel ?? "Datadrew"}</p>
+              <p className="flex items-center gap-1.5 truncate text-[11px] font-medium text-brand">
+                <BrandMark logo={DATADREW_MARK} name="Datadrew" size="sm" />
+                {t.datadrewLabel ?? "Datadrew"}
+              </p>
               <p className="text-lg font-semibold leading-tight tracking-tight">{t.datadrew}</p>
             </div>
             <span className="font-mono text-[11px] uppercase text-muted-foreground/70">vs</span>
             <div className="min-w-0">
-              <p className="truncate text-[11px] font-medium text-muted-foreground">
+              <p className="flex items-center gap-1.5 truncate text-[11px] font-medium text-muted-foreground">
+                <BrandMark logo={c.logo} name={c.competitor} size="sm" />
                 {t.competitorLabel ?? c.competitor}
               </p>
               <p className="text-lg font-semibold leading-tight tracking-tight text-muted-foreground">{t.competitor}</p>
@@ -67,15 +72,19 @@ function CellContent({ cell, highlight }: { cell: Cell; highlight?: boolean }) {
 }
 
 /* Feature-by-feature table grouped by section, Datadrew column highlighted. */
-export function FeatureTable({ groups, competitor }: { groups: FeatureGroup[]; competitor: string }) {
+export function FeatureTable({ groups, competitor, logo }: { groups: FeatureGroup[]; competitor: string; logo: string }) {
   return (
     <div className="overflow-x-auto rounded-2xl border border-border bg-card">
       <table className="w-full min-w-[40rem] text-sm">
         <thead>
           <tr className="border-b border-border text-left text-xs uppercase tracking-wider text-muted-foreground">
             <th className="px-5 py-3 font-medium">Feature</th>
-            <th className="bg-brand-soft/40 px-5 py-3 font-semibold text-brand">Datadrew</th>
-            <th className="px-5 py-3 font-medium">{competitor}</th>
+            <th className="bg-brand-soft/40 px-5 py-3 font-semibold text-brand">
+              <BrandLabel logo={DATADREW_MARK} name="Datadrew" size="sm" />
+            </th>
+            <th className="px-5 py-3 font-medium">
+              <BrandLabel logo={logo} name={competitor} size="sm" />
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -123,11 +132,17 @@ export function FitColumns({ c }: { c: Comparison }) {
   return (
     <div className="grid gap-4 md:grid-cols-2">
       <div className="rounded-2xl border border-brand/30 bg-brand/5 p-6">
-        <h3 className="text-base font-semibold tracking-tight">Choose Datadrew if</h3>
+        <h3 className="flex items-center gap-2 text-base font-semibold tracking-tight">
+          <BrandMark logo={DATADREW_MARK} name="Datadrew" size="md" />
+          Choose Datadrew if
+        </h3>
         <CheckList items={c.fit.datadrew} className="mt-4" />
       </div>
       <div className="rounded-2xl border border-border bg-card p-6">
-        <h3 className="text-base font-semibold tracking-tight">Choose {c.competitor} if</h3>
+        <h3 className="flex items-center gap-2 text-base font-semibold tracking-tight">
+          <BrandMark logo={c.logo} name={c.competitor} size="md" />
+          Choose {c.competitor} if
+        </h3>
         <ul className="mt-4 flex flex-col gap-2.5">
           {c.fit.competitor.map((item) => (
             <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
@@ -251,7 +266,12 @@ export function KeepComparing({ c }: { c: Comparison }) {
               href={k.href}
               className="group flex h-full flex-col gap-3 rounded-2xl border border-border bg-card p-6 transition-colors hover:bg-muted/40"
             >
-              <Eyebrow className="text-muted-foreground">{k.kind}</Eyebrow>
+              <div className="flex items-center justify-between">
+                <Eyebrow className="text-muted-foreground">{k.kind}</Eyebrow>
+                {k.kind === "Comparison" && competitorLogo(k.href) && (
+                  <BrandMark logo={competitorLogo(k.href)!} name={k.title.replace(/^Datadrew vs /, "")} size="lg" />
+                )}
+              </div>
               <h3 className="text-base font-semibold tracking-tight">{k.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{k.body}</p>
               <span className="mt-auto inline-flex items-center gap-1 pt-2 text-sm font-medium group-hover:text-brand">
