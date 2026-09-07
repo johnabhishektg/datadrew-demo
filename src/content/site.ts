@@ -416,7 +416,7 @@ export const heroBadge = "New · Ads execution with guardrails is rolling out";
 // Update `reviews` when the count moves.
 export const appStore = {
   url: "https://apps.shopify.com/customer-lifetime-value",
-  logo: "https://tinyseo.com/images/landing/shopify.png",
+  logo: "/integrations/shopify-logo.svg",
   rating: 5.0,
   reviews: 27,
 };

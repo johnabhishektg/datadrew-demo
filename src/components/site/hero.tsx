@@ -1,9 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { appStore, hero, site } from "@/content/site";
 import { HeroVisual } from "./hero-visual";
+import { ShopifyBadge } from "./shopify-badge";
 
 export function Hero() {
   return (
@@ -36,14 +38,14 @@ export function Hero() {
             <span className="font-medium">{appStore.rating.toFixed(1)}</span>
             <span className="inline-flex items-center gap-1.5 text-muted-foreground">
               · {appStore.reviews} reviews on
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={appStore.logo}
-                alt="Shopify App Store"
-                width={96}
-                height={28}
-                className="h-7 w-auto shrink-0 object-contain"
+              <Image
+                src="/integrations/shopify-logo.svg"
+                alt=""
+                width={18}
+                height={18}
+                className="size-[18px] shrink-0"
               />
+              <span className="font-medium text-foreground">Shopify App Store</span>
             </span>
           </a>
         </BlurFade>
@@ -74,6 +76,9 @@ export function Hero() {
             </Button>
           </div>
           <p className="mt-4 text-xs text-muted-foreground">{hero.finePrint}</p>
+          <div className="mt-2 flex justify-center">
+            <ShopifyBadge height={40} />
+          </div>
         </BlurFade>
 
         <div className="mt-14 w-full animate-in fade-in slide-in-from-bottom-8 fill-mode-both duration-1000 delay-500 md:mt-20">

@@ -15,6 +15,7 @@ import { JsonLd, OG_IMAGE_PATH, ORG_ID, SITE_ID, breadcrumbLd, faqLd, softwareAp
 import { appStoreUrl, comparisons, getComparison, trustLine } from "@/content/comparisons";
 import { site } from "@/content/site";
 import { BrandLabel, BrandMark, DATADREW_MARK } from "@/components/site/brand-mark";
+import { ShopifyBadge } from "@/components/site/shopify-badge";
 
 export function generateStaticParams() {
   return comparisons.map((c) => ({ slug: c.slug }));
@@ -71,7 +72,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
         subhead={c.intro}
         crumbs={[{ label: name }]}
       >
-        <CtaButton href={appStoreUrl}>Start free on Shopify</CtaButton>
+        <ShopifyBadge height={36} />
         <CtaButton href="/book" variant="outline">
           Book a demo
         </CtaButton>
