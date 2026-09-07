@@ -1,9 +1,7 @@
 import { Navbar } from "@/components/site/navbar";
 import { Hero } from "@/components/site/hero";
 import { FeaturesBento } from "@/components/site/features-bento";
-import { AdsLoop } from "@/components/site/ads-loop";
 import { CreativeIntelligence } from "@/components/site/creative-intelligence";
-import { ContextEngine } from "@/components/site/context-engine";
 import { HowItWorks } from "@/components/site/how-it-works";
 import { Integrations } from "@/components/site/integrations";
 import { CustomerStories } from "@/components/site/customer-stories";
@@ -24,9 +22,7 @@ export default function Page() {
         <Hero />
         <LogoWall />
         <FeaturesBento />
-        <AdsLoop />
         <CreativeIntelligence />
-        <ContextEngine />
         <HowItWorks />
         <CustomerStories />
         <Integrations />
