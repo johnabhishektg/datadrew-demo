@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { CtaButton } from "@/components/site/blocks";
+import { DarkCta } from "@/components/site/dark-cta";
 import { PageShell, PageHeader } from "@/components/site/page-shell";
 import { JsonLd, breadcrumbLd } from "@/components/site/structured-data";
 import { techPartners } from "@/content/partners";
@@ -80,18 +81,7 @@ export default function TechPartnersPage() {
         </ul>
       </div>
 
-      <section className="mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-24">
-        <div className="flex flex-col items-center gap-3 rounded-3xl border border-brand/30 bg-brand/5 px-6 py-12 text-center">
-          <h2 className="text-balance text-2xl font-semibold tracking-tight md:text-3xl">{p.cta.headline}</h2>
-          <p className="max-w-xl text-sm text-muted-foreground md:text-base">{p.cta.body}</p>
-          <div className="mt-3 flex flex-wrap justify-center gap-3">
-            <CtaButton href={p.cta.primary.href}>{p.cta.primary.label}</CtaButton>
-            <CtaButton href={p.cta.secondary.href} variant="outline">
-              {p.cta.secondary.label}
-            </CtaButton>
-          </div>
-        </div>
-      </section>
+      <DarkCta headline={p.cta.headline} subhead={p.cta.body} primary={p.cta.primary} secondary={p.cta.secondary} />
     </PageShell>
   );
 }
