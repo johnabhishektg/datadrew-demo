@@ -31,7 +31,16 @@ const firstImage = (html) => html.match(/<img[^>]+src="([^"]+)"/)?.[1] ?? null;
 // posts. It is not a cover and disappears at cutover, so treat it as "no cover"
 // (the site renders its own gradient cover + default og:image instead).
 const isPlaceholderCover = (url) => !url || /datadrew\.io\/assets\//.test(url);
-const coverOf = (a) => (isPlaceholderCover(a.ogImageUrl) ? firstImage(a.body ?? "") : a.ogImageUrl);
+// Posts with an unpublished revision (Sumit's pending drafts) get their new cover
+// on the draft only, so the live CMS entry stays untouched. Borrow just the
+// draft's cover image; everything else still comes from the published entry.
+const draftQs = new URLSearchParams({ status: "draft", "pagination[pageSize]": String(count), "fields[0]": "slug", "fields[1]": "ogImageUrl" });
+const draftRes = await fetch(`${BASE}/api/articles?${draftQs}`);
+const draftCover = new Map(
+  draftRes.ok ? (await draftRes.json()).data.filter((d) => /\/uploads\//.test(d.ogImageUrl ?? "")).map((d) => [d.slug, d.ogImageUrl]) : [],
+);
+const coverOf = (a) =>
+  isPlaceholderCover(a.ogImageUrl) || !/\/uploads\//.test(a.ogImageUrl) ? draftCover.get(a.slug) ?? firstImage(a.body ?? "") : a.ogImageUrl;
 
 const posts = data.map((a) => ({
   id: a.documentId,
