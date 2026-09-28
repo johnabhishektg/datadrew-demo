@@ -6,6 +6,7 @@ import { Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BorderBeam } from "@/components/ui/border-beam";
 import {
+  DEFAULT_BAND,
   gmvBands,
   planCards,
   planCredits,
@@ -16,10 +17,11 @@ import {
 import { cn } from "@/lib/utils";
 
 /* GMV-banded pricing cards with a monthly/yearly toggle. Same ladder and
- * credit formula as the live pricing page; the yearly price is the
- * per-month equivalent with two months free. */
+ * credit formula as the live pricing page (pricing.js v5.1); the yearly
+ * price is the per-month equivalent with two months free. AI Ads CoPilot
+ * has no checkout: its CTA always goes to the access request. */
 export function PricingGmv() {
-  const [band, setBand] = useState(0);
+  const [band, setBand] = useState(DEFAULT_BAND);
   const [yearly, setYearly] = useState(false);
   const b = gmvBands[band];
 
@@ -69,6 +71,7 @@ export function PricingGmv() {
           ))}
         </div>
       </div>
+      <p className="mx-auto mt-3 max-w-2xl text-center text-xs text-muted-foreground">{pricingPage.gmvHelp}</p>
 
       {/* Cards */}
       <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -77,8 +80,8 @@ export function PricingGmv() {
           const shown = yearly ? yearlyPerMonth(monthly) : monthly;
           const credits = planCredits(p.id, monthly);
           const custom = monthly === null;
-          const ctaHref = custom ? "/book" : p.cta.href;
-          const ctaLabel = custom ? "Contact sales" : p.cta.label;
+          const ctaHref = custom ? "https://calendly.com/sumit-growth/discussion" : p.cta.href;
+          const ctaLabel = custom ? (p.customLabel ?? "Talk to us") : p.cta.label;
           return (
             <div
               key={p.id}
@@ -88,7 +91,8 @@ export function PricingGmv() {
               )}
             >
               {p.popular && <BorderBeam size={160} duration={8} colorFrom="var(--brand)" colorTo="transparent" />}
-              <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{p.kicker}</p>
+              <div className="mt-2 flex items-center justify-between">
                 <h3 className="text-lg font-semibold">{p.name}</h3>
                 {p.popular && (
                   <span className="rounded-full bg-brand px-2.5 py-0.5 text-[11px] font-semibold text-brand-foreground">Popular</span>
@@ -97,19 +101,20 @@ export function PricingGmv() {
               <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
               <p className="mt-5 flex items-baseline gap-1">
                 {custom ? (
-                  <span className="text-4xl font-semibold tracking-tight">Custom</span>
+                  <span className="text-3xl font-semibold tracking-tight">{p.customLabel ?? "Custom"}</span>
                 ) : (
                   <>
                     <span className="text-4xl font-semibold tracking-tight tabular-nums">
-                      ${(shown ?? 0).toLocaleString("en-US")}
+                      {`$${(shown ?? 0).toLocaleString("en-US")}`}
                     </span>
-                    <span className="text-sm text-muted-foreground">{p.id === "free" ? "free for everyone" : "/month"}</span>
+                    <span className="text-sm text-muted-foreground">{p.id === "free" ? "free forever" : "/month"}</span>
                   </>
                 )}
               </p>
+              {custom && p.customNote && <p className="mt-1 text-xs text-muted-foreground">{p.customNote}</p>}
               {p.id !== "free" && !custom && yearly && (
                 <p className="mt-1 font-mono text-xs text-muted-foreground">
-                  ${((shown ?? 0) * 12).toLocaleString("en-US")} billed yearly · 2 months free
+                  {`$${((shown ?? 0) * 12).toLocaleString("en-US")} billed yearly · 2 months free`}
                 </p>
               )}
               {credits !== null && (
@@ -124,6 +129,7 @@ export function PricingGmv() {
               >
                 {ctaHref.startsWith("/") ? <Link href={ctaHref}>{ctaLabel}</Link> : <a href={ctaHref}>{ctaLabel}</a>}
               </Button>
+              {p.ctaNote && <p className="mt-2 text-center text-xs text-muted-foreground">{p.ctaNote}</p>}
               <div className="mt-6 flex flex-col gap-5 border-t border-border pt-6">
                 {p.lead && <p className="text-sm font-medium">{p.lead}</p>}
                 {p.groups.map((g, gi) => (
@@ -141,14 +147,13 @@ export function PricingGmv() {
                     </ul>
                   </div>
                 ))}
+                <p className="border-t border-border pt-4 font-mono text-xs text-muted-foreground">{p.footer}</p>
               </div>
             </div>
           );
         })}
       </div>
-      <p className="mt-6 text-center text-xs text-muted-foreground">
-        Monthly USD, banded by rolling 12-month GMV. Yearly billing = 2 months free. 7-day free trial on Essentials and Pro, no card required.
-      </p>
+      <p className="mt-6 text-center text-xs text-muted-foreground">{pricingPage.cardsNote}</p>
     </div>
   );
 }

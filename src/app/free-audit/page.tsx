@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { OG_IMAGE_PATH } from "@/components/site/structured-data";
-import { Eyebrow, CtaButton, FeatureGrid, Section, Steps } from "@/components/site/blocks";
+import { Eyebrow, CtaButton, FaqBlock, FeatureGrid, Section, Steps } from "@/components/site/blocks";
 import { HealthReportCard } from "@/components/site/audit-blocks";
 import { PageShell } from "@/components/site/page-shell";
-import { JsonLd, breadcrumbLd } from "@/components/site/structured-data";
+import { JsonLd, breadcrumbLd, faqLd } from "@/components/site/structured-data";
 import { freeAudit as a } from "@/content/free-audit";
 import { site } from "@/content/site";
 
@@ -19,12 +19,12 @@ export default function FreeAuditPage() {
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: "Free AI Store Health Check",
-      description:
-        "Get a free AI-powered health check of your Shopify store analyzing LTV, retention, product performance, and ad spend.",
-      url: `https://${site.domain}/free-audit`,
+      name: a.title,
+      description: a.metaDescription,
+      url: `https://${site.domain}/free-audit/`,
     },
-    breadcrumbLd([{ name: "Free store health check", path: "/free-audit" }]),
+    breadcrumbLd([{ name: "Free ad spend leakage check", path: "/free-audit" }]),
+    faqLd(a.faq),
   ];
 
   return (
@@ -59,13 +59,15 @@ export default function FreeAuditPage() {
         <Steps steps={a.steps.items} />
       </Section>
 
+      <FaqBlock items={a.faq} eyebrow="Common questions" headline="Before you connect" />
+
       <Section align="center" className="pb-0">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
           <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">{a.finalCta.headline}</h2>
           <p className="text-pretty text-base text-muted-foreground md:text-lg">{a.finalCta.subhead}</p>
           <div className="mt-2 flex flex-wrap justify-center gap-3">
             <CtaButton href={a.hero.primaryCta.href}>{a.hero.primaryCta.label}</CtaButton>
-            <CtaButton href="/book" variant="outline">
+            <CtaButton href="https://calendly.com/sumit-growth/discussion" variant="outline">
               Book a demo
             </CtaButton>
           </div>

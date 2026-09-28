@@ -50,7 +50,7 @@ export type PlatformPage = {
 };
 
 const startFree = { label: "Start free", href: "https://app.datadrew.io" };
-const bookDemo = { label: "Book a demo", href: "/book" };
+const bookDemo = { label: "Book a demo", href: "https://calendly.com/sumit-growth/discussion" };
 export const platformCtas = { startFree, bookDemo };
 
 /* ---------------------------------------------------------------- Drew AI */
@@ -59,7 +59,7 @@ const drewai: PlatformPage = {
   nav: "Drew AI",
   title: "Drew AI — The AI Ads Agent for Shopify Brands",
   description:
-    "Drew AI is the AI ads agent for Shopify brands — the judgment of an experienced media buyer, because it knows your business, not just your ad account. Make and execute better ad-spend decisions across Meta and Google, every day.",
+    "Drew AI is the AI ads agent for Shopify brands: it knows your margins, stock and customers, not just your ad account, and makes better ad decisions daily.",
   eyebrow: "AI ads agent",
   headline: "Drew AI — the AI ads agent for Shopify brands",
   subhead:
@@ -175,8 +175,8 @@ const drewai: PlatformPage = {
       subhead: "Drew AI meets you in the tools you already use — your dashboard, your Slack workspace, or your AI tools.",
       items: [
         { title: "In-app dashboard", description: "Chat with Drew AI directly inside your Datadrew dashboard. Ask any question about your store, campaigns, or customers and get instant answers with charts and tables.", tag: "All plans" },
-        { title: "Slack", description: "Mention @Drew in any Slack channel and Drew AI replies in-thread with charts and recommendations. No need to open another tab or switch context.", tag: "Essentials & Pro" },
-        { title: "AI tools via MCP", description: "Connect Drew AI to Claude, ChatGPT, Cursor, and other MCP-compatible AI tools via mcp.datadrew.io. Ask questions about your Shopify store directly inside your AI assistant — no tab switching.", tag: "Essentials & Pro" },
+        { title: "Slack", description: "Mention @Drew in any Slack channel and Drew AI replies in-thread with charts and recommendations. No need to open another tab or switch context.", tag: "AI Intelligence & CoPilot" },
+        { title: "AI tools via MCP", description: "Connect Drew AI to Claude, ChatGPT, Cursor, and other MCP-compatible AI tools via mcp.datadrew.io. Ask questions about your Shopify store directly inside your AI assistant — no tab switching.", tag: "Every plan · free" },
       ],
     },
     {
@@ -242,15 +242,15 @@ const drewai: PlatformPage = {
     },
     {
       q: "Is Drew AI included in all plans?",
-      a: "Drew AI is available on all plans. Free plan users get a one-time welcome grant of credits to try it out. Essentials and Pro plans include monthly Drew AI credits that scale with your GMV tier. Pro plans add Deep Analysis mode for complex multi-step questions. Visit the pricing page for full details.",
+      a: "Drew AI is available on all plans. Free plan users get a one-time welcome grant of 1,000 credits to try it out. AI Intelligence and AI Ads CoPilot include monthly Drew credits that scale with your GMV band (from 3,000 and 7,500 a month). AI Ads CoPilot adds execution: approved changes applied in Meta and Google with guardrails. Visit the pricing page for full details.",
     },
     {
       q: "Can I use Drew AI from Slack?",
-      a: "Yes. Install the Datadrew Slack app once, then mention @Drew in any channel. Drew AI replies in-thread with charts and recommendations — no need to open the dashboard. Available on Essentials and Pro plans.",
+      a: "Yes. Install the Datadrew Slack app once, then mention @Drew in any channel. Drew AI replies in-thread with charts and recommendations — no need to open the dashboard. Available on AI Intelligence and AI Ads CoPilot.",
     },
     {
       q: "Can I connect Drew AI to Claude, Cursor, or other AI tools?",
-      a: "Yes. Datadrew provides a public MCP server at mcp.datadrew.io that works with any MCP-compatible AI tool — Claude Desktop, Claude.ai, Cursor, ChatGPT, and more. Connect once via OAuth and your AI assistant can answer questions about your Shopify store, ad campaigns, and customer data without switching tabs. Available on Essentials and Pro plans.",
+      a: "Yes. Datadrew provides a public MCP server at mcp.datadrew.io that works with any MCP-compatible AI tool — Claude Desktop, Claude.ai, Cursor, ChatGPT, and more. Connect once via OAuth and your AI assistant can answer questions about your Shopify store, ad campaigns, and customer data without switching tabs. Available on every plan, including Free.",
     },
   ],
   closing: {
@@ -263,14 +263,14 @@ const drewai: PlatformPage = {
 const automations: PlatformPage = {
   slug: "automations",
   nav: "Automations",
-  title: "Drew AI Automations — Scheduled AI Reports & Alerts for Shopify",
+  title: "Drew AI Automations — Scheduled Reports & Alerts",
   description:
-    "Drew AI Automations run real analysis on your store data on a schedule and deliver reports and alerts to email or Slack. Weekly performance, revenue drop alerts, blended ROAS, customer health and more — set up in minutes, graded on real profit.",
+    "Drew AI Automations run real analysis on your store data on a schedule: the Daily Ads Brief, revenue-drop alerts and weekly summaries, in Slack or email.",
   eyebrow: "Drew AI Automations",
   headline: "Your reports write themselves.",
   subhead:
     "Schedule it once. Drew runs the analysis on your real data — Shopify, Meta, Google, Klaviyo and more — and delivers it to your inbox or Slack. And when something breaks, you hear about it first.",
-  note: "Included on the Pro plan · Delivers to email + Slack",
+  note: "Included with AI Intelligence and AI Ads CoPilot · Delivers to email + Slack",
   heroVisual: {
     kind: "timeline",
     title: "While you were away",
@@ -408,14 +408,14 @@ const automations: PlatformPage = {
   ],
   faq: [
     { q: "What are Drew AI Automations?", a: "Drew AI Automations are scheduled AI analyses of your real store data. Pick a ready-made template or describe the job in plain English, set a schedule, and Drew runs the full analysis — revenue, ads, customers, products — and delivers a formatted report or alert to your email or Slack. Reports arrive on schedule; alerts only fire when their condition trips." },
-    { q: "Which Datadrew plans include Automations?", a: "Drew AI Automations are included on Datadrew's Pro plan. Start for free on the Shopify App Store, connect your data, and upgrade to Pro when you're ready to put your reporting on a schedule. See the pricing page for current plan details." },
+    { q: "Which Datadrew plans include Automations?", a: "Drew AI Automations are included with AI Intelligence and AI Ads CoPilot. Start for free on the Shopify App Store, connect your data, and upgrade to AI Intelligence when you're ready to put your reporting on a schedule. Each run uses Drew credits from your monthly allowance. See the pricing page for current plan details." },
     { q: "Where do the reports and alerts arrive?", a: "Email and Slack. Scheduled reports land as formatted analyses with charts and recommendations. Alerts — like a revenue drop or an ad spend spike — only show up when something actually needs your attention, with the likely root cause included." },
     { q: "Can Drew change my ads by itself?", a: "Only with your approval. Drew's automations analyze and deliver — reports and alerts to email or Slack — and when Drew finds a fix worth making, it hands you the exact recommendation with the evidence attached. Execution is rolling out now: approve the change and Drew implements it — a campaign paused, a budget shifted — within guardrails you control. Nothing runs without your say-so." },
     { q: "Can I create my own custom automations?", a: "Yes. Templates are just the fast lane. Describe any recurring job in plain English — 'every Friday, compare this month's cohort LTV to last year's' — set the schedule and delivery, and Drew runs it. Any question you ask Drew in chat can become a recurring job." },
   ],
   closing: {
     headline: "Put your reporting on autopilot",
-    body: "Set up your first automation in minutes. Drew runs the analysis, your inbox gets the report — and when a fix is worth making, the recommendation comes with it. Drew AI Automations are included on Datadrew's Pro plan.",
+    body: "Set up your first automation in minutes. Drew runs the analysis, your inbox gets the report — and when a fix is worth making, the recommendation comes with it. Drew AI Automations are included with AI Intelligence and AI Ads CoPilot.",
   },
 };
 
@@ -425,7 +425,7 @@ const acquisition: PlatformPage = {
   nav: "Acquisition",
   title: "Acquisition Insights for Shopify",
   description:
-    "Turn ad spend into profitable growth. Connect Meta, Google Ads, GA4 and Shopify to uncover wasted spend, high-LTV campaigns, and scalable profit opportunities.",
+    "Connect Meta, Google Ads, GA4 and Shopify to see blended ROAS, true CAC and wasted spend in one view, and ask Drew why any number moved.",
   eyebrow: "Acquisition Insights",
   headline: "Turn ad spend into profitable growth",
   subhead:
@@ -584,7 +584,7 @@ const acquisition: PlatformPage = {
     { q: "What ad platforms does Acquisition Insights support?", a: "Acquisition Insights integrates with Meta Ads (Facebook and Instagram), Google Ads (Search, Shopping, PMax, Display), and Google Analytics 4 (GA4). Combined with your Shopify order data, it provides a unified view of CAC, LTV, ROAS, and contribution margin across all your paid channels." },
     { q: "How does Datadrew calculate CAC and LTV by channel?", a: "CAC is calculated by dividing your total ad spend per channel by the number of new customers attributed to that channel. LTV is tracked over 30, 60, and 90-day windows using Shopify order data, giving you a true picture of customer value beyond the first purchase. Datadrew combines ad platform data with Shopify revenue to provide accurate, blended metrics." },
     { q: "Can Drew AI identify wasted ad spend automatically?", a: "Yes. Drew AI continuously monitors your campaign performance and flags campaigns, ad groups, and keywords that are underperforming relative to your target ROAS or CAC thresholds. You can ask Drew AI specific questions like \"Which campaigns wasted the most budget last week?\" and get instant, actionable answers with specific reallocation recommendations." },
-    { q: "Is Acquisition Insights available on the free plan?", a: "Basic acquisition metrics and channel-level ROAS are available on the free plan with 3 months of historical data. Full Acquisition Insights — including CAC vs LTV analysis, AI-powered campaign audits, wasted spend detection, and unlimited history — are available on the Essentials and Pro plans. Visit the pricing page for details." },
+    { q: "Is Acquisition Insights available on the free plan?", a: "Basic acquisition metrics and channel-level ROAS are available on the free plan with 3 months of historical data. Full Acquisition Insights — including CAC vs LTV analysis, AI-powered campaign audits, wasted spend detection, and unlimited history — are included with AI Intelligence and AI Ads CoPilot. Visit the pricing page for details." },
     { q: "How quickly does data sync from my ad platforms?", a: "After connecting your ad accounts via 1-click OAuth, historical data is typically synced within a few hours. Ongoing data syncs happen daily, so your Acquisition Insights dashboard always reflects yesterday's performance. This ensures you can catch wasted spend and react to campaign changes promptly." },
   ],
   closing: {
@@ -599,7 +599,7 @@ const retention: PlatformPage = {
   nav: "Retention",
   title: "Retention Insights for Shopify",
   description:
-    "Advanced cohort analysis, RFM segmentation synced to Klaviyo, and LTV tracking. Turn first-time buyers into lifelong customers with AI-powered retention insight.",
+    "Cohort analysis, RFM segments synced to Klaviyo and LTV tracking, so Drew knows which customers are worth paying for before it moves ad budget.",
   eyebrow: "Retention Insights",
   headline: "Turn first-time buyers into lifelong customers",
   subhead:
@@ -753,7 +753,7 @@ const retention: PlatformPage = {
     { q: "How does RFM segmentation work?", a: "RFM stands for Recency, Frequency, and Monetary value. Datadrew scores each customer on these three dimensions and automatically assigns them to segments: Champions (best customers), Loyal, Promising, Need Attention, At Risk, and Lost. These segments update daily and can be synced directly to Klaviyo so you can trigger personalized email flows for each segment." },
     { q: "How does the Klaviyo sync work?", a: "Once you connect your Klaviyo account, Datadrew automatically syncs your RFM segments as Klaviyo lists or segments. When a customer moves between segments (e.g., from \"Loyal\" to \"At Risk\"), the sync updates within minutes. This lets you build targeted Klaviyo flows — like win-back campaigns for At Risk customers or VIP offers for Champions — without any manual list management." },
     { q: "What repeat purchase metrics can I track?", a: "Datadrew tracks a full suite of repeat purchase metrics including 30/60/90-day repeat rates, product-level repurchase rates, time between first and second purchase, cohort-based retention curves, revenue retention vs customer retention, and LTV by acquisition cohort. You can filter all metrics by acquisition channel, product category, or customer segment." },
-    { q: "Is Retention Insights available on the free plan?", a: "Basic retention metrics and cohort views are available on the free plan with 3 months of historical data. Full Retention Insights — including RFM segmentation, Klaviyo sync, product repurchase tracking, and unlimited history — are available on the Essentials and Pro plans. Visit the pricing page for details." },
+    { q: "Is Retention Insights available on the free plan?", a: "Basic retention metrics and cohort views are available on the free plan with 3 months of historical data. Full Retention Insights — including RFM segmentation, Klaviyo sync, product repurchase tracking, and unlimited history — are included with AI Intelligence and AI Ads CoPilot. Visit the pricing page for details." },
   ],
   closing: {
     headline: "Turn first-time buyers into lifelong customers",
@@ -767,7 +767,7 @@ const productIntelligence: PlatformPage = {
   nav: "Product Intelligence",
   title: "Product Intelligence for Shopify",
   description:
-    "Find the winners hiding in your catalog. Uncover which products drive repeat purchases, identify top bundles, and track product-level ROAS with AI product intelligence.",
+    "Find the winners hiding in your catalog: which products drive repeat purchases, which sell together, and product-level margin and ROAS.",
   eyebrow: "Product Intelligence",
   headline: "Find the winners hiding in your catalog",
   subhead:
@@ -948,7 +948,7 @@ const productIntelligence: PlatformPage = {
     { q: "What data does Product Intelligence use?", a: "Product Intelligence pulls data from your connected Shopify store, including order history, product catalog, and customer data. When you connect ad platforms (Meta Ads, Google Ads), it also brings in product-level ad spend and ROAS metrics. All data is synced automatically and updated daily." },
     { q: "How is repurchase rate calculated?", a: "Repurchase rate measures the percentage of customers who bought a specific product and then purchased it (or any product) again within a given time window. Datadrew calculates this using your complete Shopify order history, tracking individual customer purchase journeys across products and time periods." },
     { q: "Can I see product-level ad performance?", a: "Yes. When you connect Meta Ads and Google Ads, Datadrew maps ad spend back to individual products, giving you product-level ROAS, CPA, and profitability metrics. This lets you identify which products waste ad spend versus which drive profitable growth, so you can optimize budget allocation at the SKU level." },
-    { q: "Is Product Intelligence available on the free plan?", a: "Basic product metrics are available on the free plan with 3 months of historical data. Full Product Intelligence features — including repurchase analysis, basket analysis, product-level ad performance, and unlimited history — are available on the Essentials and Pro plans. Visit the pricing page for details." },
+    { q: "Is Product Intelligence available on the free plan?", a: "Basic product metrics are available on the free plan with 3 months of historical data. Full Product Intelligence features — including repurchase analysis, basket analysis, product-level ad performance, and unlimited history — are included with AI Intelligence and AI Ads CoPilot. Visit the pricing page for details." },
   ],
   closing: {
     headline: "Unlock hidden winners in your product catalog",
@@ -962,7 +962,7 @@ const creativeStrategy: PlatformPage = {
   nav: "Creative Strategy",
   title: "Creative Strategy for Shopify",
   description:
-    "Every Meta ad creative graded against your own account, read by AI for angle, hook and claims, grouped into concepts and tracked against your competitors — then turned into the next brief.",
+    "Every Meta ad creative graded against your own account, read for angle and hook, grouped into concepts and tracked against competitors.",
   eyebrow: "Creative Strategy",
   headline: "Know which ads are winning, which are dying, and what to brief next",
   subhead:
@@ -1212,7 +1212,7 @@ const creativeStrategy: PlatformPage = {
     { q: "What does Rivals show, and where does the data come from?", a: "Rivals is built on public data from Meta's Ad Library. You track up to five competitor brands per shop, each in the market you choose, because global brands run a separate Page in each country. Drew deduplicates Meta's many ad IDs down to one row per creative, compares complete snapshots week over week, and keeps a copy of the media so it still loads later. You see what launched and stopped in the last 7 days, which creatives have run 30 days or more, their format, call-to-action and creator mix, and which ads are catalogue templates. Meta publishes no spend or results for competitor ads in any market, so none is shown or estimated. A Competitor Watch report can be scheduled as an automation, Monday mornings by default." },
     { q: "Can Drew act on a creative verdict?", a: "Yes, with your approval. From a creative diagnosis Drew proposes pausing a dead creative or scaling a winner as a recommendation card with the evidence attached. You approve it and Drew executes the change within your guardrails. Execution is rolling out now, so what is click-to-apply depends on what is enabled for your account." },
     { q: "Does Drew write the creative brief?", a: "Drew writes briefs conversationally. Ask for the iteration brief on a winning or fatiguing creative and Drew keeps the concept, changes the hook, and cites the tags, claims, objections and numbers that made the parent work — with hook-body-CTA structure, UGC script beats and one-variable A/B tests. Drew does not generate images or video; the brief is written for your editor or creator to produce." },
-    { q: "Is Creative Strategy available on the free plan?", a: "Creative Strategy ships inside the existing plans rather than as a separate add-on. The free plan carries limited history; Essentials and Pro carry unlimited history and the full Drew AI credit allocation that conversational creative analysis and briefs draw on. Visit the pricing page for details." },
+    { q: "Is Creative Strategy available on the free plan?", a: "Creative Strategy ships inside the existing plans rather than as a separate add-on. The free plan carries 3 months of history; AI Intelligence and AI Ads CoPilot carry all history and the monthly Drew credit allowance that conversational creative analysis and briefs draw on. Visit the pricing page for details." },
   ],
   closing: {
     headline: "Know what to brief next",

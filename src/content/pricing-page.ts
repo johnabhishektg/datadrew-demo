@@ -1,140 +1,191 @@
-/* /pricing — ported from datadrew.io/pricing (live copy "Last updated: May
- * 2026"; ladder from pricing/pricing.js, which cites
- * help.datadrew.io/en/articles/12276124-pricing-plans-datadrew-ai).
- * Monthly USD per rolling-12-month GMV band. Yearly = 2 months free
- * (round(monthly × 10 / 12) per month, billed annually). Drew AI credits:
- * Free fixed 1,000 one-time; paid = ceil(monthly/10)×10 × 30 (Essentials)
- * or × 50 (Pro) — mirrors the backend formula the live page uses. */
+/* /pricing — mirrors datadrew.io/pricing (live pricing/pricing.js, "Datadrew
+ * Pricing Master v5.1, 5 Sep 2026"). Three tiers: Free (your data, in your AI)
+ * / AI Intelligence (your analyst) / AI Ads CoPilot (your media buyer —
+ * access reviewed per account, never self-serve checkout). Monthly USD per
+ * rolling-12-month GMV band. Yearly = 2 months free (round(monthly × 10 / 12)
+ * per month, billed annually). Drew credits: Free fixed 1,000 one-time; paid
+ * = ceil(monthly/10)×10 × 30 for both paid tiers — the backend formula. MCP
+ * is free to connect on every plan and MCP reads use zero credits. */
 
-export type GmvBand = { label: string; essentials: number | null; pro: number | null };
+export type PlanId = "free" | "intelligence" | "copilot";
+export type GmvBand = { label: string; intelligence: number | null; copilot: number | null };
 
 export const gmvBands: GmvBand[] = [
-  { label: "<$250k", essentials: 99, pro: 149 },
-  { label: "$250k – $500k", essentials: 99, pro: 149 },
-  { label: "$500k – $1M", essentials: 99, pro: 149 },
-  { label: "$1M – $2.5M", essentials: 149, pro: 199 },
-  { label: "$2.5M – $5M", essentials: 229, pro: 339 },
-  { label: "$5M – $7.5M", essentials: 299, pro: 369 },
-  { label: "$7.5M – $10M", essentials: 369, pro: 449 },
-  { label: "$10M – $15M", essentials: 489, pro: 579 },
-  { label: "$15M – $20M", essentials: 649, pro: 779 },
-  { label: "$20M – $30M", essentials: 799, pro: 949 },
-  { label: "$30M – $40M", essentials: 1100, pro: 1300 },
-  { label: "$40M – $50M", essentials: 1350, pro: 1600 },
-  { label: "$50M+", essentials: null, pro: null },
+  { label: "<$250k", intelligence: 99, copilot: 249 },
+  { label: "$250k – $500k", intelligence: 99, copilot: 249 },
+  { label: "$500k – $1M", intelligence: 99, copilot: 299 },
+  { label: "$1M – $2.5M", intelligence: 149, copilot: 399 },
+  { label: "$2.5M – $5M", intelligence: 229, copilot: 679 },
+  { label: "$5M – $7.5M", intelligence: 299, copilot: 749 },
+  { label: "$7.5M – $10M", intelligence: 369, copilot: 899 },
+  { label: "$10M – $15M", intelligence: 489, copilot: 1149 },
+  { label: "$15M – $20M", intelligence: 649, copilot: 1549 },
+  { label: "$20M – $30M", intelligence: 799, copilot: null },
+  { label: "$30M – $40M", intelligence: 1100, copilot: null },
+  { label: "$40M – $50M", intelligence: 1350, copilot: null },
+  { label: "$50M+", intelligence: null, copilot: null },
 ];
 
+/** Default band shown on load — the entry of the ICP (same as live). */
+export const DEFAULT_BAND = 2;
+
 export const FREE_CREDITS = 1000;
-export const creditMultiplier = { essentials: 30, pro: 50 } as const;
+export const CREDIT_MULTIPLIER = 30;
 
 export function yearlyPerMonth(monthly: number | null) {
   if (monthly === null || monthly === 0) return monthly;
   return Math.round((monthly * 10) / 12);
 }
 
-export function planCredits(plan: "free" | "essentials" | "pro", monthly: number | null) {
+export function planCredits(plan: PlanId, monthly: number | null) {
   if (plan === "free") return FREE_CREDITS;
   if (monthly === null) return null;
-  return Math.ceil(monthly / 10) * 10 * creditMultiplier[plan];
+  return Math.ceil(monthly / 10) * 10 * CREDIT_MULTIPLIER;
 }
-
-export type PlanId = "free" | "essentials" | "pro";
 
 export type PlanCard = {
   id: PlanId;
+  kicker: string;
   name: string;
   tagline: string;
   creditsLabel: (credits: string) => string;
   lead?: string;
   groups: { title?: string; items: string[] }[];
+  footer: string;
   cta: { label: string; href: string };
+  /** Shown under the CTA — used on CoPilot to say exactly how access works. */
+  ctaNote?: string;
+  /** Copy for bands where the price is `null`. */
+  customLabel?: string;
+  customNote?: string;
   popular?: boolean;
 };
 
 export const planCards: PlanCard[] = [
   {
     id: "free",
+    kicker: "Start with your data",
     name: "Free",
-    tagline: "Jump in — no credit card required",
-    creditsLabel: (c) => `${c} Drew AI welcome credits`,
+    tagline: "Your Shopify and ads data, in the AI you already use.",
+    creditsLabel: (c) => `${c} welcome credits · one time`,
     groups: [
       {
-        items: [
-          "Historical data — last 3 months",
-          "Core analytics",
-          "Blended ads summary",
-          "LTV cohort analysis",
-          "Basic customer segments",
-          "Standard store performance",
-        ],
+        title: "Datadrew MCP",
+        items: ["Your connected data in Claude or ChatGPT", "Live dashboards · Prompt library", "MCP reads use zero Drew credits"],
       },
-      { title: "Supporting", items: ["10 users", "Unlimited ad accounts"] },
+      { title: "Connected data", items: ["Shopify · Meta Ads · Google Ads · GA4 · Klaviyo"] },
+      { title: "Core dashboards", items: ["Shopify store performance", "Blended ads summary"] },
+      { title: "Try Drew", items: ["Analysis and recommendations with 1,000 one-time welcome credits"] },
+      { title: "Support", items: ["Help centre · Email support"] },
     ],
-    cta: { label: "Start for free", href: "https://app.datadrew.io" },
+    footer: "3 months of history · Daily refresh · Up to 10 teammates · Unlimited ad accounts",
+    cta: { label: "Start free", href: "https://app.datadrew.io" },
+    ctaNote: "No credit card required.",
   },
   {
-    id: "essentials",
-    name: "Essentials",
-    tagline: "Built for fast growing Shopify brands",
-    creditsLabel: (c) => `${c} Drew AI credits / month`,
+    id: "intelligence",
+    kicker: "Add Drew's intelligence",
+    name: "AI Intelligence",
+    tagline: "Know what to scale, what to fix and what to test next.",
+    creditsLabel: (c) => `${c} Drew credits / month`,
     lead: "Everything in Free, plus:",
     popular: true,
     groups: [
-      { items: ["Historical data — all time"] },
       {
-        title: "Retention",
+        title: "Ask Drew · your AI ads agent",
         items: [
-          "Advanced cohort analysis (with filters & breakdowns)",
-          "RFM segmentation",
-          "Segment sync to Klaviyo",
-          "Retention benchmarks",
+          "Diagnose changes, compare performance and get next-step recommendations — grounded in your store, ads, customers, products and creative history",
+          "Charts, reports and shareable artifacts",
+          "Brand context & memory: products, margins, promotions and past decisions",
         ],
       },
-      { title: "Acquisition", items: ["Campaign analysis across Meta Ads & Google Ads", "Website performance (GA4)"] },
+      { title: "Datadrew MCP", items: ["Datadrew's computed creative, product and cohort insights in Claude or ChatGPT"] },
+      { title: "Creatives", items: ["Creative leaderboard · Track creative concepts · Track competitor ads"] },
+      { title: "Product intelligence", items: ["Product performance · Basket analysis · Product LTV & repurchase"] },
+      { title: "Retention", items: ["Cohort analysis · Customer segments (incl. RFM) · Retention benchmarks"] },
       {
-        title: "Plus, you get",
-        items: [
-          "Unlimited ad accounts",
-          "Scheduled reports",
-          "CSV data exports",
-          "Multi-store support",
-          "Datadrew MCP (connect Claude, Cursor & more)",
-        ],
+        title: "Automations",
+        items: ["Daily Ads Brief · Spend spike alerts · Weekly summaries to Slack or email", "16+ templates, or describe any workflow in plain English"],
       },
-      { title: "Supporting", items: ["Unlimited users", "Setup assistance", "Extended customer success"] },
+      { title: "Drew in Slack", items: ["Ask @Drew in a thread · Charts and recommendations in the channel"] },
+      { title: "Support", items: ["Setup assistance · Extended customer success"] },
     ],
-    cta: { label: "Start for free", href: "https://app.datadrew.io" },
+    footer: "All history · Hourly refresh · Unlimited teammates",
+    cta: { label: "Try free for 7 days", href: "https://app.datadrew.io" },
+    ctaNote: "No credit card required.",
+    customLabel: "Custom",
+    customNote: "Custom pricing above $50M GMV",
   },
   {
-    id: "pro",
-    name: "Pro",
-    tagline: "For large product catalog Shopify brands",
-    creditsLabel: (c) => `${c} Drew AI credits / month`,
-    lead: "Everything in Essentials, plus:",
+    id: "copilot",
+    kicker: "Hand over the execution",
+    name: "AI Ads CoPilot",
+    tagline: "Your AI media buyer, from insight to approved action.",
+    creditsLabel: (c) => `${c} Drew credits / month`,
+    lead: "Everything in AI Intelligence, plus:",
     groups: [
-      { items: ["Historical data — all time"] },
-      { title: "Product intelligence", items: ["Product performance", "Basket analysis", "Product repurchase rate"] },
-      { title: "Drew AI", items: ["Drew AI Automations (scheduled reports & alerts)", "Deep analysis mode"] },
-      { title: "Supporting", items: ["1:1 growth consulting for 1 month"] },
+      {
+        title: "Ads execution · Meta Ads + Google Ads",
+        items: ["Approved budget changes · Pauses · Campaign updates", "Drew proposes, you approve, Drew applies — inside the controls agreed with you"],
+      },
+      {
+        title: "Product performance management",
+        items: ["Create and optimise product sets and groups in catalog ads across Meta and Google"],
+      },
+      { title: "Approval controls", items: ["Approval workflows · Budget guardrails · Margin floors"] },
+      { title: "Automations", items: ["Everything in AI Intelligence, plus execution workflows"] },
+      { title: "Audience activation", items: ["Customer segments to Klaviyo and Meta audiences, included"] },
+      { title: "Support", items: ["Guided onboarding · Extended customer success"] },
     ],
-    cta: { label: "Book a demo", href: "/book" },
+    footer: "All history · Hourly refresh · Unlimited teammates",
+    cta: { label: "Request access", href: "https://calendly.com/sumit-growth/discussion" },
+    ctaNote: "Access is reviewed account by account. No checkout, no card. We reply within two business days.",
+    customLabel: "Talk to us",
+    customNote: "Custom pricing above $20M GMV",
   },
 ];
 
 export const pricingPage = {
   eyebrow: "Pricing",
-  headline: "Plans for the AI ads agent for Shopify brands",
-  subhead: "Zero hidden fees. Pure value. Grow confidently.",
-  updated: "Last updated: May 2026",
-  trust: ["Data encrypted at rest & in transit", "7-day free trial", "1,000+ brands trust us", "Cancel anytime"],
-  gmvLabel: "GMV in last 12 months",
-  billing: { monthly: "Monthly", yearly: "Yearly", save: "Save 2 months" },
-  plansHeadline: "Pricing plans for Shopify brands",
+  headline: "Pricing that scales with the impact Drew drives.",
+  subhead: "Start free, no card. Pick your plan by the work you hand over, and your band by your Shopify sales.",
+  updated: "Last updated: September 2026",
+  trust: ["1,000+ Shopify brands", "$1.5Bn+ GMV analysed", "5.0★ Shopify App Store", "Cancel anytime"],
+  gmvLabel: "Annual Shopify sales",
+  gmvHelp:
+    "Choose your rolling last 12 months of Shopify sales. Your plan is a flat fee for that band; pricing and monthly credits update together.",
+  billing: { monthly: "Monthly", yearly: "Yearly", save: "2 months free" },
+  plansHeadline: "Flat fee for your GMV band. Credits grow with your plan.",
+  cardsNote:
+    "Monthly USD, banded by rolling 12-month GMV. Yearly billing = 2 months free. 7-day free trial on AI Intelligence, no card required. AI Ads CoPilot access is reviewed per account.",
+  /* The "is this worth it" frame, before the tiers. A media buyer is the
+   * honest comparison: this is the job Drew does, and the market rate is
+   * public. No outcome claim is made. */
+  roi: {
+    headline: "A fraction of a media buyer. None of the contract.",
+    body: "The daily ads-management loop — brief, diagnosis, leakage checks, budget calls — is a media buyer's job. Freelance and agency media buying for a Shopify brand typically runs $2,000–$8,000 a month plus a percentage of spend. Drew starts at $99, monthly, banded by your GMV rather than your ad budget.",
+  },
   help: {
-    headline: "Not sure which plan is right for you?",
-    body: "Most Shopify brands start with the free plan to see their blended performance in one place, then upgrade to Essentials when they need RFM segments, Klaviyo sync, and campaign-level reporting. Pro is ideal for brands with large catalogs that need product repurchase and basket analysis.",
+    headline: "Which plan is right for me?",
+    items: [
+      { plan: "Free", body: "if you want your store and ads data inside the AI you already use." },
+      {
+        plan: "AI Intelligence",
+        body: "if you run paid ads and want Drew to tell you what to scale, fix and test — in Slack and in your AI.",
+      },
+      {
+        plan: "AI Ads CoPilot",
+        body: "if you want Drew to make the approved changes in Meta and Google, with guardrails.",
+      },
+    ],
     primary: { label: "Start free, upgrade later", href: "https://app.datadrew.io" },
-    secondary: { label: "Talk to our team", href: "/book" },
+    secondary: { label: "Talk to our team", href: "https://calendly.com/sumit-growth/discussion" },
+  },
+  agencies: {
+    headline: "Running growth for multiple brands?",
+    body: "Manage multiple Shopify stores from one account, standardise client reporting, give every store its own brand context and keep each client's data and access separate. Custom portfolio pricing and onboarding for agencies managing multiple stores.",
+    primary: { label: "Talk to us about agency access", href: "https://calendly.com/sumit-growth/discussion" },
+    secondary: { label: "Agency partner programme", href: "/partners/become-a-partner" },
   },
   testimonial: {
     quote:
@@ -143,85 +194,125 @@ export const pricingPage = {
     role: "CEO, Finca Skin Organics",
   },
   experts: {
-    headline: "Get in touch with our industry experts today",
-    body: "Let our experienced team help you clarify your next steps. Personalized walkthrough, custom strategy, and integration setup assistance.",
-    cta: { label: "Book a demo", href: "/book" },
+    headline: "Not sure which band or plan you're in?",
+    body: "Book a 30-minute walkthrough. We'll look at your store, your ad accounts and your team, and tell you plainly which plan fits — including whether CoPilot access makes sense for you yet.",
+    cta: { label: "Book a demo", href: "https://calendly.com/sumit-growth/discussion" },
   },
 };
 
-/* "Compare all features" table. "✓" renders as a check; "—" as a dash. */
+/* "Compare every plan" table. "✓" renders as a check; "—" as a dash. */
 export const compareTable: { group: string; rows: { label: string; note?: string; cells: [string, string, string] }[] }[] = [
   {
-    group: "Analytics",
+    group: "Drew, your AI ads agent",
     rows: [
-      { label: "Customer LTV analysis", cells: ["Basic", "Full", "Full + Product LTV"] },
-      { label: "Cohort analysis", cells: ["Basic (3-month)", "All-time + Filters", "All-time + Custom"] },
-      { label: "Blended ads summary", cells: ["✓", "✓", "✓"] },
-      { label: "Store performance", cells: ["Standard", "✓", "✓"] },
-      { label: "RFM segmentation", cells: ["—", "✓", "✓"] },
-      { label: "Retention benchmarks", cells: ["—", "✓", "✓"] },
-      { label: "Product intelligence", cells: ["—", "—", "✓"] },
-      { label: "Basket analysis", cells: ["—", "—", "✓"] },
-      { label: "Product repurchase rate", cells: ["—", "—", "✓"] },
-    ],
-  },
-  {
-    group: "Acquisition",
-    rows: [
-      { label: "Meta Ads campaigns", cells: ["—", "✓", "✓"] },
-      { label: "Google Ads campaigns", cells: ["—", "✓", "✓"] },
-      { label: "GA4 website performance", cells: ["—", "✓", "✓"] },
-      { label: "Hourly performance tracking", cells: ["—", "✓", "✓"] },
-    ],
-  },
-  {
-    group: "Integrations & exports",
-    rows: [
-      { label: "Shopify (one-click)", cells: ["✓", "✓", "✓"] },
-      { label: "Ad accounts", cells: ["Unlimited", "Unlimited", "Unlimited"] },
-      { label: "Klaviyo segment sync", cells: ["—", "✓", "✓"] },
-      { label: "Multi-store support", cells: ["—", "✓", "✓"] },
-      { label: "Scheduled reports", cells: ["—", "✓", "✓"] },
-      { label: "CSV data exports", cells: ["—", "✓", "✓"] },
-    ],
-  },
-  { group: "Data & history", rows: [{ label: "Historical data", cells: ["3 months", "All-time", "All-time"] }] },
-  {
-    group: "Drew AI",
-    rows: [
-      { label: "Drew AI access", cells: ["Limited", "✓", "✓"] },
       {
-        label: "Drew AI credits",
-        note: "Free: one-time welcome grant. Paid plans: monthly, scales with your GMV tier.",
+        label: "Drew credits",
+        note: "Free: one-time welcome grant. Paid plans: monthly allowance that scales with your GMV band. MCP reads use zero credits.",
         cells: ["1,000 (one-time)", "From 3,000 / month", "From 7,500 / month"],
       },
-      { label: "Real-time data queries", cells: ["—", "✓", "✓"] },
-      { label: "Auto-generated charts", cells: ["—", "✓", "✓"] },
-      { label: "Deep analysis mode", cells: ["—", "—", "✓"] },
-      { label: "Drew AI Automations", note: "Scheduled reports & AI-generated alerts", cells: ["—", "—", "✓"] },
+      { label: "Ask Drew — diagnose, compare, recommend", cells: ["With welcome credits", "✓", "✓"] },
+      { label: "Brand context & memory", cells: ["With welcome credits", "✓", "✓"] },
+      { label: "Charts, reports & shareable artifacts", cells: ["With welcome credits", "✓", "✓"] },
+      { label: "Creative briefs & scripts with Drew", note: "Meta Ads only, in beta", cells: ["—", "✓", "✓"] },
+      { label: "Drew in Slack", cells: ["—", "✓", "✓"] },
+    ],
+  },
+  {
+    group: "Datadrew MCP for Claude & ChatGPT",
+    rows: [
+      { label: "Your connected data in your AI", note: "Shopify, Meta Ads, Google Ads, GA4 and Klaviyo reads. Zero Drew credits.", cells: ["✓", "✓", "✓"] },
+      { label: "Datadrew's computed insights", note: "Creative, product and cohort intelligence", cells: ["—", "✓", "✓"] },
+      { label: "Execution playbooks", cells: ["—", "—", "✓"] },
+      { label: "Live dashboards & prompt library", cells: ["✓", "✓", "✓"] },
+    ],
+  },
+  {
+    group: "Intelligence",
+    rows: [
+      { label: "Dashboards", cells: ["Store performance · Blended ads", "Every dashboard", "Every dashboard"] },
+      { label: "Creatives — leaderboard, concepts, competitor ads", cells: ["—", "✓", "✓"] },
+      { label: "Product intelligence — performance, baskets, repurchase", cells: ["—", "✓", "✓"] },
+      { label: "Retention — cohorts, segments incl. RFM, benchmarks", cells: ["—", "✓", "✓"] },
+      { label: "Automations — Daily Ads Brief, alerts, summaries", cells: ["—", "✓", "✓ + execution workflows"] },
+    ],
+  },
+  {
+    group: "Execution",
+    rows: [
+      { label: "Ads execution — Meta Ads + Google Ads agents", note: "Approved budget changes, pauses, campaign updates", cells: ["—", "—", "✓"] },
+      { label: "Product performance management in catalog ads", cells: ["—", "—", "✓"] },
+      { label: "Approval workflows · Budget guardrails · Margin floors", cells: ["—", "—", "✓"] },
+      { label: "Audience activation — segments to Klaviyo & Meta", cells: ["—", "Add-on", "✓"] },
+    ],
+  },
+  {
+    group: "Data & team",
+    rows: [
+      { label: "Historical data", cells: ["3 months", "All history", "All history"] },
+      { label: "Data refresh", cells: ["Daily", "Hourly", "Hourly"] },
+      { label: "Teammates", cells: ["Up to 10", "Unlimited", "Unlimited"] },
+      { label: "Ad accounts", cells: ["Unlimited", "Unlimited", "Unlimited"] },
     ],
   },
   {
     group: "Support",
     rows: [
-      { label: "Users", cells: ["10", "Unlimited", "Unlimited"] },
-      { label: "Setup assistance", cells: ["—", "✓", "✓"] },
-      { label: "Customer success", cells: ["—", "Extended", "Extended"] },
-      { label: "1:1 growth consulting", cells: ["—", "—", "1 month"] },
+      { label: "Help centre · Email support", cells: ["✓", "✓", "✓"] },
+      { label: "Setup assistance · Extended customer success", cells: ["—", "✓", "✓"] },
+      { label: "Guided onboarding", cells: ["—", "—", "✓"] },
     ],
   },
 ];
 
+export const compareColumns = ["Free", "AI Intelligence", "AI Ads CoPilot"] as const;
+
 export const pricingFaq = [
-  { q: "Is my data safe with your platform?", a: "Yes, absolutely. We take data security very seriously. Your data is encrypted in transit and at rest, and we follow industry best practices for security. We never share your data with third parties. Our infrastructure is hosted on secure cloud providers with SOC 2 compliance." },
-  { q: "Can I add a second Shopify store to my account?", a: "Yes! With our Essentials and Pro plans, you can connect unlimited Shopify stores to a single account. Multi-store support lets Drew work across all your stores from one account." },
-  { q: "Is there a trial period to test your product?", a: "Yes, we offer a 7-day free trial on our Essentials and Pro plans so you can explore all the features before committing. No credit card required. You can also use our Free plan indefinitely with the core features." },
-  { q: "Can I cancel my subscription at any time?", a: "Yes, you can cancel your subscription at any time. We believe in flexibility and don't lock you into long-term contracts. If you cancel, you'll retain access until the end of your current billing period." },
-  { q: "How can I manage my subscription?", a: "You can manage your subscription directly through our in-app chat support or by emailing us at support@datadrew.io. Our team is always happy to help with any billing or account changes." },
-  { q: "How is my GMV tier calculated?", a: "Your GMV (Gross Merchandise Value) tier is based on your rolling last 12 months of Shopify sales. It's calculated automatically from your connected Shopify store — you don't need to enter it manually. As your store grows, your plan moves to the next tier so pricing stays fair and aligned to the value you're getting." },
-  { q: "What happens when I run out of Drew AI credits?", a: "If you exhaust your monthly Drew AI credits, Drew AI will pause further queries until your next monthly reset. You can also purchase top-up credit bundles anytime from your billing page to continue without waiting. Your Drew AI credit allowance refreshes on the 1st of every month, and scales automatically with your GMV tier on paid plans." },
-  { q: "Can I switch plans mid-cycle?", a: "Yes, you can upgrade or downgrade your plan at any time directly from the billing page. Upgrades take effect immediately and are prorated — you only pay the difference for the remainder of your billing cycle. Downgrades take effect at the end of your current billing period so you keep the features you've paid for." },
-  { q: "What integrations are included?", a: "All paid plans include integrations with Shopify, Meta Ads (Facebook & Instagram), Google Ads, Google Analytics 4, and Klaviyo. Connections are one-click OAuth — no technical setup required. Free, Essentials, and Pro all support unlimited ad accounts. See our full integrations list." },
-  { q: "Do you offer a discount for annual billing?", a: "Yes. Pay annually and get 2 months free — you pay for 10 months and get 12. You can switch between monthly and annual billing at any time from the billing page." },
-  { q: "What's the difference between Essentials and Pro?", a: "Essentials is built for fast-growing brands who need full retention analysis (RFM segmentation, cohort analysis, Klaviyo sync) and campaign-level acquisition reporting across Meta Ads, Google Ads, and GA4. Pro adds product intelligence (product performance, basket analysis, repurchase rate), Drew AI Automations, deep analysis mode in Drew AI, and 1:1 growth consulting — ideal for brands with large product catalogs or that want hands-off, AI-driven insights delivered automatically." },
+  {
+    q: "What's the difference between Free, AI Intelligence and AI Ads CoPilot?",
+    a: "Every plan sees Drew's recommendations; the difference is how much of the work Drew does. Free puts your data in your AI: 3 months of history, daily refresh, core dashboards, and Datadrew MCP so Claude or ChatGPT can read your Shopify and ads data. AI Intelligence makes Drew your analyst: all-time history, hourly refresh, every dashboard (cohort LTV, RFM, product, creative and acquisition intelligence), Drew AI Automations for scheduled reports and alerts, and a monthly Drew credit allowance from 3,000. AI Ads CoPilot makes Drew your media buyer: everything in AI Intelligence plus one-click Apply, so Drew makes the approved change in Meta Ads and Google Ads within the guardrails you set. Everyone sees the recommendations; only CoPilot applies them.",
+  },
+  {
+    q: "What exactly can Drew execute today on AI Ads CoPilot?",
+    a: "Approved budget changes, pauses and campaign updates in Meta Ads and Google Ads, plus product sets and groups in catalog ads. Drew proposes the change with the evidence, you approve it, and Drew applies it inside approval workflows, budget guardrails and margin floors you set. Ads execution is enabled account by account, so CoPilot is not self-serve and there is no checkout for it: request access with your store URL, monthly ad spend and channels, and we review every account individually and reply within two business days.",
+  },
+  {
+    q: "Does Drew make changes to my ad accounts?",
+    a: "On AI Ads CoPilot, yes. Drew proposes the change (a budget move, a pause, a scale-up or scale-down, a campaign update), you approve it, and Drew makes it in Meta Ads or Google Ads within the guardrails you set. On Free and AI Intelligence, Drew recommends and you make the change yourself. Drew never executes without an approval path, and knowing when not to touch an account is part of its judgment.",
+  },
+  {
+    q: "Is Datadrew MCP free? Can I use Claude or ChatGPT with my data on the Free plan?",
+    a: "Yes. Connecting Claude, ChatGPT, Cursor or any MCP client to your own connected data is free on every plan, including Free, and MCP reads never use Drew credits. Free gives your AI real-time reads of Shopify, Meta Ads, Google Ads, GA4 and Klaviyo with 3 months of history. AI Intelligence adds the analyst layer: cohort LTV, RFM, product performance, blended MER and CAC, benchmarks, all-time history and Drew's analyst playbooks in-session. AI Ads CoPilot adds execution playbooks.",
+  },
+  {
+    q: "What are Drew AI Automations?",
+    a: "Recurring analyses that run on a schedule and land in Slack or email: the Daily Ads Brief, spend-spike and revenue-drop alerts, weekly and monthly summaries. Start from one of 16+ templates or describe the job in plain English, set the schedule and delivery, and Drew runs it. Automations are included with AI Intelligence and AI Ads CoPilot. Each run uses Drew credits from your monthly allowance.",
+  },
+  {
+    q: "Why not just connect ChatGPT or Claude to my ad account?",
+    a: "You can, and on Free that is exactly what Datadrew MCP is for. We built the server, and the data access is free. A chat session with your data is a good analyst. What it lacks is what compounds: the brand context Drew keeps across sessions (your margins, inventory, promotions, what you've already tried), the daily loop that runs unasked (the Daily Ads Brief, alerts, leakages) and, on AI Ads CoPilot, the ability to make the approved change with guardrails. Start with your data in your AI; upgrade when you want the analyst and the media buyer.",
+  },
+  {
+    q: "How is my GMV tier calculated?",
+    a: "Your GMV (Gross Merchandise Value) tier is based on your rolling last 12 months of Shopify sales. It is calculated automatically from your connected Shopify store; you don't need to enter it manually. As your store grows, your plan moves to the next tier so pricing stays aligned to the value you're getting. Pricing is a flat monthly fee for your band; it does not track your ad spend or the number of users.",
+  },
+  {
+    q: "What happens when I run out of Drew credits?",
+    a: "Free includes a one-time welcome grant of 1,000 Drew credits. AI Intelligence and AI Ads CoPilot include a monthly allowance that scales with your GMV band, from 3,000 and 7,500 credits a month respectively, refreshed on the 1st of every month. If you use them up, Drew pauses further queries until the reset, or you can buy a top-up credit pack from your billing page at any time. MCP reads never use credits.",
+  },
+  {
+    q: "Is there a free trial?",
+    a: "Yes. AI Intelligence comes with a 7-day free trial so you can explore every feature before committing, and the Free plan needs no credit card and can be used indefinitely. AI Ads CoPilot is access-reviewed rather than trialled: request access and we'll qualify your account.",
+  },
+  {
+    q: "Do you offer a discount for annual billing?",
+    a: "Yes. Pay annually and get 2 months free: you pay for 10 months and get 12. You can switch between monthly and annual billing at any time from the billing page.",
+  },
+  {
+    q: "Can I cancel my subscription at any time?",
+    a: "Yes. There are no 12-month contracts. Cancel from the billing page and you keep access until the end of your current billing period.",
+  },
+  {
+    q: "Is my data safe with Datadrew?",
+    a: "Yes. Your data is encrypted in transit and at rest, hosted on SOC 2-compliant cloud infrastructure, and never sold or shared with third parties. Drew's MCP access is OAuth-scoped to your workspace and read-only.",
+  },
 ];

@@ -539,7 +539,7 @@ export const integrationPages: IntegrationPage[] = [
     title: "Amazon Ads Integration",
     subhead:
       "Connect your Amazon Advertising account via secure OAuth to track Sponsored Products, Sponsored Brands, and Sponsored Display campaign performance. Your data is accessed exclusively for your account — never shared with or visible to other advertisers.",
-    seoTitle: "Amazon Ads Integration — Your Advertising Data, Your Insights",
+    seoTitle: "Amazon Ads Integration — Ads Data Beside Shopify Numbers",
     metaDescription:
       "Connect Amazon Ads to Datadrew via OAuth. Track Sponsored Products, Brands and Display alongside Amazon sales and your other channels.",
     intro: {
@@ -622,7 +622,7 @@ export const integrationPages: IntegrationPage[] = [
     title: "Unicommerce Integration",
     subhead:
       "Connect your Unicommerce account to get AI-powered insight across Myntra, Flipkart, Amazon IN, and every Indian sales channel you sell on. Unify inventory, sales, and product data in one dashboard — no other AI ads agent offers this.",
-    seoTitle: "Unicommerce Integration — Sales & Inventory Data for Indian Marketplaces",
+    seoTitle: "Unicommerce Integration — Indian Marketplace Sales & Stock",
     metaDescription:
       "Datadrew is the only AI ads agent with a Unicommerce integration. AI insights across Myntra, Flipkart, Amazon IN and quick commerce next to Shopify.",
     intro: {
@@ -817,5 +817,5 @@ export function getIntegrationCatalog(page: IntegrationPage): Integration {
 
 export const integrationCtas = {
   connect: { label: "Connect in the app", href: APP_INTEGRATIONS },
-  demo: { label: "Book a demo", href: "/book" },
+  demo: { label: "Book a demo", href: "https://calendly.com/sumit-growth/discussion" },
 };

@@ -48,6 +48,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
       headline: c.title,
       description: c.metaDescription,
       url: `https://${site.domain}/vs/${c.slug}/`,
+      dateModified: c.updated,
       isPartOf: { "@id": SITE_ID },
       about: { "@id": ORG_ID },
       inLanguage: "en",
@@ -73,12 +74,30 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
         crumbs={[{ label: name }]}
       >
         <ShopifyBadge height={36} />
-        <CtaButton href="/book" variant="outline">
+        <CtaButton href="https://calendly.com/sumit-growth/discussion" variant="outline">
           Book a demo
         </CtaButton>
       </PageHeader>
 
-      <div className="mx-auto mt-12 w-full max-w-6xl px-5 md:px-8">
+      {/* Quick answer: the verdict in the first 200 words, as plain HTML. */}
+      <div className="mx-auto mt-10 w-full max-w-6xl px-5 md:px-8">
+        <div className="rounded-3xl border border-brand/30 bg-brand-soft/40 p-6 md:p-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">Quick answer</p>
+          <p className="mt-3 text-pretty text-base font-medium leading-relaxed md:text-lg">{c.quickAnswer.verdict}</p>
+          <ul className="mt-4 grid gap-2 text-sm text-muted-foreground md:grid-cols-3 md:gap-4">
+            {c.quickAnswer.points.map((pt) => (
+              <li key={pt} className="flex gap-2">
+                <span aria-hidden className="mt-[0.6em] size-1.5 shrink-0 rounded-full bg-brand" />
+                <span>{pt}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 font-mono text-xs text-muted-foreground">
+            Page reviewed <time dateTime={c.updated}>{new Date(`${c.updated}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</time> · prices as noted in each table
+          </p>
+        </div>
+      </div>
+      <div className="mx-auto mt-10 w-full max-w-6xl px-5 md:px-8">
         <ContrastTiles c={c} />
       </div>
 
@@ -129,7 +148,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
           <p className="text-pretty text-base text-muted-foreground md:text-lg">{c.finalCta.subhead}</p>
           <div className="mt-2 flex flex-wrap justify-center gap-3">
             <CtaButton href={appStoreUrl}>Start for free</CtaButton>
-            <CtaButton href="/book" variant="outline">
+            <CtaButton href="https://calendly.com/sumit-growth/discussion" variant="outline">
               Book a demo
             </CtaButton>
           </div>

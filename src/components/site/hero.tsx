@@ -1,11 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { appStore, hero, site } from "@/content/site";
 import { HeroVisual } from "./hero-visual";
-import { ShopifyBadge } from "./shopify-badge";
 
 export function Hero() {
   return (
@@ -72,12 +70,8 @@ export function Hero() {
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="h-11 rounded-lg px-6 text-base">
-              <Link href="/#product">{hero.secondaryCta.label}</Link>
+              <a href={hero.demoCta.href}>{hero.demoCta.label}</a>
             </Button>
-          </div>
-          <p className="mt-4 text-xs text-muted-foreground">{hero.finePrint}</p>
-          <div className="mt-2 flex justify-center">
-            <ShopifyBadge height={40} />
           </div>
         </BlurFade>
 

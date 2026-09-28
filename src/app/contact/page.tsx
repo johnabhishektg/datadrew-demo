@@ -107,7 +107,7 @@ export default function ContactPage() {
               {contact.demo.headline}
             </h3>
             <p className="text-sm leading-relaxed text-muted-foreground">{contact.demo.body}</p>
-            <CtaButton href="/book" className="mt-2 w-fit">
+            <CtaButton href="https://calendly.com/sumit-growth/discussion" className="mt-2 w-fit">
               {contact.demo.cta}
             </CtaButton>
           </section>

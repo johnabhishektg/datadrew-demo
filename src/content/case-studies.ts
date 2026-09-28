@@ -98,7 +98,8 @@ export const caseStudies: CaseStudy[] = [
       "Of the men's buyers, how many come back, how fast, and do they cross over to women's?",
     ],
     published: true,
-    permission: "pending",
+    // CAVA cleared naming + publishing the story (John, Sep 28 2026).
+    permission: "granted",
     gradient: "featured-grad-1",
   },
   {

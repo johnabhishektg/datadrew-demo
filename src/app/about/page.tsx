@@ -137,7 +137,7 @@ export default function AboutPage() {
         <StatBand stats={about.stats.items} />
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <CtaButton href={site.appUrl}>Start for free</CtaButton>
-          <CtaButton href="/book" variant="outline">
+          <CtaButton href="https://calendly.com/sumit-growth/discussion" variant="outline">
             Book a demo
           </CtaButton>
         </div>

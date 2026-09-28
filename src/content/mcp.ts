@@ -45,7 +45,7 @@ export const mcpPage = {
     explainer:
       "MCP (Model Context Protocol) is an open standard that lets AI assistants securely connect to outside tools and data. Datadrew runs a public, OAuth-secured MCP server at mcp.datadrew.io. Connect it once and your AI client can query every platform you've linked to Datadrew — answering with the exact same numbers, metric definitions and permissions as the app.",
     steps: [
-      { title: "Open Datadrew MCP", description: "In Datadrew, go to Settings → Datadrew MCP. It's available on the Essentials and Pro plans." },
+      { title: "Open Datadrew MCP", description: "In Datadrew, go to Settings → Datadrew MCP. It's free to connect on every plan, including Free." },
       { title: "Copy your secure URL", description: "Copy the Datadrew MCP URL — mcp.datadrew.io/mcp — shown right here and in Settings → Datadrew MCP." },
       { title: "Paste into your AI tool", description: "Add it as a connector in Claude, ChatGPT, Cursor or any MCP client, authorize with OAuth, and start asking." },
     ],
@@ -56,7 +56,7 @@ export const mcpPage = {
   setup: {
     headline: "Set it up in your favourite AI tool",
     subhead: "Pick your client and follow the steps. Same URL, same OAuth flow, everywhere.",
-    note: "The MCP server is available on the Essentials and Pro plans. You'll find the URL and full instructions any time in Settings → Datadrew MCP.",
+    note: "The MCP server is free to connect on every plan, and MCP reads use zero Drew credits. You'll find the URL and full instructions any time in Settings → Datadrew MCP.",
     clients: [
       {
         id: "claude",
@@ -188,8 +188,8 @@ export const mcpPage = {
     subhead: "The MCP server is one of three ways to put Drew to work. Same brain, same numbers — wherever your team lives.",
     items: [
       { title: "In the Datadrew app", description: "Chat with Drew right inside Datadrew, next to your dashboards, on every plan.", link: { label: "Meet Drew", href: "/#product" }, plan: "All plans" },
-      { title: "In Slack", description: "Mention @Drew in any channel and get charts and recommendations back in-thread.", link: { label: "Slack integration", href: "/integrations/slack" }, plan: "Essentials & Pro" },
-      { title: "Via MCP (you're here)", description: "Bring Drew's tools into Claude, ChatGPT, Cursor or any MCP client with one URL.", link: { label: "Jump to setup", href: "#setup" }, plan: "Essentials & Pro" },
+      { title: "In Slack", description: "Mention @Drew in any channel and get charts and recommendations back in-thread.", link: { label: "Slack integration", href: "/integrations/slack" }, plan: "AI Intelligence and AI Ads CoPilot" },
+      { title: "Via MCP (you're here)", description: "Bring Drew's tools into Claude, ChatGPT, Cursor or any MCP client with one URL.", link: { label: "Jump to setup", href: "#setup" }, plan: "AI Intelligence and AI Ads CoPilot" },
     ],
   },
   testimonials: [
@@ -202,7 +202,7 @@ export const mcpPage = {
     { q: "Which AI tools can I connect to Datadrew?", a: "Any MCP-compatible client — including Claude (Claude.ai and Claude Desktop), ChatGPT, Cursor, Windsurf, VS Code and other agent frameworks that support the Model Context Protocol. You connect them all with the same MCP URL and OAuth flow." },
     { q: "Is it safe to connect my store data to AI?", a: "Yes. Access is granted through OAuth and tied to your Datadrew workspace, so you can revoke it anytime. The MCP server is read-only, it sends your AI only the data needed to answer the current question, and all data is encrypted in transit and at rest on SOC 2-compliant, GDPR-aligned infrastructure." },
     { q: "Can the AI change my campaigns, orders or ad spend?", a: "No. The Datadrew MCP server is read-only by design. Your AI assistant can read and analyze your data, but it can never pause campaigns, edit orders, move budget or place spend. It analyzes everything and changes nothing." },
-    { q: "Which Datadrew plan do I need for MCP?", a: "The Datadrew MCP server is available on the Essentials and Pro plans. Free and legacy plans can't connect via the MCP server. Once you're on a supported plan, your personal MCP URL appears in Settings → Datadrew MCP." },
+    { q: "Which Datadrew plan do I need for MCP?", a: "None beyond Free. Connecting Claude, ChatGPT, Cursor or any MCP client to your own connected data is free on every plan, and MCP reads never use Drew credits. Free gives your AI reads of Shopify, Meta Ads, Google Ads, GA4 and Klaviyo with 3 months of history; AI Intelligence adds Datadrew's computed creative, product and cohort insights and all history; AI Ads CoPilot adds execution playbooks. Your personal MCP URL appears in Settings → Datadrew MCP." },
     { q: "How long does setup take?", a: "About two minutes. Open Settings → Datadrew MCP in Datadrew, copy your MCP URL, paste it into Claude, ChatGPT or your IDE as a custom connector, and authorize with OAuth. There's no code to write." },
     { q: "What data can my AI assistant access?", a: "Everything you've connected to Datadrew — 15+ sources including Shopify, Meta Ads, Google Ads, GA4, Google Search Console, Klaviyo, Amazon Seller and Amazon Ads, Unicommerce, Stripe, Recharge, Skio, Brevo, Judge.me and AfterShip — plus blended cross-channel KPIs like ROAS, MER, CAC and LTV." },
     { q: "Can agencies use it across multiple stores?", a: "Yes. Multi-store merchants and agencies can query several stores in a single session — name the store in your question, or compare two stores in one question, without re-authenticating. Every answer tells the AI which store it ran against, and access is OAuth-scoped to exactly the shops you manage." },
@@ -210,6 +210,6 @@ export const mcpPage = {
   closing: {
     headline: "Bring your store data into Claude & ChatGPT",
     body: "Connect Datadrew's MCP server and ask your AI anything about your Shopify, ads and analytics data — securely, with OAuth, in two minutes.",
-    note: "MCP access is included on the Essentials and Pro plans.",
+    note: "Free to connect on every plan. MCP reads use zero Drew credits.",
   },
 };

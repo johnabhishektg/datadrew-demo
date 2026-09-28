@@ -9,7 +9,7 @@ import { platformCtas, platformIndex, platformPages } from "@/content/platform";
 export const metadata: Metadata = {
   title: "Platform",
   description:
-    "Drew AI, Automations, Acquisition, Retention, Product Intelligence and Creative Strategy — the intelligence behind every ad-spend decision Drew makes for Shopify brands.",
+    "Drew AI, Automations, Acquisition, Retention, Product Intelligence and Creative Strategy: the context behind every ad-spend decision Drew makes.",
 };
 
 export default function PlatformIndex() {

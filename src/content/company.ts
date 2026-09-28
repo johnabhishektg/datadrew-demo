@@ -13,9 +13,9 @@ export const links = {
 
 export const about = {
   meta: {
-    title: "About Datadrew — Building the AI Growth Team for Commerce Brands",
+    title: "About Datadrew — The Team Behind the AI Ads Agent",
     description:
-      "Datadrew connects the growth picture across Shopify, ads, analytics and retention, and puts an AI agent on the daily job of managing paid ads. 1,000+ brands, 47+ countries.",
+      "Why Datadrew exists, who builds it, and how it went from commerce intelligence to an AI agent that manages paid ads. 1,000+ brands, 47+ countries.",
   },
   eyebrow: "About Datadrew",
   headline: "We're building the AI growth team every commerce brand deserves.",
@@ -158,12 +158,12 @@ export const book = {
   meta: {
     title: "Book a Demo — The AI Ads Agent for Shopify Brands",
     description:
-      "Schedule a personalized demo with Datadrew's growth experts. See how AI-powered LTV tracking, cohort analysis, and Drew AI can grow your Shopify brand.",
+      "See Drew run the daily ads loop on a real account: the brief, the diagnosis, the leakage checks and an approved change. 30 minutes, no commitment.",
   },
   eyebrow: "Book a demo",
   headline: "See Datadrew in action",
   subhead:
-    "Get a personalized walkthrough tailored to your brand. Our team will show you how to turn your Shopify data into profitable growth decisions.",
+    "A 30-minute walkthrough on a real account: how Drew reads your margins, stock and customers alongside Meta and Google, what the Daily Ads Brief looks like, and what it can execute for you today.",
   badges: ["30-minute session", "No commitment required", "1,000+ brands trust us"],
   form: {
     headline: "Request your demo",
@@ -173,12 +173,12 @@ export const book = {
     gmv: ["<$1M", "$1M - $3M", "$3M - $5M", "$5M - $10M", "$10M - $25M", "$25M - $50M", "$50M - $100M", "$100M - $250M", "$250M+"],
     clients: ["1 – 5", "6 – 10", "11 – 25", "26 – 50", "51 – 100", "100+"],
     interests: [
-      "Drew AI",
-      "Product Intelligence",
-      "Acquisition Insights",
-      "Retention / LTV",
+      "Daily Ads Brief & diagnosis",
+      "Ads execution (AI Ads CoPilot)",
       "Creative Strategy",
-      "Full Platform Overview",
+      "Product Intelligence",
+      "Retention / LTV",
+      "Agency / multi-brand",
     ],
     submit: "Book my demo",
     success: {
@@ -189,15 +189,15 @@ export const book = {
   expect: {
     headline: "What to expect",
     items: [
-      { title: "Understand your needs", body: "We'll learn about your brand, data challenges, and growth goals." },
+      { title: "Understand your account", body: "Your channels, spend, margins and team — and the decisions that take the most time today." },
       {
-        title: "Live product walkthrough",
-        body: "See LTV cohorts, product intelligence, acquisition dashboards, and Drew AI in action.",
+        title: "Live walkthrough on real data",
+        body: "The Daily Ads Brief, a ROAS-drop diagnosis, the leakage checks, and a queued change with its guardrails.",
       },
-      { title: "Q&A with our team", body: "Ask anything about features, pricing, integrations, or how Datadrew fits your stack." },
+      { title: "Q&A with our team", body: "Ask anything about what Drew executes today, pricing bands, integrations, or how it fits your stack." },
       {
-        title: "Custom recommendations",
-        body: "Get tailored advice on which modules and plan best fit your brand's growth stage.",
+        title: "A plain recommendation",
+        body: "Which plan fits, whether CoPilot access makes sense for you yet, and what to connect first.",
       },
     ],
   },

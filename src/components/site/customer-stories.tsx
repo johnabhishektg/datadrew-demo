@@ -104,7 +104,6 @@ export function CustomerStories() {
           >
             <div>
               <BrandMark story={s} />
-              <p className="mt-1.5 text-xs text-muted-foreground">{s.descriptor}</p>
             </div>
             <p className="mt-16 text-balance text-2xl leading-snug tracking-tight text-muted-foreground md:mt-24 md:text-[1.7rem]">
               {s.headline[0]}

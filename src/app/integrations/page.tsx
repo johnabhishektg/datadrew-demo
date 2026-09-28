@@ -17,7 +17,7 @@ import { getIntegrationPage, integrationRoute } from "@/content/integration-page
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: { absolute: "Datadrew Integrations — Shopify, Meta, Google Ads, GA4, Klaviyo & more" },
+  title: { absolute: "Datadrew Integrations — Shopify, Meta, Google, GA4, Klaviyo" },
   alternates: { canonical: "/integrations" },
   description:
     "Datadrew connects to Shopify, Meta Ads, Google Ads, GA4, Klaviyo, Amazon and 25+ more tools, so Drew's ad decisions reason from your whole business.",

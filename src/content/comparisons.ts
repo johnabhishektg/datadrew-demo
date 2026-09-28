@@ -24,6 +24,10 @@ export type Comparison = {
   title: string;
   metaDescription: string;
   intro: string;
+  /** The direct answer in the first 200 words — what AI answer engines lift. */
+  quickAnswer: { verdict: string; points: string[] };
+  /** ISO date the page copy was last reviewed (rendered + dateModified). */
+  updated: string;
   tiles: { label: string; datadrew: string; competitor: string; datadrewLabel?: string; competitorLabel?: string }[];
   fit: { headline: string; subhead: string; datadrew: string[]; competitor: string[] };
   pricingLadder?: {
@@ -129,9 +133,18 @@ export const comparisons: Comparison[] = [
     shortName: "TW",
     title: "Datadrew vs Triple Whale — Pricing & Feature Comparison 2026",
     metaDescription:
-      "Datadrew vs Triple Whale on the same GMV bands: Essentials from $99/mo vs Foundation from $219/mo. Broad BI platform vs the AI ads agent for Shopify brands.",
+      "Datadrew vs Triple Whale on the same GMV bands: AI Intelligence from $99/mo vs Foundation from $219/mo. Broad BI platform vs the AI ads agent for Shopify.",
     intro:
       "Triple Whale is the broad measurement platform, built for teams with an analyst to run it. Drew is the AI ads agent that makes and executes the daily ad-spend decisions for a lean team — grounded in real profit, reconciled to your Shopify orders overnight.",
+    quickAnswer: {
+      verdict: "Choose Datadrew if you want the daily ad-spend decisions made and executed for a lean team on published, monthly pricing. Choose Triple Whale if multi-touch attribution, MMM or a BI builder is the job you are hiring for and you have an analyst to run it.",
+      points: [
+        "Price at the same GMV band: Datadrew AI Intelligence $99/mo vs Triple Whale Foundation $219/mo; both ladders are published",
+        "Datadrew bills monthly with a 7-day trial and no contract; Triple Whale's listed prices are 12-month subscriptions",
+        "Triple Whale wins on attribution depth (Triple Pixel, MMM, incrementality); Datadrew wins on delivered decisions grounded in margin, stock and repeat behavior",
+      ],
+    },
+    updated: "2026-09-15",
     tiles: [
       { label: "What you optimise on", datadrew: "Real profit", competitor: "Attributed ROAS" },
       { label: "To get started", datadrew: "No site script", competitor: "Pixel + learning" },
@@ -141,7 +154,7 @@ export const comparisons: Comparison[] = [
       headline: "Same GMV bands, both ladders published",
       subhead:
         "Both scale price with annual GMV and both publish the bands — so this is a like-for-like comparison, not an estimate.",
-      head: ["Annual GMV", "Datadrew Essentials", "TW Foundation"],
+      head: ["Annual GMV", "Datadrew AI Intelligence", "TW Foundation"],
       rows: [
         ["Under $1M", "$99", "$219 – $429"],
         ["$1M – $2.5M", "$149", "$549"],
@@ -150,7 +163,7 @@ export const comparisons: Comparison[] = [
         ["$10M – $15M", "$489", "$1,849"],
         ["$20M and above", "Published to $50M", "Talk to sales"],
       ],
-      note: "Monthly billing, USD. Datadrew Pro starts at $149/mo; Triple Whale’s Automate tier starts at $749/mo. Datadrew bills monthly with no lock-in — Triple Whale’s listed prices are 12-month subscriptions. Checked against both vendors’ pricing pages on 10 August 2026.",
+      note: "Monthly billing, USD. Datadrew AI Ads CoPilot (execution) starts at $249/mo; Triple Whale’s Automate tier starts at $749/mo. Datadrew bills monthly with no lock-in — Triple Whale’s listed prices are 12-month subscriptions. Checked against both vendors’ pricing pages on 10 August 2026.",
     },
     features: {
       headline: "What actually differs",
@@ -196,7 +209,7 @@ export const comparisons: Comparison[] = [
             {
               feature: "Scheduled AI reports",
               desc: "Analysis on a schedule, delivered to email or Slack",
-              datadrew: { check: true, text: "16 templates (Pro)" },
+              datadrew: { check: true, text: "16+ templates (AI Intelligence)" },
               competitor: { check: true, text: "Moby Automations (Automate)" },
             },
             {
@@ -208,7 +221,7 @@ export const comparisons: Comparison[] = [
             {
               feature: "Open MCP server",
               desc: "Connect Claude, ChatGPT or Cursor to your data",
-              datadrew: { check: true, text: "Essentials and Pro", href: "/mcp" },
+              datadrew: { check: true, text: "Free on every plan", href: "/mcp" },
               competitor: { check: true },
             },
           ],
@@ -229,7 +242,7 @@ export const comparisons: Comparison[] = [
             {
               feature: "Product intelligence",
               desc: "Repurchase, basket analysis, SKU KPIs",
-              datadrew: { text: "Repurchase, basket, SKU KPIs (Pro)" },
+              datadrew: { text: "Repurchase, basket, SKU KPIs (AI Intelligence)" },
               competitor: { text: "Product analytics" },
             },
           ],
@@ -276,7 +289,7 @@ export const comparisons: Comparison[] = [
           kicker: "Pick · Schedule · Delivered",
           title: "Drew AI Automations",
           body: "Sixteen ready-made templates. Pick one, set the cadence, and the finished report lands in your email or Slack — with the recommendation and the evidence attached.",
-          footer: "Included on the Pro plan",
+          footer: "Included with AI Intelligence",
           href: "/platform/automations",
           linkLabel: "Browse the templates",
         },
@@ -310,7 +323,7 @@ export const comparisons: Comparison[] = [
     faq: [
       {
         q: "What does Datadrew cost compared to Triple Whale?",
-        a: "Both price on annual GMV and both publish a ladder, so you can compare like for like. At the entry band Datadrew Essentials is $99/mo against Triple Whale Foundation at $219/mo. At $2.5M–$5M it is $229 against $799. At $10M–$15M it is $489 against $1,849. Datadrew Pro starts at $149/mo; Triple Whale’s Automate tier starts at $749/mo. Datadrew bills monthly with no lock-in, while Triple Whale’s listed prices are 12-month subscriptions. Figures checked against both vendors’ pricing pages on 10 August 2026.",
+        a: "Both price on annual GMV and both publish a ladder, so you can compare like for like. At the entry band Datadrew AI Intelligence is $99/mo against Triple Whale Foundation at $219/mo. At $2.5M–$5M it is $229 against $799. At $10M–$15M it is $489 against $1,849. Datadrew AI Ads CoPilot, the execution tier, starts at $249/mo; Triple Whale’s Automate tier starts at $749/mo. Datadrew bills monthly with no lock-in, while Triple Whale’s listed prices are 12-month subscriptions. Figures checked against both vendors’ pricing pages on 10 August 2026.",
       },
       {
         q: "Can I migrate from Triple Whale to Datadrew?",
@@ -343,15 +356,24 @@ export const comparisons: Comparison[] = [
     shortName: "NB",
     title: "Datadrew vs Northbeam — Pricing & Feature Comparison 2026",
     metaDescription:
-      "Datadrew vs Northbeam: enterprise multi-touch attribution from $1,500/mo vs the AI ads agent for Shopify brands that runs daily ad decisions on profit, from $99/mo.",
+      "Datadrew vs Northbeam: enterprise multi-touch attribution from $1,500/mo vs the AI ads agent for Shopify that runs daily ad decisions on profit, from $99/mo.",
     intro:
       "Northbeam is the enterprise attribution stack — ML-based multi-touch, incrementality testing and media mix modeling, priced on media spend from $1,500/mo. Drew is the AI ads agent that makes and executes the daily ad-spend decisions for a lean team: what you actually made, where spend is leaking, and what to scale, reduce or pause — reconciled to your Shopify orders overnight, on published pricing from $99/mo.",
+    quickAnswer: {
+      verdict: "Choose Northbeam if you spend enough on media to justify enterprise multi-touch attribution from $1,500/mo and have a team to act on it. Choose Datadrew if you want the daily ad-spend decisions made and executed on published pricing from $99/mo.",
+      points: [
+        "Northbeam prices on media spend and quotes above Starter; Datadrew publishes all 13 GMV bands and bills monthly",
+        "Northbeam answers \"which channel drove which order\"; Drew answers \"what do I change today, and why\", reconciled to Shopify orders",
+        "Datadrew is not an attribution platform and does not claim to be; Northbeam does not run the daily decision loop",
+      ],
+    },
+    updated: "2026-09-15",
     tiles: [
       {
         label: "Entry paid plan",
         datadrew: "$99/mo",
         competitor: "$1,500/mo",
-        datadrewLabel: "Datadrew Essentials",
+        datadrewLabel: "Datadrew AI Intelligence",
         competitorLabel: "NB Starter",
       },
       { label: "Priced on", datadrew: "Annual GMV", competitor: "Media spend" },
@@ -403,7 +425,7 @@ export const comparisons: Comparison[] = [
             },
             {
               feature: "Entry paid plan",
-              datadrew: { text: "From $99/mo (Essentials)" },
+              datadrew: { text: "From $99/mo (AI Intelligence)" },
               competitor: { text: "From $1,500/mo (Starter)" },
             },
             {
@@ -442,7 +464,7 @@ export const comparisons: Comparison[] = [
             {
               feature: "Product intelligence",
               desc: "Repurchase analysis, basket analysis, full-funnel SKU KPIs",
-              datadrew: { text: "Repurchase, basket, SKU KPIs (Pro)" },
+              datadrew: { text: "Repurchase, basket, SKU KPIs (AI Intelligence)" },
               competitor: { text: "Ad-focused product analytics" },
             },
           ],
@@ -473,7 +495,7 @@ export const comparisons: Comparison[] = [
             {
               feature: "Open MCP server",
               desc: "Connect Claude, ChatGPT or Cursor directly to your data",
-              datadrew: { check: true, text: "Essentials and Pro", href: "/mcp" },
+              datadrew: { check: true, text: "Free on every plan", href: "/mcp" },
               competitor: { dash: true },
             },
           ],
@@ -494,7 +516,7 @@ export const comparisons: Comparison[] = [
     faq: [
       {
         q: "What does Datadrew cost compared to Northbeam?",
-        a: "Northbeam prices on media spend: Starter from $1,500/mo, with Professional and Enterprise quoted. Datadrew prices on annual GMV and publishes all 13 bands — Essentials from $99/mo, Pro from $149/mo, monthly with no lock-in, plus a free plan and a 7-day trial.",
+        a: "Northbeam prices on media spend: Starter from $1,500/mo, with Professional and Enterprise quoted. Datadrew prices on annual GMV and publishes all 13 bands — AI Intelligence from $99/mo, AI Ads CoPilot from $249/mo, monthly with no lock-in, plus a free plan and a 7-day trial.",
       },
       {
         q: "How does Datadrew's attribution compare to Northbeam's?",
@@ -521,13 +543,22 @@ export const comparisons: Comparison[] = [
     logo: "/competitors/polar-analytics.png",
     competitor: "Polar Analytics",
     shortName: "Polar",
-    title: "Datadrew vs Polar Analytics — Pricing & Feature Comparison 2026",
+    title: "Datadrew vs Polar Analytics — Pricing & Features 2026",
     metaDescription:
-      "Datadrew vs Polar Analytics: Polar prices by quote behind a demo; Datadrew publishes all 13 GMV bands from $99/mo, with deeper LTV cohorts and an agent that answers.",
+      "Datadrew vs Polar Analytics: Polar prices by quote behind a demo; Datadrew publishes all 13 GMV bands from $99/mo, with an agent that answers.",
     intro:
       "Polar is a BI layer — a data stack you build dashboards on, priced by quote behind a demo. Drew is the AI ads agent that makes and executes the daily ad-spend decisions for a lean team: what you actually made, where spend is leaking, and what to scale, reduce or pause — reconciled to your Shopify orders overnight, on pricing you can read before you talk to anyone.",
+    quickAnswer: {
+      verdict: "Choose Polar if you want a BI layer to build your own dashboards on and are comfortable getting a quote after a demo. Choose Datadrew if you want the answer delivered without a build, on pricing you can read before talking to anyone.",
+      points: [
+        "Datadrew: AI Intelligence from $99/mo and AI Ads CoPilot from $249/mo, 13 published bands, monthly billing; Polar: quote only",
+        "Polar's Ask Polar queries the stack you built; Drew delivers the Daily Ads Brief, leakage checks and budget calls unasked",
+        "Both connect Shopify, Meta, Google and GA4; only Datadrew applies approved changes in the ad accounts, with guardrails",
+      ],
+    },
+    updated: "2026-09-15",
     tiles: [
-      { label: "Entry paid plan", datadrew: "$99/mo", competitor: "Quote only", datadrewLabel: "Datadrew Essentials", competitorLabel: "Polar" },
+      { label: "Entry paid plan", datadrew: "$99/mo", competitor: "Quote only", datadrewLabel: "Datadrew AI Intelligence", competitorLabel: "Polar" },
       { label: "AI Agent", datadrew: "Drew AI", competitor: "Ask Polar" },
       { label: "Pricing published", datadrew: "All 13 bands", competitor: "Book a demo" },
     ],
@@ -557,7 +588,7 @@ export const comparisons: Comparison[] = [
             { feature: "Free Plan", datadrew: { check: true }, competitor: { dash: true } },
             {
               feature: "Entry paid plan",
-              datadrew: { text: "From $99/mo (Essentials), $149/mo (Pro)" },
+              datadrew: { text: "From $99/mo (AI Intelligence), $249/mo (AI Ads CoPilot)" },
               competitor: { text: "Not published — quote after a demo" },
             },
             {
@@ -621,7 +652,7 @@ export const comparisons: Comparison[] = [
             {
               feature: "MCP / external AI access",
               desc: "Connect Claude, ChatGPT or Cursor directly to your data",
-              datadrew: { check: true, text: "Essentials and Pro", href: "/mcp" },
+              datadrew: { check: true, text: "Free on every plan", href: "/mcp" },
               competitor: { check: true, text: "Polar Headless MCP" },
             },
             { feature: "First-Party Pixel", datadrew: { dash: true }, competitor: { check: true } },
@@ -637,7 +668,7 @@ export const comparisons: Comparison[] = [
         {
           title: "Pricing you can read before a call",
           description:
-            "Essentials from $99/mo, Pro from $149/mo, across 13 published GMV bands, billed monthly. Polar quotes you after a demo — so you cannot compare until you are already in a sales cycle.",
+            "AI Intelligence from $99/mo and AI Ads CoPilot from $249/mo across 13 published GMV bands, billed monthly. Polar quotes you after a demo — so you cannot compare until you are already in a sales cycle.",
         },
         {
           title: "Deeper product and LTV analysis",
@@ -683,9 +714,18 @@ export const comparisons: Comparison[] = [
     competitor: "Lifetimely",
     title: "Datadrew vs Lifetimely — Pricing & Feature Comparison 2026",
     metaDescription:
-      "Datadrew vs Lifetimely (by AMP): Lifetimely prices on monthly orders and does LTV and P&L well. Datadrew is the AI ads agent for Shopify, priced on GMV from $99/mo.",
+      "Datadrew vs Lifetimely (by AMP): Lifetimely prices on monthly orders and does LTV and P&L well. Datadrew is the AI ads agent for Shopify, on GMV from $99/mo.",
     intro:
       "Lifetimely (by AMP) does LTV projections and P&L reporting well, priced on your monthly order count. Drew is the AI ads agent that makes and executes the daily ad-spend decisions for a lean team — what you actually made, where spend is leaking, and what to scale, reduce or pause — with the same cohort depth underneath, priced on annual GMV from $99/mo.",
+    quickAnswer: {
+      verdict: "Choose Lifetimely if LTV projections and P&L reporting are the whole job and you price by order volume. Choose Datadrew if you want the same cohort depth underneath an agent that makes and executes the daily ad-spend decisions, priced on annual GMV from $99/mo.",
+      points: [
+        "Lifetimely prices on monthly orders; Datadrew prices on annual GMV with all 13 bands published and a free plan",
+        "Both do cohort LTV and P&L; Datadrew adds RFM segments that sync to Klaviyo and Meta, product repurchase and basket intelligence",
+        "Only Datadrew runs the daily loop — brief, diagnosis, leakages, budget recommendations — and applies approved changes on CoPilot",
+      ],
+    },
+    updated: "2026-09-15",
     tiles: [
       { label: "Analytics Scope", datadrew: "Full Funnel", competitor: "LTV Focus" },
       { label: "AI Agent", datadrew: "Drew AI", competitor: "Ask Amp" },
@@ -731,7 +771,7 @@ export const comparisons: Comparison[] = [
             },
             {
               feature: "Entry paid plan",
-              datadrew: { text: "From $99/mo (Essentials), $149/mo (Pro)" },
+              datadrew: { text: "From $99/mo (AI Intelligence), $249/mo (AI Ads CoPilot)" },
               competitor: { text: "Tiered by order volume; $149/mo at 501–3,000 orders" },
             },
             {
@@ -809,7 +849,7 @@ export const comparisons: Comparison[] = [
         {
           title: "Drew AI goes deeper",
           description:
-            "Drew AI queries Shopify, Meta, Google Ads, GA4 and Klaviyo together. Ask “which campaigns bring back high-LTV customers?” and get the answer with the evidence, not just data. On every plan — 1,000 welcome credits on Free, 3,000/mo on Essentials, 7,500/mo on Pro.",
+            "Drew AI queries Shopify, Meta, Google Ads, GA4 and Klaviyo together. Ask “which campaigns bring back high-LTV customers?” and get the answer with the evidence, not just data. On every plan — 1,000 welcome credits on Free, from 3,000/mo on AI Intelligence, from 7,500/mo on AI Ads CoPilot.",
         },
         {
           title: "Segments that activate",

@@ -6,12 +6,12 @@ import { CtaButton, FaqBlock, Section } from "@/components/site/blocks";
 import { PricingGmv } from "@/components/site/pricing-gmv";
 import { LogoWall } from "@/components/site/logo-wall";
 import { JsonLd, breadcrumbLd, faqLd, softwareApplicationLd } from "@/components/site/structured-data";
-import { compareTable, pricingFaq, pricingPage } from "@/content/pricing-page";
+import { compareColumns, compareTable, pricingFaq, pricingPage } from "@/content/pricing-page";
 
 export const metadata: Metadata = {
-  title: { absolute: "Datadrew Pricing — GMV-based plans for Shopify brands, from free" },
+  title: { absolute: "Datadrew Pricing — Free, AI Intelligence & AI Ads CoPilot" },
   description:
-    "Simple, transparent pricing for Datadrew — the AI ads agent for Shopify brands, from free to Pro. No hidden fees, 7-day free trial on paid plans.",
+    "Datadrew pricing for Shopify brands: free to put your data in your AI, AI Intelligence from $99/mo, AI Ads CoPilot from $249/mo. Flat fee by GMV, 7-day trial.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -49,30 +49,49 @@ export default function PricingPage() {
         <PricingGmv />
       </Section>
 
+      {/* Which plan — three one-line answers, then the honest cost frame. */}
       <Section className="py-0">
-        <div className="grid gap-6 rounded-3xl border border-border bg-card p-8 md:grid-cols-[1.4fr_1fr] md:items-center md:p-10">
-          <div className="flex flex-col gap-3">
+        <div className="grid gap-6 md:grid-cols-[1.4fr_1fr]">
+          <div className="rounded-3xl border border-border bg-card p-8 md:p-10">
             <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">{p.help.headline}</h2>
-            <p className="text-sm leading-relaxed text-muted-foreground md:text-base">{p.help.body}</p>
+            <ul className="mt-5 flex flex-col gap-3">
+              {p.help.items.map((it) => (
+                <li key={it.plan} className="flex gap-3 text-sm leading-relaxed md:text-base">
+                  <Check className="mt-1 size-4 shrink-0 text-brand" aria-hidden />
+                  <span>
+                    <span className="font-semibold">{it.plan}</span> {it.body}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <CtaButton href={p.help.primary.href}>{p.help.primary.label}</CtaButton>
+              <CtaButton href={p.help.secondary.href} variant="outline">
+                {p.help.secondary.label}
+              </CtaButton>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-3 md:justify-end">
-            <CtaButton href={p.help.primary.href}>{p.help.primary.label}</CtaButton>
-            <CtaButton href={p.help.secondary.href} variant="outline">
-              {p.help.secondary.label}
-            </CtaButton>
+          <div className="flex flex-col justify-between gap-4 rounded-3xl border border-border bg-brand-soft/60 p-8 md:p-10">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight">{p.roi.headline}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">{p.roi.body}</p>
+            </div>
+            <p className="font-mono text-xs text-muted-foreground">Flat monthly fee · banded by GMV, not ad spend · no per-seat charges</p>
           </div>
         </div>
       </Section>
 
-      <Section id="compare" headline="Compare all features" align="center">
+      <Section id="compare" headline="Compare every plan" subhead="Every capability behind the cards, grouped the way your team works." align="center">
         <div className="overflow-x-auto rounded-2xl border border-border bg-card">
           <table className="w-full min-w-[40rem] text-sm">
             <thead className="sticky top-0">
               <tr className="border-b border-border text-xs uppercase tracking-wider text-muted-foreground">
-                <th className="px-5 py-3 text-left font-medium">Features</th>
-                <th className="px-5 py-3 text-center font-medium">Free</th>
-                <th className="px-5 py-3 text-center font-medium text-brand">Essentials</th>
-                <th className="px-5 py-3 text-center font-medium">Pro</th>
+                <th className="px-5 py-3 text-left font-medium">What&rsquo;s included</th>
+                {compareColumns.map((c, i) => (
+                  <th key={c} className={i === 1 ? "px-5 py-3 text-center font-medium text-brand" : "px-5 py-3 text-center font-medium"}>
+                    {c}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
@@ -100,6 +119,22 @@ export default function PricingPage() {
               ))}
             </tbody>
           </table>
+        </div>
+      </Section>
+
+      <Section className="py-0">
+        <div className="grid gap-6 rounded-3xl border border-border bg-card p-8 md:grid-cols-[1.4fr_1fr] md:items-center md:p-10">
+          <div className="flex flex-col gap-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">For agencies</p>
+            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">{p.agencies.headline}</h2>
+            <p className="text-sm leading-relaxed text-muted-foreground md:text-base">{p.agencies.body}</p>
+          </div>
+          <div className="flex flex-wrap gap-3 md:justify-end">
+            <CtaButton href={p.agencies.primary.href}>{p.agencies.primary.label}</CtaButton>
+            <CtaButton href={p.agencies.secondary.href} variant="outline">
+              {p.agencies.secondary.label}
+            </CtaButton>
+          </div>
         </div>
       </Section>
 
@@ -140,8 +175,8 @@ export default function PricingPage() {
 
       <FaqBlock
         items={pricingFaq}
-        headline="Frequently asked questions about pricing"
-        subhead="We're here to answer all your questions. Anything else — support@datadrew.io."
+        headline="A few things you might be wondering"
+        subhead="Plans, billing, credits and getting started. Anything else — support@datadrew.io."
       />
     </PageShell>
   );

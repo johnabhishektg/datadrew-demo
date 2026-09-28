@@ -2,9 +2,30 @@
  * page (Sep 2026). The sample brief is illustrative data, not a customer. */
 
 export const roasDrop = {
-  title: "Why Did My ROAS Drop? The Diagnostic Order That Finds It",
+  title: "Why Did My ROAS Drop? The 8 Checks That Find It",
   metaDescription:
-    "ROAS fell and nobody can say why. The eight checks an experienced media buyer runs, in order.",
+    "ROAS fell and nobody can say why. The eight checks a media buyer runs, in order: measurement, variance, changes, creative, auction, site, mix, learning.",
+  // Byline + dates for the Article schema and the visible byline (Searchable:
+  // "no author", "no date", "Article schema missing" on the live page).
+  author: { name: "Sumit Bansal", role: "Co-founder, Datadrew" },
+  published: "2026-08-20",
+  updated: "2026-09-15",
+  // One-glance version of the ladder, rendered as a real <table> so answer
+  // engines can lift it (Searchable: "no data visuals").
+  ladderTable: {
+    caption: "The eight checks, in the order Drew runs them every morning",
+    head: ["#", "Check", "The question", "What it looks like when this is the cause"],
+    rows: [
+      ["1", "Measurement", "Did performance change, or did the reporting?", "Attribution window changed, tracking outage, tagging change, late-reported conversions"],
+      ["2", "Variance", "Is this a signal, or a Tuesday?", "Move is inside the account's normal weekly swing"],
+      ["3", "Account changes", "Did someone touch it?", "Budget edits, new ad sets, bid-strategy switches 3–7 days ago"],
+      ["4", "Creative", "Is the account fatigued?", "Frequency up, CTR down on the ad sets carrying most of the spend"],
+      ["5", "Auction & demand", "Did the market move?", "CPMs up across every campaign at once, seasonal demand shift"],
+      ["6", "Conversion path", "Did the site stop converting?", "Hero SKU out of stock, landing page changed, CVR or AOV down"],
+      ["7", "Product mix", "Did what you sell change?", "Spend drifted to lower-margin or first-purchase-only products"],
+      ["8", "Learning state", "Should you act at all right now?", "A recent change is still in learning; intervening resets the clock"],
+    ],
+  },
   hero: {
     eyebrow: "When ROAS drops",
     headline: "Your ROAS dropped. Nobody can say why.",
@@ -176,7 +197,7 @@ export const roasDrop = {
     ctas: [
       { label: "Install on Shopify", href: "https://apps.shopify.com/customer-lifetime-value" },
       { label: "Sign up free", href: "https://app.datadrew.io/register", variant: "outline" as const },
-      { label: "Book a demo", href: "/book", variant: "ghost" as const },
+      { label: "Book a demo", href: "https://calendly.com/sumit-growth/discussion", variant: "ghost" as const },
     ],
   },
 };

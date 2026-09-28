@@ -5,6 +5,13 @@
 // Meta + Google are the only channels named; MCP/Slack are surfaces, not the
 // differentiation; profit is the objective, not the category.
 
+import { DEFAULT_BAND, gmvBands, planCredits } from "./pricing-page";
+
+// Home cards show the same default GMV band as the live homepage
+// ($500k – $1M): $0 / $99 / $299 with 1,000 / 3,000 / 9,000 credits.
+const homeBand = gmvBands[DEFAULT_BAND];
+const fmt = (n: number | null) => (n === null ? "Custom" : n.toLocaleString("en-US"));
+
 export const site = {
   name: "Datadrew",
   domain: "datadrew.io",
@@ -21,9 +28,13 @@ export const hero = {
   // v8 messaging hierarchy: promise (headline) → category (subhead)
   headline: ["Make and execute", "better ad decisions."],
   subhead: "The AI ads agent for Shopify brands",
-  primaryCta: { label: "Start free", sub: "Your first ads brief the same day" },
-  secondaryCta: { label: "Read a sample ads brief" },
-  finePrint: "7-day free trial · From $99/mo · Cancel anytime",
+  primaryCta: { label: "Start free", sub: "Your first ads brief tomorrow by 8am" },
+  // Book a demo goes straight to Sumit's Calendly (Sep 22): no /book form in
+  // between. Same link as `links.calendly` in company.ts.
+  demoCta: { label: "Book a demo", href: "https://calendly.com/sumit-growth/discussion" },
+  // Intent split (Sep 15 review): trial for operators, demo for agencies and
+  // larger brands. The sample-brief link and the "tomorrow by 8am" fine print
+  // were removed from the hero on Sep 22.
 };
 
 export const trustBar = {
@@ -99,7 +110,7 @@ export const pillars = [
     ],
     honesty: {
       title: "Where execution stands",
-      body: "Ads execution is rolling out now. What Drew can execute on your account is always explicit in the product — recommendations everywhere, actions as they're enabled for you. We'd rather be precise than impressive.",
+      body: "What Drew executes today, on AI Ads CoPilot: approved budget changes, pauses and campaign updates in Meta Ads and Google Ads, plus product sets in catalog ads — inside approval workflows, budget guardrails and margin floors you set. Access is enabled account by account, and what Drew can do on your account is always explicit in the product. We'd rather be precise than impressive.",
     },
   },
   {
@@ -264,63 +275,70 @@ export const pricing = {
   eyebrow: "Pricing",
   headline: "A fraction of a media buyer. None of the contract.",
   subhead:
-    "Plans scale with your store's GMV. 7-day free trial on every paid plan. Cancel anytime — we mean it.",
+    "Free to put your data in your AI. From $99/mo, Drew becomes your analyst. From $249/mo, your media buyer. Flat fee banded by GMV, 7-day free trial, cancel anytime.",
+  // Prices + credits for the default band, from the live ladder
+  // (pricing/pricing.js v5.1, 5 Sep 2026). MCP is free on every plan.
   tiers: [
     {
       name: "Free",
       price: "$0",
       period: "forever",
-      description: "Kick the tires on your real data.",
+      description: "Your Shopify and ads data, in the AI you already use.",
       features: [
-        "500 welcome credits for Drew",
-        "3 months of history",
-        "Core dashboards",
-        "Shopify + ad platform integrations",
+        "Datadrew MCP for Claude & ChatGPT — free to connect",
+        `${fmt(planCredits("free", 0))} Drew welcome credits · one time`,
+        "Core dashboards · 3 months of history",
+        "Shopify · Meta · Google · GA4 · Klaviyo",
       ],
       cta: "Start free",
+      href: "https://app.datadrew.io",
     },
     {
-      name: "Essentials",
-      price: "$99",
+      name: "AI Intelligence",
+      price: `$${fmt(homeBand.intelligence)}`,
       period: "/mo",
-      description: "The Daily Ads Brief, on schedule.",
+      description: "Drew as your analyst: what to scale, fix and test next.",
       features: [
+        `${fmt(planCredits("intelligence", homeBand.intelligence))} Drew credits / month`,
         "Everything in Free",
-        "Drew chat across all connected sources",
-        "Daily Ads Brief to Slack & email",
-        "Diagnosis, leakages & budget recommendations",
-        "12+ months of history",
+        "Ask Drew — diagnosis, comparisons, recommendations",
+        "Daily Ads Brief and alerts to Slack & email",
+        "Creative, product and retention intelligence",
+        "All history · hourly refresh · unlimited teammates",
       ],
-      cta: "Start 7-day trial",
+      cta: "Try free for 7 days",
+      href: "https://app.datadrew.io",
       highlight: true,
     },
     {
-      name: "Pro",
-      price: "$149",
+      name: "AI Ads CoPilot",
+      price: `$${fmt(homeBand.copilot)}`,
       period: "/mo",
-      description: "For teams that run on Drew's judgment.",
+      description: "Drew as your media buyer: approved changes, applied.",
       features: [
-        "Everything in Essentials",
-        "Ads execution with guardrails (rolling out)",
-        "Drew in Claude & ChatGPT (MCP)",
-        "Multi-seat workspaces",
-        "1:1 growth consulting",
+        `${fmt(planCredits("copilot", homeBand.copilot))} Drew credits / month`,
+        "Everything in AI Intelligence",
+        "Approved budget changes, pauses and campaign updates on Meta & Google",
+        "Approval workflows · budget guardrails · margin floors",
+        "Product sets and groups in catalog ads",
+        "Access reviewed account by account — no self-serve checkout",
       ],
-      cta: "Start 7-day trial",
+      cta: "Request access",
+      href: "https://calendly.com/sumit-growth/discussion",
     },
   ],
   finePrint:
-    "Prices shown are entry points; plans are banded by store GMV. No 12-month contracts, no cancellation maze.",
+    `Prices shown for ${homeBand.label} in annual Shopify sales; plans are banded by rolling 12-month GMV. Yearly billing = 2 months free. No 12-month contracts, no cancellation maze. Full ladder on the pricing page.`,
 };
 
 export const faq = [
   {
     q: "How long does setup take?",
-    a: "About 10 minutes. Connect Shopify and your ad accounts via OAuth, and Drew starts learning your business. Your first Daily Ads Brief lands the same day.",
+    a: "About 10 minutes. Connect Shopify and your ad accounts via OAuth, and Drew starts learning your business. Connect today and your first Daily Ads Brief is waiting tomorrow by 8am.",
   },
   {
     q: "Will Drew change my ads without asking?",
-    a: "No. Drew executes approved changes inside guardrails you control — approval flows, daily change caps, protected campaigns. Execution is rolling out now; what Drew can execute on your account is always explicit in the product, and every action is logged with its reasoning.",
+    a: "No. On AI Ads CoPilot, Drew proposes a change — a budget move, a pause, a scale-up or scale-down, a campaign update — with the evidence attached; you approve it, and Drew applies it in Meta Ads or Google Ads inside approval workflows, budget guardrails and margin floors you set. On Free and AI Intelligence, Drew recommends and you make the change. Every action is logged with its reasoning, and Drew never executes without an approval path.",
   },
   {
     q: "How is this different from a dashboard?",
@@ -358,7 +376,7 @@ export const finalCta = {
   },
   headline: "Start making better ad decisions with Drew",
   subhead:
-    "Connect your store and ad accounts — your first Daily Ads Brief lands the same day. Free to start, from $99/mo after.",
+    "Connect your store and ad accounts today — your first Daily Ads Brief is waiting tomorrow by 8am. Free to start, from $99/mo after.",
   primaryCta: "Install Datadrew",
   secondaryCta: "See how it works",
 };
@@ -409,7 +427,7 @@ export const sampleBrief = {
 // ---------------------------------------------------------------------------
 // Sections added for the Sept 2026 "agent" layout (Magic UI / shadcn build).
 
-export const heroBadge = "New · Ads execution with guardrails is rolling out";
+export const heroBadge = "AI Ads CoPilot · approved changes applied on Meta & Google, with guardrails";
 
 // Social proof pill above the H1. Pulled from the live listing on 4 Sep 2026:
 // https://apps.shopify.com/customer-lifetime-value — 5.0 rating, 27 reviews.
@@ -425,7 +443,7 @@ export const howItWorks = {
   eyebrow: "How it works",
   headline: "Connect. Learn. Decide. Execute.",
   subhead:
-    "From OAuth to your first Daily Ads Brief in one day — and a better-informed ads agent every day after.",
+    "From OAuth today to your first Daily Ads Brief tomorrow by 8am — and a better-informed ads agent every day after.",
   steps: [
     {
       id: "connect",
@@ -459,7 +477,7 @@ export const guardrails = {
     {
       id: "guardrails",
       title: "Executes inside your guardrails",
-      body: "Approval flows, max daily change, protected campaigns, spend limits. No silent changes — ever. Execution is rolling out now, and what Drew can do on your account is always explicit in the product.",
+      body: "Approval workflows, budget guardrails, margin floors, protected campaigns. No silent changes — ever. Ads execution is enabled account by account on AI Ads CoPilot, and what Drew can do on your account is always explicit in the product.",
     },
     {
       id: "surfaces",

@@ -231,7 +231,7 @@ export default function McpPage() {
           <p className="max-w-xl text-sm text-muted-foreground md:text-base">{m.closing.body}</p>
           <div className="mt-2 flex flex-wrap justify-center gap-3">
             <CtaButton href={m.primaryCta.href}>{m.primaryCta.label}</CtaButton>
-            <CtaButton href="/book" variant="outline">Book a demo</CtaButton>
+            <CtaButton href="https://calendly.com/sumit-growth/discussion" variant="outline">Book a demo</CtaButton>
           </div>
           <p className="text-xs text-muted-foreground">{m.closing.note} · <code className="font-mono">{MCP_URL}</code></p>
         </div>

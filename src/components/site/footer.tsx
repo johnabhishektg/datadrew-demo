@@ -3,6 +3,7 @@ import { site } from "@/content/site";
 import { Logo } from "./icons";
 import { competitorLogo } from "@/content/comparisons";
 import { BrandMark } from "./brand-mark";
+import { ShopifyBadge } from "./shopify-badge";
 
 const columns = [
   {
@@ -45,7 +46,7 @@ const columns = [
       { label: "Customer stories", href: "/customers" },
       { label: "Partners", href: "/partners" },
       { label: "Blog", href: "/blog" },
-      { label: "Book a demo", href: "/book" },
+      { label: "Book a demo", href: "https://calendly.com/sumit-growth/discussion" },
       { label: "Contact", href: "/contact" },
       { label: "Shopify App Store", href: "https://apps.shopify.com/customer-lifetime-value" },
     ],
@@ -74,6 +75,8 @@ export function Footer() {
             {" · "}
             <a href="mailto:support@datadrew.io" className="hover:text-foreground">support@datadrew.io</a>
           </p>
+          {/* Clear-space padding is baked into the badge; pull it back flush with the logo. */}
+          <ShopifyBadge height={36} className="mt-3 -ml-[18px]" />
         </div>
         {columns.map((col) => (
           <nav key={col.title} aria-label={col.title}>

@@ -37,7 +37,7 @@ export const agencyServices = [
 
 export const partnersDirectory = {
   meta: {
-    title: "Agency Partners — Certified E-commerce Growth Partners",
+    title: "Agency Partners — Certified Shopify Agencies",
     description:
       "Find a Datadrew certified agency partner to help grow your Shopify brand. 70+ agencies across 25+ countries specializing in performance marketing.",
   },
@@ -64,7 +64,7 @@ export const partnersDirectory = {
 
 export const becomePartner = {
   meta: {
-    title: "Become a Partner — Grow Together with the AI Ads Agent",
+    title: "Become a Partner — Agency & Tech Programs",
     description:
       "Join Datadrew's partner ecosystem as an agency, tech or integration partner: land free, operate on Drew, and grow with revenue share.",
   },

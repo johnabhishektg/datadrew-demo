@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BorderBeam } from "@/components/ui/border-beam";
-import { pricing, site } from "@/content/site";
+import { pricing } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { Container, SectionHeader } from "./section-header";
 
@@ -37,7 +38,7 @@ export function Pricing() {
               variant={t.highlight ? "default" : "outline"}
               className={cn("mt-6 w-full rounded-lg", t.highlight && "bg-brand text-brand-foreground hover:bg-brand/90")}
             >
-              <a href={site.appUrl}>{t.cta}</a>
+              {t.href.startsWith("/") ? <Link href={t.href}>{t.cta}</Link> : <a href={t.href}>{t.cta}</a>}
             </Button>
             <ul className="mt-6 space-y-3 border-t border-border pt-6">
               {t.features.map((f) => (

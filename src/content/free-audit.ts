@@ -1,89 +1,103 @@
-/* /free-audit — free store health check landing page. Ported from the live
- * page (Sep 2026). Report numbers are illustrative, not a customer's. */
+/* /free-audit — free ad-spend leakage check. Rebuilt Sep 15 2026 from the
+ * retention-era "store health check" so the lead magnet matches the ads-agent
+ * positioning. The report card is illustrative, not a customer's. The checks
+ * listed are the ones Drew's Ad Spend Leakages workflow runs daily. */
 
 export const freeAudit = {
-  title: "Free Shopify Store Health Check — AI-Powered Growth Audit",
+  title: "Free Ad Spend Leakage Check for Shopify Brands",
   metaDescription:
-    "Get a free AI-powered health check of your Shopify store. Drew AI analyzes your LTV, retention, product performance, and ad spend in minutes.",
+    "Connect Shopify, Meta and Google and Drew checks where ad spend is leaking: sold-out products, negative-margin SKUs, fatigued creative. Free, no card.",
   hero: {
     eyebrow: "Free — No credit card required",
-    headline: ["Free AI Store", "Health Check"],
+    headline: ["Free ad spend", "leakage check"],
     subhead:
-      "Install Datadrew on your Shopify store and Drew AI will analyze your customer data, identify hidden opportunities, and surface risks you did not know existed — all within minutes.",
-    primaryCta: { label: "Get your free health check", href: "https://apps.shopify.com/customer-lifetime-value" },
-    secondaryCta: { label: "Talk to us first", href: "/book" },
-    trust: "Trusted by 1,000+ Shopify brands analyzing $1.5Bn+ GMV",
+      "Connect your Shopify store and your Meta and Google accounts. Drew reads your ads against your margins, stock and repeat behavior and shows you where money is leaking this week — with the spend attached and the fix beside it.",
+    primaryCta: { label: "Run my free leakage check", href: "https://app.datadrew.io/register" },
+    secondaryCta: { label: "Talk to us first", href: "https://calendly.com/sumit-growth/discussion" },
+    trust: "Trusted by 1,000+ Shopify brands analyzing $1.5Bn+ GMV · Rated 5.0 on the Shopify App Store",
   },
   report: {
-    title: "Store Health Report",
+    title: "Ad Spend Leakage Report",
     stats: [
-      { label: "Customer LTV", value: "$127", delta: "+12%", up: true },
-      { label: "Repeat Rate", value: "24.3%", delta: "-3%", up: false },
-      { label: "Blended ROAS", value: "3.2x", delta: "+8%", up: true },
-      { label: "Top 10% Revenue", value: "41%" },
+      { label: "Spend on sold-out products", value: "$840", delta: "this week", up: false },
+      { label: "Spend on <25% margin SKUs", value: "$2,310", delta: "this week", up: false },
+      { label: "Spend behind fatigued creative", value: "31%", delta: "of prospecting", up: false },
+      { label: "Blended MER", value: "3.2x", delta: "+8%", up: true },
     ],
-    insightLabel: "Drew AI Insight",
+    insightLabel: "Drew's read",
     insight:
-      "Your top 10% of customers generate 41% of revenue, but your repeat purchase rate dropped 3% this month. Focus retention campaigns on this high-value segment to recover lost revenue.",
+      "Three ads across two campaigns are still pointing at sold-out products, and 40% of prospecting spend sits behind a 21%-margin SKU. Pausing the three ads and shifting $415/day to the 62%-margin hero product recovers the leak without touching a learning ad set.",
   },
   includes: {
-    eyebrow: "What's included",
-    headline: "What your free health check includes",
-    subhead: "Drew AI analyzes your Shopify data and delivers a personalized report covering every dimension of store health.",
+    eyebrow: "What Drew checks",
+    headline: "The six leaks Drew looks for first",
+    subhead:
+      "The same checks Drew runs every morning for brands on the Daily Ads Brief — run once, for free, on your real account.",
     items: [
       {
-        title: "Customer LTV Analysis",
-        description: "See your true customer lifetime value broken down by cohort, product, and acquisition source.",
+        title: "Ads pointing at sold-out products",
+        description: "Every active ad matched to live inventory. Spend on out-of-stock or broken-size SKUs, with the dollar amount and the ads to pause.",
       },
       {
-        title: "Customer Concentration Risk",
-        description:
-          "Find out what percentage of your revenue comes from your top customers — and how vulnerable that makes you.",
+        title: "Spend on negative- or thin-margin SKUs",
+        description: "Ad spend by product against contribution margin after COGS, shipping, fees and discounts. A 3x ROAS on a 21%-margin product is still a leak.",
       },
       {
-        title: "Repeat Purchase Rate",
-        description:
-          "Your repeat rate vs industry benchmarks, with specific insights on what is driving (or hurting) repeat purchases.",
+        title: "Fatigued creative still carrying budget",
+        description: "Which ad sets are running on creative past its peak — frequency up, CTR down — and how much of your prospecting spend they hold.",
       },
       {
-        title: "Product Performance",
-        description:
-          "Which products drive the most value, which ones are underperforming, and which have untapped cross-sell potential.",
+        title: "Budget on first-purchase-only products",
+        description: "Spend on products whose buyers never come back, next to products whose buyers repeat 2–3x. The same ROAS is worth different money.",
       },
       {
-        title: "New vs Returning Mix",
-        description:
-          "Your acquisition vs retention balance and whether your growth is sustainable or dangerously dependent on new customers.",
+        title: "Platform ROAS vs real profit",
+        description: "Blended MER and profit after every cost, reconciled to your Shopify orders — so you know which of your three revenue numbers to believe.",
       },
       {
-        title: "Drew AI Recommendations",
-        description:
-          "Personalized, actionable recommendations based on your specific store data. Not generic advice — insights tailored to your business.",
+        title: "The fix, with the money attached",
+        description: "For each leak: what to pause, reduce or shift, how much, and why. The same recommendation card you'd get from Drew on a paid plan.",
       },
     ],
   },
   steps: {
     eyebrow: "How it works",
-    headline: "Get your report in 3 steps",
+    headline: "Your report in three steps",
     items: [
       {
-        title: "Install from Shopify App Store",
-        description: "One-click install. No code, no pixel setup. Datadrew connects directly to your Shopify store data.",
+        title: "Connect Shopify, Meta and Google",
+        description: "OAuth, about ten minutes. No pixel, no code, no exports. Klaviyo and GA4 are optional and sharpen the read.",
       },
       {
-        title: "Drew AI analyzes your data",
-        description:
-          "Within minutes, Drew AI scans your customer data, product catalog, and purchase history to build your health report.",
+        title: "Drew reads the business behind the ads",
+        description: "Overnight, Drew joins your ads to your products, margins, stock and repeat behavior and runs the six leakage checks.",
       },
       {
-        title: "Get actionable insights",
-        description:
-          "Receive a personalized store health report with specific findings and recommendations you can act on immediately.",
+        title: "Your leakage report lands by 8am",
+        description: "In the app and by email: each leak, the spend behind it, and the recommended fix. Act on it yourself, or let Drew keep running the checks daily.",
       },
     ],
   },
+  faq: [
+    {
+      q: "Is the leakage check really free?",
+      a: "Yes. It runs on the Free plan, which needs no credit card and can be used indefinitely. The check uses Drew's one-time welcome credits; the daily version of the same checks is part of AI Intelligence, from $99/mo.",
+    },
+    {
+      q: "What do I need to connect?",
+      a: "Shopify plus at least one of Meta Ads or Google Ads. Klaviyo and GA4 are optional; connecting them lets Drew include repeat behavior and site conversion in the read. Every connection is read-only OAuth that you can revoke at any time.",
+    },
+    {
+      q: "Will Drew change anything in my ad accounts?",
+      a: "No. The check is read-only: Drew reports the leaks and recommends the fix, and you make the change. Applying approved changes with guardrails is part of AI Ads CoPilot, which is enabled account by account.",
+    },
+    {
+      q: "How accurate are the margin numbers?",
+      a: "Drew uses the product costs, shipping and fees you have in Shopify and Datadrew, reconciled to your Shopify orders. If COGS is missing for a product, the report says so rather than guessing, and you can add it in a minute.",
+    },
+  ],
   finalCta: {
-    headline: "See what you are missing in your store data",
-    subhead: "Your free health check is waiting. Install Datadrew, and Drew AI does the rest.",
+    headline: "Find the leak before the budget does",
+    subhead: "Connect today; your ad spend leakage report is waiting tomorrow by 8am. Free plan, no credit card required.",
   },
 };
